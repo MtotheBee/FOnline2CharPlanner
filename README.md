@@ -19,12 +19,15 @@ The directories and files represent the complete Visual Studio project, includin
 
 Here's the list of all the classes, the program uses:
 
-Form1.vb - Main Class
-CharBaseStats.vb - used to get or set the S.P.E.C.I.A.L. data
-CharPerks.vb - used to handle the selection of perks and their effects
-CharSkills.vb - used to handle the changes of skills
-CharTraits.vb - used to handle the effects traits have, if you choose them
-CharStatistics.vb - used to handle, display and get or set different statistics of the character
+
+|Class Name | Description |
+|-----------|-------------|
+|Form1.vb | Main Class |
+|CharBaseStats.vb | used to get or set the S.P.E.C.I.A.L. data |
+|CharPerks.vb | used to handle the selection of perks and their effects |
+|CharSkills.vb | used to handle the changes of skills |
+|CharTraits.vb | used to handle the effects traits have, if you choose them |
+|CharStatistics.vb | used to handle, display and get or set different statistics of the character |
 
 --------------------------------------------------------------------------------------------------------------------------
 
