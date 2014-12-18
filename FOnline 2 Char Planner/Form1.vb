@@ -2369,8 +2369,8 @@ Public Class Form1
                 End Select
 
                 If Perks.levelVal = 24 Then
-                    Statistics.HitPoints = Statistics.HitPoints + 37
-                    HitPointstolastlvl = HitPointstolastlvl + 37
+                    Statistics.HitPoints = Statistics.HitPoints + 36
+                    HitPointstolastlvl = HitPointstolastlvl + 36
                     Statistics.CarryWeight = Statistics.CarryWeight + (99 - Perks.levelVal)
                     Perks.levelVal = 99
                     Statistics.SetStatistics()

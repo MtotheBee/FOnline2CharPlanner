@@ -166,14 +166,12 @@
                 End If
             Else
                 'after level 27
-                'If Endurance Mod 2 <> 0 And levelVal = 27 Then
-                'stats.HitPoints = stats.HitPoints + Math.Floor(2 + (Endurance / 2)) + 1
-                'Else
+              
                 If levelVal Mod 2 = 0 Then
                     stats.HitPoints = stats.HitPoints + 1
                 End If
 
-                End If
+            End If
 
                 'add CW
                 stats.CarryWeight = stats.CarryWeight + 1
