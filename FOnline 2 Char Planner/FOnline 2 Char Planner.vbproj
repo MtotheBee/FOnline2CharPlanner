@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BDC32938-D7DB-4B09-B468-03F7857603EB}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <StartupObject>FOnline_2_Char_Planner.My.MyApplication</StartupObject>
+    <RootNamespace>FOnline_2_Char_Planner</RootNamespace>
+    <AssemblyName>FOnline 2 Char Planner</AssemblyName>
+    <FileAlignment>512</FileAlignment>
+    <MyType>WindowsForms</MyType>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>FOnline 2 Char Planner.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>FOnline 2 Char Planner.xml</DocumentationFile>
+    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\FOPlanner.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BassMOD.Net, Version=2.0.0.2, Culture=neutral, PublicKeyToken=d4db1103f7215e10, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Debug\BassMOD.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Transparente_Textbox">
+      <HintPath>..\Transparente_Textbox.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Data" />
+    <Import Include="System.Drawing" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows.Forms" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="Un4seen" />
+    <Import Include="Un4seen.BassMOD" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationEvents.vb" />
+    <Compile Include="CharPerks.vb" />
+    <Compile Include="CharSkills.vb" />
+    <Compile Include="Form1.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.vb">
+      <DependentUpon>Form1.vb</DependentUpon>
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form2.Designer.vb">
+      <DependentUpon>Form2.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Form2.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Model1.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Model1.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="My Project\Application.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Application.myapp</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="CharBaseStats.vb" />
+    <Compile Include="CharStatistics.vb" />
+    <Compile Include="CharTraits.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form2.resx">
+      <DependentUpon>Form2.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <EntityDeploy Include="Model1.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Model1.Designer.vb</LastGenOutput>
+    </EntityDeploy>
+    <None Include="My Project\Application.myapp">
+      <Generator>MyApplicationCodeGenerator</Generator>
+      <LastGenOutput>Application.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="My Project\DataSources\CharPerks.datasource" />
+    <None Include="My Project\DataSources\CharSkills.datasource" />
+    <None Include="My Project\DataSources\CharTraits.datasource" />
+    <None Include="My Project\DataSources\Form1.datasource" />
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <CustomToolNamespace>My</CustomToolNamespace>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="Resources\Dubmood_-_3D_galaxy.xm" />
+    <None Include="Resources\Joule_and_Coda_-_Going_nuts.xm" />
+    <None Include="Resources\Key_G_-_Red_green_blue_5.xm" />
+    <None Include="Resources\Slash_-_Because.it" />
+    <None Include="Resources\Wave_-_1999.xm" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AClassDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AGDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\age_of_loneliness.xm" />
+    <None Include="Resources\BGunsDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BHeadDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlMessDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BruiserDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BruiserDescTest.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CCombatDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CHDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chess.s3m" />
+    <None Include="Resources\CReliantDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CResistDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\CritChanceDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ctsewer.s3m" />
+    <None Include="Resources\CWeightDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DocDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DResistDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ENDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EvaderDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\EWDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FADesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\feather.xm" />
+    <None Include="Resources\FinesseDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FMetaDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FMetaDescPic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FShotDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GamblingDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\GNaturedDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HealRateDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HHandedDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Hintergrund.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\INDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Jakim_-_Whatever_it_means.xm" />
+    <None Include="Resources\JinxedDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KamikazeDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LKDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaxAPDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MaxHPDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MeleeDmgDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\MutantDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ODDEsc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\OneHanderDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PEDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Pointer.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PoisonResDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RadResDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RepairDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScavengeDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ScienceDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SequenceDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SFrameDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SGunsDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SneakDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\SpeechDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\STDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\StealDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ThrowDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TrapsDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 und x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LPDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BarterDesc.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\AppIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="favicon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FCPSymbol.ico" />
+    <None Include="Resources\Wiklund_-_Bonfire.mod" />
+    <None Include="Resources\turrican2titlermx.mod" />
+    <None Include="Resources\turrican2ingame1rmx.mod" />
+    <None Include="Resources\AnticriticalDescNeu.jpg" />
+    <None Include="Resources\SightDescr.jpg" />
+    <None Include="Resources\AchievPackRDesc.jpg" />
+    <None Include="Resources\Creditsneu_v1_4.jpg" />
+    <None Include="Resources\Stop.png" />
+    <None Include="Resources\Skip.png" />
+    <None Include="Resources\Play.png" />
+    <None Include="Resources\pause.png" />
+    <None Include="Resources\Classic3.mod" />
+    <None Include="Resources\Accession1.mod" />
+    <None Include="Resources\Cave8.mod" />
+    <None Include="Resources\Cascade4.mod" />
+    <None Include="Resources\TRSI_and_Zenith2.mod" />
+    <None Include="Resources\Tempest_-_Acidjazzed_evening.mod" />
+    <None Include="Resources\Estrayk_-_The_HER_song_10.mod" />
+    <None Include="Resources\Joy_and_Magnificent_Force2.mod" />
+    <None Include="Resources\Supplex1.mod" />
+    <None Include="Resources\Delight7.mod" />
+    <None Include="Resources\Defjam3.mod" />
+    <None Include="Resources\Crash2.mod" />
+    <None Include="Resources\Anthrox9.mod" />
+    <None Include="Resources\Millenium1.mod" />
+    <None Include="Resources\EnvImplDesc.jpg" />
+    <None Include="Resources\button-50.wav" />
+    <None Include="Resources\button-46.wav" />
+    <None Include="Resources\button-30.wav" />
+    <None Include="Resources\button-29.wav" />
+    <None Include="Resources\button-27.wav" />
+    <None Include="Resources\FOPlanner.ico" />
+    <None Include="Resources\Creditsneu.jpg" />
+    <None Include="Resources\JTQuestMaryDesc.jpg" />
+    <None Include="Resources\GlowQuestDesc.jpg" />
+    <None Include="Resources\favicon%281%29.ico" />
+    <None Include="Resources\dreamweb4.mod" />
+    <None Include="Resources\dreamweb_ingame.mod" />
+    <None Include="Resources\DREAMWEB-06.MOD" />
+    <None Include="Resources\DREAMWEB-04.MOD" />
+    <None Include="Resources\DREAMWEB-02.MOD" />
+    <None Include="Resources\castlevania_1.mod" />
+    <None Include="Resources\ImplSurvivalDesc.jpg" />
+    <None Include="Resources\ImplEnhanceDesc.jpg" />
+    <None Include="Resources\BooksDesc.jpg" />
+    <None Include="Resources\StandbySW.jpg" />
+    <None Include="Resources\lastnin1.mod" />
+    <None Include="Resources\denaris_remix.mod" />
+    <None Include="Resources\rastaman.mod" />
+    <None Include="Resources\2000_AD5.mod" />
+    <None Include="Resources\1993.MOD" />
+    <None Include="Resources\aftertouch.mod" />
+    <None Include="Resources\NeutralDesc.jpg" />
+    <None Include="Resources\AchievAwarenessDesc.jpg" />
+    <None Include="Resources\StWallDesc.jpg" />
+    <None Include="Resources\QHands.jpg" />
+    <None Include="Resources\ThiefDesc.jpg" />
+    <None Include="Resources\MrFixitDesc.jpg" />
+    <None Include="Resources\MCritsDesc.jpg" />
+    <None Include="Resources\HarmlessDesc.jpg" />
+    <None Include="Resources\Standby.jpg" />
+    <None Include="Resources\EducatedDesc.jpg" />
+    <None Include="Resources\BRDDesc.jpg" />
+    <None Include="Resources\Prestige4.mod" />
+    <None Include="Resources\Prestige3.mod" />
+    <None Include="Resources\chris_glaister_-_lost_patrol_theme.mod" />
+    <None Include="Resources\BREAKLINE.MOD" />
+    <None Include="Resources\Anthrox4.mod" />
+    <None Include="Resources\anthrox.mod" />
+    <None Include="Resources\ABoyDesc.jpg" />
+    <None Include="Resources\SilentRDesc.jpg" />
+    <None Include="Resources\AchievHeaveDesc.jpg" />
+    <None Include="Resources\EarlSeqDesc.jpg" />
+    <None Include="Resources\ImplSpeedDesc.jpg" />
+    <None Include="Resources\GENDesc.jpg" />
+    <None Include="Resources\DodgerDesc.jpg" />
+    <None Include="Resources\MedicDesc.jpg" />
+    <None Include="Resources\ARushDesc.jpg" />
+    <None Include="Resources\AchievMoGDesc.jpg" />
+    <None Include="Resources\BRoFDesc.jpg" />
+    <None Include="Resources\ImplAccurDesc.jpg" />
+    <None Include="Resources\SShootDesc.jpg" />
+    <None Include="Resources\GLuckDesc.jpg" />
+    <None Include="Resources\ImplEngDesc.jpg" />
+    <None Include="Resources\GAGDesc.jpg" />
+    <None Include="Resources\ThoughDesc.jpg" />
+    <None Include="Resources\AchievPyroDesc.jpg" />
+    <None Include="Resources\LifeGDesc.jpg" />
+    <None Include="Resources\QRecDesc.jpg" />
+    <None Include="Resources\ImplDefDesc.jpg" />
+    <None Include="Resources\AchievWiHDesc.jpg" />
+    <None Include="Resources\AchievAlAberDesc.jpg" />
+    <None Include="Resources\AnticriticalDesc.jpg" />
+    <None Include="Resources\BetterCrDesc.jpg" />
+    <None Include="Resources\BHtHAtDesc.jpg" />
+    <None Include="Resources\PFinderDesc.jpg" />
+    <None Include="Resources\StrBackDesc.jpg" />
+    <None Include="Resources\BHtHDmgDesc.jpg" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
