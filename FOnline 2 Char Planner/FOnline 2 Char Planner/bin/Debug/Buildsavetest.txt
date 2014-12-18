@@ -1,0 +1,75 @@
+* FCP - Fallout Online 2 Character Planner *
+* Saved Build - File *
+*--------------------------------------------------*
+
+*Change this file on your own risk!*
+
+*SPECIAL - Attributes*
+*--------------------*
+5
+7
+8
+5
+5
+5
+5
+*Statistics*
+*----------*
+136
+5
+7
+8
+40
+16
+87
+5
+20
+2
+5
+41
+0
+*Skills*
+*------*
+25
+10
+10
+80
+20
+24
+37
+25
+20
+22
+22
+40
+15
+20
+73
+25
+82
+*Level*
+*-----*
+11
+*Perks*
+
+
+
+
+Quick Recovery
+
+
+
+
+
+Earlier Sequence
+
+
+
+
+
+Toughness
+
+
+
+
+

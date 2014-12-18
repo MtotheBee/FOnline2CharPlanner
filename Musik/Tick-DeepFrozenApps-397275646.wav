@@ -1,0 +1,6 @@
+<br />
+<b>Warning</b>:  filesize() [<a href='function.filesize'>function.filesize</a>]: stat failed for wav/Tick-DeepFrozenApps-397275646.wav in <b>/home/soundbib/public_html/grab.php</b> on line <b>48</b><br />
+<br />
+<b>Warning</b>:  Cannot modify header information - headers already sent by (output started at /home/soundbib/public_html/grab.php:48) in <b>/home/soundbib/public_html/grab.php</b> on line <b>48</b><br />
+<br />
+<b>Warning</b>:  readfile(wav/Tick-DeepFrozenApps-397275646.wav) [<a href='function.readfile'>function.readfile</a>]: failed to open stream: No such file or directory in <b>/home/soundbib/public_html/grab.php</b> on line <b>49</b><br />
