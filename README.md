@@ -11,6 +11,8 @@ This program is written in Visual Basic (don't ask me "y u coding in VB" :) ), u
 
 I decided to upload this project, so that others may help or continue my work, because there are still many things which could be added to this planner.
 
+--------------------------------------------------------------------------------------------------------------------------
+
 Some words on the files i uploaded:
 
 The directories and files represent the complete Visual Studio project, including the project file (*.sln) aswell as all the classes and every resources etc. .
@@ -24,11 +26,11 @@ CharSkills.vb - used to handle the changes of skills
 CharTraits.vb - used to handle the effects traits have, if you choose them
 CharStatistics.vb - used to handle, display and get or set different statistics of the character
 
-=============================================================================================================================
+--------------------------------------------------------------------------------------------------------------------------
 
 There are still some things, that could be added:
 
 - simulation of drugs
 - calculation of HitChance according to character and equipment (not really necessary imo because there are already some good calculators for these out there)
 - Save/Load feature (in development, not yet implemented but already can be found in code)
-- <your suggestion here>
+- "your suggestion here" 
