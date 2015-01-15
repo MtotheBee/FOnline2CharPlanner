@@ -824,6 +824,7 @@ Public Class Form1
     End Sub
 
     Private Sub LblTraitsBHead_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LblTraitsBHead.Click
+        Stats.GetStats()
         PicDesc.Image = My.Resources.BHeadDesc
         DetDescrChange(103, 103)
         If isBHead = True Then
@@ -831,11 +832,11 @@ Public Class Form1
             Skills.addBHead = 0
         Else
             isBHead = True
-            Skills.addBHead = 1
+            Skills.addBHead = 0
         End If
 
         'Intelligence Calc
-        Stats.GetStats()
+        'Stats.GetStats()
         If isBHead = True Then
             Stats.Intelligence = Stats.Intelligence - 1
         Else
@@ -844,8 +845,8 @@ Public Class Form1
         End If
         Stats.SetStats()
         Traits.TraitsCheck(sender, isBHead, sender.ToString)
-        Statistics.SetStatistics()
-        'Skills.setSkillValues()
+        'Statistics.SetStatistics()
+        Skills.setSkillValues()
     End Sub
 
     Private Sub LblTraitsMutant_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LblTraitsMutant.Click
@@ -1045,7 +1046,7 @@ Public Class Form1
         DescPicIndex(111) = "JTQuestMaryDesc"
         DetDescrName(112) = "Pete Quest - JT"
         DetDescrText(112) = "If you bring Pete a Super Tool Kit you       will get +20% to your Repair-Skill.          Note: This only works for skill values       below 80%!"
-        DescPicIndex(112) = "StandbySW" 'no pic yet"
+        DescPicIndex(112) = "JTQuestPeteDesc"
 
         DetDescrName(113) = "Chess Game - +3 CChance"
         DetDescrName(114) = "Chess Game - +1 FOV, +5% HitC."
@@ -3076,6 +3077,8 @@ Public Class Form1
             End If
         End If
 
+        'update skill values 
+        NUDSkillsMinValues()
         SaveLoadAchievements(Perks.levelVal, True, Achievement)
 
     End Sub
@@ -3711,12 +3714,12 @@ Public Class Form1
 
     Friend isPlay As Boolean
     Friend isSkip As Boolean
-    Friend takenTracks(43) As Boolean
+    Friend takenTracks(56) As Boolean
     Friend Zaehler As Integer
     'Start Music
     Private Sub MOnToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MOnToolStripMenuItem.Click
         'zufällige titelwiedergabe
-        Dim RandomSong(43) As String
+        Dim RandomSong(56) As String
         Dim ZufZahl As Integer
         Dim random As New Random
         'Dim isPlay As Boolean
@@ -3772,15 +3775,38 @@ Public Class Form1
         RandomSong(41) = "turrican2ingame1rmx"
         RandomSong(42) = "turrican2titlermx"
         RandomSong(43) = "Wiklund___Bonfire"
+        RandomSong(44) = "her1"
+        RandomSong(45) = "her2"
+        RandomSong(46) = "her3"
+        RandomSong(47) = "WCD1"
+        RandomSong(48) = "her5"
+        RandomSong(49) = "her6"
+        RandomSong(50) = "her7"
+        RandomSong(51) = "her8"
+        RandomSong(52) = "her9"
+        RandomSong(53) = "her10"
+        RandomSong(54) = "WCD1"
+        RandomSong(55) = "her7"
+        RandomSong(56) = "WCD4"
 
+        While Zaehler < 55
+            ZufZahl = random.Next(0, 56)
 
-
-        While Zaehler < 42
-            ZufZahl = random.Next(0, 43)
-
+            'If ZufZahl was taken before while loop continues to pick next
+            'If Not then ZufZahl is valid, counter is increased by 1 and Loop is terminated
             If Not takenTracks(ZufZahl) = True Then
                 takenTracks(ZufZahl) = True
                 Zaehler = Zaehler + 1
+
+                'If all tracks were played once set all takenTracks values to false
+                'Songs will be played again
+                If Zaehler = 55 Then
+                    Zaehler = 0
+                    For i = 1 To 56
+                        takenTracks(i) = False
+                    Next
+                End If
+
                 Exit While
             End If
 
@@ -3800,6 +3826,7 @@ Public Class Form1
         MOffToolStripMenuItem.Enabled = True
         NextToolStripMenuItem.Enabled = True
 
+       
     End Sub
 
     'Stop Music

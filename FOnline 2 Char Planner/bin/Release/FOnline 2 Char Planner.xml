@@ -383,6 +383,46 @@ FOnline2CharPlanner
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.her1">
+	<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.her10">
+	<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.her2">
+	<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.her3">
+	<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.Her4">
+	<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.her5">
+	<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.her6">
+	<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.her7">
+	<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.her8">
+	<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.her9">
+	<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
 </member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.HHandedDesc">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -436,6 +476,10 @@ FOnline2CharPlanner
   Looks up a localized resource of type System.Byte[].
 </summary>
 </member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.JTQuestMaryDesc">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.JTQuestPeteDesc">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
@@ -676,6 +720,18 @@ FOnline2CharPlanner
   Looks up a localized resource of type System.Byte[].
 </summary>
 </member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.Wave___1999">
+	<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.WCD1">
+	<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.WDC3">
+	<summary>
+  Looks up a localized resource of type System.Byte[].
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.WDC4">
 	<summary>
   Looks up a localized resource of type System.Byte[].
 </summary>

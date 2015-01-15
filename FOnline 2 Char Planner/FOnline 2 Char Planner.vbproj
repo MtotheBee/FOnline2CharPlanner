@@ -385,6 +385,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FCPSymbol.ico" />
+    <None Include="Resources\her10.mod" />
+    <None Include="Resources\her9.mod" />
+    <None Include="Resources\her8.mod" />
+    <None Include="Resources\her7.mod" />
+    <None Include="Resources\her6.mod" />
+    <None Include="Resources\her5.mod" />
+    <None Include="Resources\Her4.mod" />
+    <None Include="Resources\her3.mod" />
+    <None Include="Resources\her2.mod" />
+    <None Include="Resources\her1.mod" />
+    <None Include="Resources\JTQuestPeteDesc.jpg" />
+    <None Include="Resources\WCD1.xm" />
+    <None Include="Resources\WDC3.xm" />
+    <None Include="Resources\WDC4.xm" />
     <None Include="Resources\Wiklund_-_Bonfire.mod" />
     <None Include="Resources\turrican2titlermx.mod" />
     <None Include="Resources\turrican2ingame1rmx.mod" />

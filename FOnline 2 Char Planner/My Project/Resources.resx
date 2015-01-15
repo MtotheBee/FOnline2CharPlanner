@@ -607,4 +607,46 @@
   <data name="Wiklund___Bonfire" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Wiklund_-_Bonfire.mod;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="JTQuestPeteDesc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\JTQuestPeteDesc.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="her1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\her1.mod;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="her10" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\her10.mod;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="her2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\her2.mod;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="her3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\her3.mod;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Her4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Her4.mod;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="her5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\her5.mod;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="her6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\her6.mod;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="her7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\her7.mod;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="her8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\her8.mod;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="her9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\her9.mod;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="WCD1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WCD1.xm;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="WDC3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WDC3.xm;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="WDC4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WDC4.xm;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

@@ -155,6 +155,11 @@
                     Form1.BtnDone.Enabled = False
                     Form1.LblDetDesc.Text = "Incorrect SPECIAL data"
                     Form1.LblDetDescrText.Text = "If you choose Bonehead, IN has to be" & vbCrLf & "9 or below."
+                ElseIf Form1.isBHead = True And Intelligence = 0 Then
+                    Form1.BtnDone.Enabled = False
+                    Form1.LblDetDesc.Text = "Incorrect SPECIAL data"
+                    Form1.LblDetDescrText.Text = "If you choose Bonehead, IN has to be" & vbCrLf & "at least 1."
+
                 Else
                     Form1.BtnDone.Enabled = True
                 End If
