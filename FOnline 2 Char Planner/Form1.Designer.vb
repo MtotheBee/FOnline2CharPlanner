@@ -194,10 +194,12 @@ Partial Class Form1
         Me.LblSight = New System.Windows.Forms.Label()
         Me.BtnLvlFastUp = New System.Windows.Forms.Button()
         Me.BtnLvlFastDwn = New System.Windows.Forms.Button()
+        Me.BtnLvlDwn = New System.Windows.Forms.Button()
+        Me.BtnMusicVolDown = New System.Windows.Forms.Button()
+        Me.BtnMusicVolUp = New System.Windows.Forms.Button()
         Me.BtnMscStop = New System.Windows.Forms.Button()
         Me.BtnDone = New System.Windows.Forms.Button()
         Me.LstVPerks = New System.Windows.Forms.ListView()
-        Me.BtnLvlDwn = New System.Windows.Forms.Button()
         Me.LblLevel = New System.Windows.Forms.Label()
         Me.LblCBoxBooks = New System.Windows.Forms.Label()
         Me.LblPTraitsTaken = New System.Windows.Forms.Label()
@@ -205,6 +207,9 @@ Partial Class Form1
         Me.BtnSkUp = New System.Windows.Forms.Button()
         Me.BtnSkDown = New System.Windows.Forms.Button()
         Me.PanSkUpDown = New System.Windows.Forms.Panel()
+        Me.Panel3 = New System.Windows.Forms.Panel()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.BtnPerkLater = New System.Windows.Forms.Button()
         Me.MainMenu = New System.Windows.Forms.MenuStrip()
         Me.FileToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -257,6 +262,15 @@ Partial Class Form1
         Me.LblTODoc = New System.Windows.Forms.Label()
         Me.LblTOFA = New System.Windows.Forms.Label()
         Me.LblTimeouts = New System.Windows.Forms.Label()
+        Me.LblMusicLenghtSec = New System.Windows.Forms.Label()
+        Me.LblMusicLenghtMin = New System.Windows.Forms.Label()
+        Me.LblMusicNPlay = New System.Windows.Forms.Label()
+        Me.LblMusicTElap = New System.Windows.Forms.Label()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.TxtBMusicText = New System.Windows.Forms.TextBox()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.PicBoxMusicVol = New System.Windows.Forms.PictureBox()
         Me.PanStats.SuspendLayout()
         Me.CPointsPan.SuspendLayout()
         Me.PanTraits.SuspendLayout()
@@ -269,9 +283,11 @@ Partial Class Form1
         Me.PanDetText.SuspendLayout()
         Me.PanStatsSightACrit.SuspendLayout()
         Me.PanSkUpDown.SuspendLayout()
+        Me.Panel3.SuspendLayout()
         Me.MainMenu.SuspendLayout()
         Me.PanBookValEdit.SuspendLayout()
         Me.Panel2.SuspendLayout()
+        CType(Me.PicBoxMusicVol, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'LblStatsST
@@ -2340,6 +2356,69 @@ Partial Class Form1
         Me.BtnLvlFastDwn.UseVisualStyleBackColor = False
         Me.BtnLvlFastDwn.Visible = False
         '
+        'BtnLvlDwn
+        '
+        Me.BtnLvlDwn.BackColor = System.Drawing.Color.Transparent
+        Me.BtnLvlDwn.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnLvlDwn.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.BtnLvlDwn.FlatAppearance.BorderSize = 0
+        Me.BtnLvlDwn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightYellow
+        Me.BtnLvlDwn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGreen
+        Me.BtnLvlDwn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnLvlDwn.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnLvlDwn.ForeColor = System.Drawing.Color.YellowGreen
+        Me.BtnLvlDwn.Location = New System.Drawing.Point(628, 313)
+        Me.BtnLvlDwn.Name = "BtnLvlDwn"
+        Me.BtnLvlDwn.Size = New System.Drawing.Size(25, 20)
+        Me.BtnLvlDwn.TabIndex = 47
+        Me.BtnLvlDwn.Text = "<"
+        Me.ToolTip1.SetToolTip(Me.BtnLvlDwn, "Go 1 Level down")
+        Me.BtnLvlDwn.UseCompatibleTextRendering = True
+        Me.BtnLvlDwn.UseVisualStyleBackColor = False
+        Me.BtnLvlDwn.Visible = False
+        '
+        'BtnMusicVolDown
+        '
+        Me.BtnMusicVolDown.BackColor = System.Drawing.Color.Black
+        Me.BtnMusicVolDown.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnMusicVolDown.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.BtnMusicVolDown.FlatAppearance.BorderSize = 0
+        Me.BtnMusicVolDown.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightYellow
+        Me.BtnMusicVolDown.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGreen
+        Me.BtnMusicVolDown.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnMusicVolDown.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnMusicVolDown.ForeColor = System.Drawing.Color.YellowGreen
+        Me.BtnMusicVolDown.Location = New System.Drawing.Point(708, 4)
+        Me.BtnMusicVolDown.Name = "BtnMusicVolDown"
+        Me.BtnMusicVolDown.Size = New System.Drawing.Size(15, 15)
+        Me.BtnMusicVolDown.TabIndex = 112
+        Me.BtnMusicVolDown.Text = "-"
+        Me.ToolTip1.SetToolTip(Me.BtnMusicVolDown, "Go 1 Level down")
+        Me.BtnMusicVolDown.UseCompatibleTextRendering = True
+        Me.BtnMusicVolDown.UseVisualStyleBackColor = False
+        Me.BtnMusicVolDown.Visible = False
+        '
+        'BtnMusicVolUp
+        '
+        Me.BtnMusicVolUp.BackColor = System.Drawing.Color.Black
+        Me.BtnMusicVolUp.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnMusicVolUp.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.BtnMusicVolUp.FlatAppearance.BorderSize = 0
+        Me.BtnMusicVolUp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightYellow
+        Me.BtnMusicVolUp.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGreen
+        Me.BtnMusicVolUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnMusicVolUp.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnMusicVolUp.ForeColor = System.Drawing.Color.YellowGreen
+        Me.BtnMusicVolUp.Location = New System.Drawing.Point(772, 3)
+        Me.BtnMusicVolUp.Name = "BtnMusicVolUp"
+        Me.BtnMusicVolUp.Size = New System.Drawing.Size(15, 15)
+        Me.BtnMusicVolUp.TabIndex = 113
+        Me.BtnMusicVolUp.Text = "+"
+        Me.ToolTip1.SetToolTip(Me.BtnMusicVolUp, "Go 1 Level down")
+        Me.BtnMusicVolUp.UseCompatibleTextRendering = True
+        Me.BtnMusicVolUp.UseVisualStyleBackColor = False
+        Me.BtnMusicVolUp.Visible = False
+        '
         'BtnMscStop
         '
         Me.BtnMscStop.BackColor = System.Drawing.Color.Black
@@ -2400,27 +2479,6 @@ Partial Class Form1
         Me.LstVPerks.TileSize = New System.Drawing.Size(168, 15)
         Me.LstVPerks.UseCompatibleStateImageBehavior = False
         Me.LstVPerks.View = System.Windows.Forms.View.Tile
-        '
-        'BtnLvlDwn
-        '
-        Me.BtnLvlDwn.BackColor = System.Drawing.Color.Transparent
-        Me.BtnLvlDwn.Cursor = System.Windows.Forms.Cursors.Hand
-        Me.BtnLvlDwn.FlatAppearance.BorderColor = System.Drawing.Color.Silver
-        Me.BtnLvlDwn.FlatAppearance.BorderSize = 0
-        Me.BtnLvlDwn.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightYellow
-        Me.BtnLvlDwn.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGreen
-        Me.BtnLvlDwn.FlatStyle = System.Windows.Forms.FlatStyle.Flat
-        Me.BtnLvlDwn.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.BtnLvlDwn.ForeColor = System.Drawing.Color.YellowGreen
-        Me.BtnLvlDwn.Location = New System.Drawing.Point(628, 313)
-        Me.BtnLvlDwn.Name = "BtnLvlDwn"
-        Me.BtnLvlDwn.Size = New System.Drawing.Size(25, 20)
-        Me.BtnLvlDwn.TabIndex = 47
-        Me.BtnLvlDwn.Text = "<"
-        Me.ToolTip1.SetToolTip(Me.BtnLvlDwn, "Go 1 Level down")
-        Me.BtnLvlDwn.UseCompatibleTextRendering = True
-        Me.BtnLvlDwn.UseVisualStyleBackColor = False
-        Me.BtnLvlDwn.Visible = False
         '
         'LblLevel
         '
@@ -2514,12 +2572,62 @@ Partial Class Form1
         '
         Me.PanSkUpDown.BackColor = System.Drawing.Color.Transparent
         Me.PanSkUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PanSkUpDown.Controls.Add(Me.Panel3)
         Me.PanSkUpDown.Controls.Add(Me.BtnSkUp)
         Me.PanSkUpDown.Controls.Add(Me.BtnSkDown)
         Me.PanSkUpDown.Location = New System.Drawing.Point(459, 48)
         Me.PanSkUpDown.Name = "PanSkUpDown"
         Me.PanSkUpDown.Size = New System.Drawing.Size(20, 42)
         Me.PanSkUpDown.TabIndex = 60
+        '
+        'Panel3
+        '
+        Me.Panel3.BackColor = System.Drawing.Color.Transparent
+        Me.Panel3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.Panel3.Controls.Add(Me.Button1)
+        Me.Panel3.Controls.Add(Me.Button2)
+        Me.Panel3.Location = New System.Drawing.Point(-1, -1)
+        Me.Panel3.Name = "Panel3"
+        Me.Panel3.Size = New System.Drawing.Size(20, 42)
+        Me.Panel3.TabIndex = 61
+        '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.Transparent
+        Me.Button1.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button1.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Button1.FlatAppearance.BorderSize = 0
+        Me.Button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightYellow
+        Me.Button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGreen
+        Me.Button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button1.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button1.ForeColor = System.Drawing.Color.LimeGreen
+        Me.Button1.Location = New System.Drawing.Point(1, 3)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(16, 16)
+        Me.Button1.TabIndex = 44
+        Me.Button1.Text = "+"
+        Me.Button1.UseCompatibleTextRendering = True
+        Me.Button1.UseVisualStyleBackColor = False
+        '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.Transparent
+        Me.Button2.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.Button2.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.Button2.FlatAppearance.BorderSize = 0
+        Me.Button2.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightYellow
+        Me.Button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGreen
+        Me.Button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.Button2.Font = New System.Drawing.Font("Tahoma", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Button2.ForeColor = System.Drawing.Color.LimeGreen
+        Me.Button2.Location = New System.Drawing.Point(1, 23)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(16, 16)
+        Me.Button2.TabIndex = 44
+        Me.Button2.Text = "-"
+        Me.Button2.UseCompatibleTextRendering = True
+        Me.Button2.UseVisualStyleBackColor = False
         '
         'BtnPerkLater
         '
@@ -3247,6 +3355,127 @@ Partial Class Form1
         Me.LblTimeouts.TabIndex = 104
         Me.LblTimeouts.Text = "Timeouts"
         '
+        'LblMusicLenghtSec
+        '
+        Me.LblMusicLenghtSec.AutoSize = True
+        Me.LblMusicLenghtSec.BackColor = System.Drawing.Color.Black
+        Me.LblMusicLenghtSec.Cursor = System.Windows.Forms.Cursors.Arrow
+        Me.LblMusicLenghtSec.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.LblMusicLenghtSec.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblMusicLenghtSec.ForeColor = System.Drawing.Color.GreenYellow
+        Me.LblMusicLenghtSec.Location = New System.Drawing.Point(687, 5)
+        Me.LblMusicLenghtSec.Margin = New System.Windows.Forms.Padding(0, 0, 3, 0)
+        Me.LblMusicLenghtSec.Name = "LblMusicLenghtSec"
+        Me.LblMusicLenghtSec.Padding = New System.Windows.Forms.Padding(2, 1, 2, 1)
+        Me.LblMusicLenghtSec.Size = New System.Drawing.Size(23, 15)
+        Me.LblMusicLenghtSec.TabIndex = 98
+        Me.LblMusicLenghtSec.Text = "00"
+        Me.LblMusicLenghtSec.Visible = False
+        '
+        'LblMusicLenghtMin
+        '
+        Me.LblMusicLenghtMin.AutoSize = True
+        Me.LblMusicLenghtMin.BackColor = System.Drawing.Color.Black
+        Me.LblMusicLenghtMin.Cursor = System.Windows.Forms.Cursors.Arrow
+        Me.LblMusicLenghtMin.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.LblMusicLenghtMin.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblMusicLenghtMin.ForeColor = System.Drawing.Color.GreenYellow
+        Me.LblMusicLenghtMin.Location = New System.Drawing.Point(673, 5)
+        Me.LblMusicLenghtMin.Name = "LblMusicLenghtMin"
+        Me.LblMusicLenghtMin.Padding = New System.Windows.Forms.Padding(2, 1, 0, 1)
+        Me.LblMusicLenghtMin.Size = New System.Drawing.Size(15, 15)
+        Me.LblMusicLenghtMin.TabIndex = 105
+        Me.LblMusicLenghtMin.Text = "0"
+        Me.LblMusicLenghtMin.Visible = False
+        '
+        'LblMusicNPlay
+        '
+        Me.LblMusicNPlay.AutoSize = True
+        Me.LblMusicNPlay.BackColor = System.Drawing.Color.Black
+        Me.LblMusicNPlay.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblMusicNPlay.ForeColor = System.Drawing.Color.LemonChiffon
+        Me.LblMusicNPlay.Location = New System.Drawing.Point(200, 6)
+        Me.LblMusicNPlay.Name = "LblMusicNPlay"
+        Me.LblMusicNPlay.Size = New System.Drawing.Size(69, 13)
+        Me.LblMusicNPlay.TabIndex = 107
+        Me.LblMusicNPlay.Text = "Now Playing:"
+        Me.LblMusicNPlay.Visible = False
+        '
+        'LblMusicTElap
+        '
+        Me.LblMusicTElap.AutoSize = True
+        Me.LblMusicTElap.BackColor = System.Drawing.Color.Black
+        Me.LblMusicTElap.ForeColor = System.Drawing.Color.LemonChiffon
+        Me.LblMusicTElap.Location = New System.Drawing.Point(610, 5)
+        Me.LblMusicTElap.Name = "LblMusicTElap"
+        Me.LblMusicTElap.Size = New System.Drawing.Size(61, 13)
+        Me.LblMusicTElap.TabIndex = 108
+        Me.LblMusicTElap.Text = "Song Time:"
+        Me.LblMusicTElap.Visible = False
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.BackColor = System.Drawing.Color.Black
+        Me.Label10.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label10.ForeColor = System.Drawing.Color.LemonChiffon
+        Me.Label10.Location = New System.Drawing.Point(515, 24)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(51, 13)
+        Me.Label10.TabIndex = 109
+        Me.Label10.Text = "vergZeit:"
+        Me.Label10.Visible = False
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.BackColor = System.Drawing.Color.Black
+        Me.Label11.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label11.ForeColor = System.Drawing.Color.LemonChiffon
+        Me.Label11.Location = New System.Drawing.Point(655, 24)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(28, 13)
+        Me.Label11.TabIndex = 110
+        Me.Label11.Text = "Diff:"
+        Me.Label11.Visible = False
+        '
+        'TxtBMusicText
+        '
+        Me.TxtBMusicText.BackColor = System.Drawing.Color.Black
+        Me.TxtBMusicText.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TxtBMusicText.Cursor = System.Windows.Forms.Cursors.Arrow
+        Me.TxtBMusicText.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.TxtBMusicText.ForeColor = System.Drawing.Color.GreenYellow
+        Me.TxtBMusicText.ImeMode = System.Windows.Forms.ImeMode.Off
+        Me.TxtBMusicText.Location = New System.Drawing.Point(272, 6)
+        Me.TxtBMusicText.Name = "TxtBMusicText"
+        Me.TxtBMusicText.ReadOnly = True
+        Me.TxtBMusicText.Size = New System.Drawing.Size(340, 14)
+        Me.TxtBMusicText.TabIndex = 111
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.BackColor = System.Drawing.Color.Black
+        Me.Label12.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label12.ForeColor = System.Drawing.Color.LemonChiffon
+        Me.Label12.Location = New System.Drawing.Point(728, 52)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(41, 13)
+        Me.Label12.TabIndex = 114
+        Me.Label12.Text = "Volume"
+        '
+        'PicBoxMusicVol
+        '
+        Me.PicBoxMusicVol.BackColor = System.Drawing.Color.Black
+        Me.PicBoxMusicVol.BackgroundImage = Global.FOnline_2_Char_Planner.My.Resources.Resources.Volume0
+        Me.PicBoxMusicVol.Location = New System.Drawing.Point(722, 3)
+        Me.PicBoxMusicVol.Name = "PicBoxMusicVol"
+        Me.PicBoxMusicVol.Size = New System.Drawing.Size(45, 15)
+        Me.PicBoxMusicVol.TabIndex = 116
+        Me.PicBoxMusicVol.TabStop = False
+        Me.PicBoxMusicVol.Visible = False
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3255,6 +3484,17 @@ Partial Class Form1
         Me.BackgroundImage = Global.FOnline_2_Char_Planner.My.Resources.Resources.Hintergrund
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(789, 572)
+        Me.Controls.Add(Me.PicBoxMusicVol)
+        Me.Controls.Add(Me.Label12)
+        Me.Controls.Add(Me.BtnMusicVolUp)
+        Me.Controls.Add(Me.BtnMusicVolDown)
+        Me.Controls.Add(Me.TxtBMusicText)
+        Me.Controls.Add(Me.Label11)
+        Me.Controls.Add(Me.Label10)
+        Me.Controls.Add(Me.LblMusicLenghtSec)
+        Me.Controls.Add(Me.LblMusicTElap)
+        Me.Controls.Add(Me.LblMusicNPlay)
+        Me.Controls.Add(Me.LblMusicLenghtMin)
         Me.Controls.Add(Me.LblTimeouts)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.BtnLvlFastDwn)
@@ -3343,12 +3583,14 @@ Partial Class Form1
         Me.PanStatsSightACrit.ResumeLayout(False)
         Me.PanStatsSightACrit.PerformLayout()
         Me.PanSkUpDown.ResumeLayout(False)
+        Me.Panel3.ResumeLayout(False)
         Me.MainMenu.ResumeLayout(False)
         Me.MainMenu.PerformLayout()
         Me.PanBookValEdit.ResumeLayout(False)
         Me.PanBookValEdit.PerformLayout()
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
+        CType(Me.PicBoxMusicVol, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -3558,5 +3800,19 @@ Partial Class Form1
     Friend WithEvents LblTimeouts As System.Windows.Forms.Label
     Friend WithEvents LblTODocVal As System.Windows.Forms.Label
     Friend WithEvents LblTOFAVal As System.Windows.Forms.Label
+    Friend WithEvents LblMusicLenghtSec As System.Windows.Forms.Label
+    Friend WithEvents LblMusicLenghtMin As System.Windows.Forms.Label
+    Friend WithEvents LblMusicNPlay As System.Windows.Forms.Label
+    Friend WithEvents LblMusicTElap As System.Windows.Forms.Label
+    Friend WithEvents Label10 As System.Windows.Forms.Label
+    Friend WithEvents Label11 As System.Windows.Forms.Label
+    Friend WithEvents TxtBMusicText As System.Windows.Forms.TextBox
+    Friend WithEvents BtnMusicVolDown As System.Windows.Forms.Button
+    Friend WithEvents BtnMusicVolUp As System.Windows.Forms.Button
+    Friend WithEvents Label12 As System.Windows.Forms.Label
+    Friend WithEvents Panel3 As System.Windows.Forms.Panel
+    Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button2 As System.Windows.Forms.Button
+    Friend WithEvents PicBoxMusicVol As System.Windows.Forms.PictureBox
 
 End Class

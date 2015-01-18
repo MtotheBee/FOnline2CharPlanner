@@ -39,7 +39,9 @@
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>FOnline 2 Char Planner.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <PlatformTarget>x86</PlatformTarget>
@@ -49,7 +51,9 @@
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>FOnline 2 Char Planner.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</NoWarn>
+    <WarningsAsErrors>
+    </WarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -385,6 +389,23 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FCPSymbol.ico" />
+    <None Include="Resources\VolumeMute.png" />
+    <None Include="Resources\Volume75.png" />
+    <None Include="Resources\Volume50.png" />
+    <None Include="Resources\Volume25.png" />
+    <None Include="Resources\Volume0.png" />
+    <None Include="Resources\VolumeFull.png" />
+    <None Include="Resources\Volume.jpg" />
+    <None Include="Resources\SNORWALK.MOD" />
+    <None Include="Resources\SECRET.MOD" />
+    <None Include="Resources\PACKCHP1.MOD" />
+    <None Include="Resources\MUSIC.MOD" />
+    <None Include="Resources\LOST.MOD" />
+    <None Include="Resources\FUCKFUCK.MOD" />
+    <None Include="Resources\FACTORY.MOD" />
+    <None Include="Resources\ERTERTER.MOD" />
+    <None Include="Resources\DESIRATA.MOD" />
+    <None Include="Resources\ATOMIC.MOD" />
     <None Include="Resources\her10.mod" />
     <None Include="Resources\her9.mod" />
     <None Include="Resources\her8.mod" />

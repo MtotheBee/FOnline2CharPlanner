@@ -649,4 +649,52 @@
   <data name="WDC4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\WDC4.xm;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="ATOMIC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ATOMIC.MOD;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="DESIRATA" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DESIRATA.MOD;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ERTERTER" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ERTERTER.MOD;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="FACTORY" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FACTORY.MOD;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="FUCKFUCK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FUCKFUCK.MOD;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="LOST" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LOST.MOD;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="MUSIC" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MUSIC.MOD;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="PACKCHP1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PACKCHP1.MOD;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SECRET" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SECRET.MOD;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="SNORWALK" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SNORWALK.MOD;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Volume0" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Volume0.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Volume25" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Volume25.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Volume50" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Volume50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Volume75" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Volume75.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VolumeFull" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VolumeFull.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="VolumeMute" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\VolumeMute.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

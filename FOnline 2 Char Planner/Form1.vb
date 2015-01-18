@@ -3714,95 +3714,190 @@ Public Class Form1
 
     Friend isPlay As Boolean
     Friend isSkip As Boolean
-    Friend takenTracks(56) As Boolean
+    Friend takenTracks(65) As Boolean
     Friend Zaehler As Integer
+    Friend trackLenght As Long
+    Friend startzeit As DateTime
+    Friend Laenge As Integer
+
     'Start Music
     Private Sub MOnToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MOnToolStripMenuItem.Click
         'zufällige titelwiedergabe
-        Dim RandomSong(56) As String
+        Dim RandomSong(65) As String
+        Dim SongInfoText(65) As String
         Dim ZufZahl As Integer
         Dim random As New Random
+        Dim s As String = "Music Title"
         'Dim isPlay As Boolean
 
         isPlay = True
 
         BtnMscStop.Visible = True
         BtnMscSkip.Visible = True
+        BtnMusicVolDown.Visible = True
+        BtnMusicVolUp.Visible = True
+        PicBoxMusicVol.Visible = True
+
+        TxtBMusicText.Visible = True
+        LblMusicNPlay.Visible = True
+        LblMusicTElap.Visible = True
+
+        LblMusicLenghtMin.Visible = True
+        LblMusicLenghtSec.Visible = True
 
 
         RandomSong(0) = "BREAKLINE"
+        SongInfoText(0) = "Brkline - composed by: - mobi -"
         RandomSong(1) = "chris_glaister___lost_patrol_theme"
+        SongInfoText(1) = "Lost Patrol Theme - composed by: Chris Glaister"
         RandomSong(2) = "Prestige3"
+        SongInfoText(2) = "Prestige 3 - composed by: KIWI/EFFECT"
         RandomSong(3) = "Prestige4"
+        SongInfoText(3) = "Prestige 4 - composed by: zarch/tfx + adc"
         RandomSong(4) = "anthrox"
+        SongInfoText(4) = "Anthrox - composed by: aztech of anthrox"
+
         RandomSong(6) = "m1993"
+        SongInfoText(6) = "1993 - composed by: u4ia of megawatts"
         RandomSong(7) = "aftertouch"
+        SongInfoText(7) = "Aftertouch - composed by: substance/mono + kinky"
         RandomSong(8) = "m2000AD"
+        SongInfoText(8) = "Multi-Tune_Dungeon - composed by: tuneless/2000 a.d."
         RandomSong(9) = "rastaman"
+        SongInfoText(9) = "Rastaman - composed by: Firefox of Phenomen"
         RandomSong(10) = "chris_glaister___lost_patrol_theme"
+        SongInfoText(10) = "Lost Patrol Theme - composed by: Chris Glaister"
         RandomSong(11) = "ctsewer"
+        SongInfoText(11) = "Ctsewer"
         RandomSong(12) = "denaris_remix"
+        SongInfoText(12) = "Lost Patrol Theme - composed by: Chris Glaister"
         RandomSong(13) = "feather"
+        SongInfoText(13) = "..Feathers Fell.. - composed by: DARKSOUL"
         RandomSong(14) = "lastnin1"
+        SongInfoText(14) = "Last Ninja Theme - composed by: Mad-Mega"
         RandomSong(15) = "castlevania_1"
+        SongInfoText(15) = "Castlevania Theme - composed by: natan1/superstars/maktone + class"
         RandomSong(16) = "DREAMWEB2"
+        SongInfoText(16) = "DreamWeb Theme 2 - composed by: ripped by The BEEJ"
         RandomSong(17) = "lastnin1"
+        SongInfoText(17) = "Last Ninja Theme - composed by: Mad-Mega"
         RandomSong(5) = "DREAMWEB6"
+        SongInfoText(5) = "DreamWeb Theme 6 - composed by: unknown, ripped by The BEEJ"
         RandomSong(18) = "age_of_loneliness"
+        SongInfoText(18) = "Age of Loneliness - composed by: T-Reks\wp"
         RandomSong(19) = "dreamweb_ingame"
+        SongInfoText(19) = "DreamWeb Theme Ingame - composed by: unknown, ripped by The BEEJ"
         RandomSong(20) = "dreamweb4"
+        SongInfoText(20) = "DreamWeb Theme 4 - composed by: unknown, ripped by The BEEJ"
         RandomSong(21) = "Millenium1"
+        SongInfoText(21) = "Millenium #3 - composed by: millenium"
         RandomSong(22) = "Anthrox9"
+        SongInfoText(22) = "Quartex 2 - composed by: ref lex"
         RandomSong(23) = "Crash2"
+        SongInfoText(23) = "(c)hip 2 - composed by: stargazer"
         RandomSong(24) = "Defjam3"
+        SongInfoText(24) = "The Last Kuusnepa- composed by: wal of punishers"
         RandomSong(25) = "Delight7"
+        SongInfoText(25) = "Jack The Ripper 1.0 - composed by: Mr.Urk of SHINING"
         RandomSong(26) = "Supplex1"
+        SongInfoText(26) = "For srow'n'supplex  - composed by: wotw of Supplex"
         RandomSong(27) = "Joy_and_Magnificent_Force2"
+        SongInfoText(27) = "Rb2 - composed by: unknown"
         RandomSong(28) = "Estrayk___The_HER_song_10"
+        SongInfoText(28) = "Her 10 - composed by: Estrayk of Paradox"
         RandomSong(29) = "Tempest___Acidjazzed_evening"
+        SongInfoText(29) = "Acidjazzed Evening - composed by: tempest/dmg"
         RandomSong(30) = "TRSI_and_Zenith2"
+        SongInfoText(30) = "Digital Bass-Line - composed by: emax\trsi"
         RandomSong(31) = "Jakim___Whatever_it_means"
+        SongInfoText(31) = "Whatever It Means - composed by: Jakim/Stage Magician"
         RandomSong(32) = "Wave___1999"
+        SongInfoText(32) = "1999 - composed by: Wave"
         RandomSong(33) = "Dubmood___3D_galaxy"
+        SongInfoText(33) = "3D Galaxy - composed by: dubmood\Razor1911"
         RandomSong(34) = "Joule_and_Coda___Going_nuts"
+        SongInfoText(34) = "G0ing Nuts - composed by: j0yl/c0da"
         RandomSong(35) = "Key_G___Red_green_blue_5"
+        SongInfoText(35) = "Red Green Blue 5 - composed by: keyG"
         RandomSong(36) = "Cascade4"
+        SongInfoText(36) = "Falling - composed by: skimmer"
         RandomSong(37) = "Cave8"
+        SongInfoText(37) = "Trip To Space - composed by: unknown"
         RandomSong(38) = "Accession1"
+        SongInfoText(38) = "Accession 1 - composed by: KTWT\EFFECT"
         RandomSong(39) = "Slash___Because"
+        SongInfoText(39) = "Because - composed by: Slash"
         RandomSong(40) = "Classic3"
-
+        SongInfoText(40) = "Introkiller - composed by: deszecrator"
         RandomSong(41) = "turrican2ingame1rmx"
+        SongInfoText(41) = "Turrican 2.1 - composed by: elef/tsiroudis"
         RandomSong(42) = "turrican2titlermx"
+        SongInfoText(42) = "Turrican II - composed by: elef/tsiroudis"
         RandomSong(43) = "Wiklund___Bonfire"
+        SongInfoText(43) = "Bonfire - composed by: Wiklund"
         RandomSong(44) = "her1"
+        SongInfoText(44) = "Her Numbness - composed by: Estrayk of Paradox"
         RandomSong(45) = "her2"
+        SongInfoText(45) = "Her Numbness 2 - composed by: Estrayk of Paradox"
         RandomSong(46) = "her3"
+        SongInfoText(46) = "Her Numbness 3 - composed by: Estrayk of Paradox"
         RandomSong(47) = "WCD1"
+        SongInfoText(47) = "Bidzej - composed by: poolbet/ww"
         RandomSong(48) = "her5"
+        SongInfoText(48) = "Her Numbness 5 - composed by: Estrayk of Paradox"
         RandomSong(49) = "her6"
+        SongInfoText(49) = "Her Numbness 6 - composed by: Estrayk of Paradox"
         RandomSong(50) = "her7"
+        SongInfoText(50) = "Her Numbness 7 - composed by: Estrayk of Paradox"
         RandomSong(51) = "her8"
+        SongInfoText(51) = "Her Numbness 8 - composed by: Estrayk of Paradox"
         RandomSong(52) = "her9"
+        SongInfoText(52) = "Her Numbness 9 - composed by: Estrayk of Paradox"
         RandomSong(53) = "her10"
+        SongInfoText(53) = "Her Numbness 10 - composed by: Estrayk of Paradox"
         RandomSong(54) = "WCD1"
+        SongInfoText(54) = "Bidzej - composed by: mokasyn\ww"
         RandomSong(55) = "her7"
-        RandomSong(56) = "WCD4"
+        SongInfoText(55) = "Her Numbness 7 - composed by: Estrayk of Paradox"
+        RandomSong(56) = "Cave8"
+        SongInfoText(56) = "Trip To Space - composed by: unknown"
+        RandomSong(57) = "ATOMIC"
+        SongInfoText(57) = "Atom Henge - composed by: @r@k()s@"
+        RandomSong(58) = "DESIRATA"
+        SongInfoText(58) = "Desirata - composed by: stargazer of sonic"
+        RandomSong(59) = "ERTERTER"
+        SongInfoText(59) = "Ertertertertrtyrtyr - composed by: unknown"
+        RandomSong(60) = "FACTORY"
+        SongInfoText(60) = "Factory Theme - composed by: jason/s i l e n t s"
+        RandomSong(61) = "FUCKFUCK"
+        SongInfoText(61) = "Fuckfuckfuckfuck - destroyed by: mf"
+        RandomSong(62) = "LOST"
+        SongInfoText(62) = "Lost Scrotum - composed by: paso/dynamix"
+        RandomSong(63) = "MUSIC"
+        SongInfoText(63) = "Music - composed by: nuke/cosmos"
+        RandomSong(64) = "PACKCHP1"
+        SongInfoText(64) = "Packchip 1 - composed by: unknown"
+        RandomSong(65) = "SECRET"
+        SongInfoText(65) = "Secret Gardens - composed by: emax/trsi"
+        RandomSong(65) = "SNORWALK"
+        SongInfoText(65) = "Snorwalk - composed by: deelite/enigma"
 
-        While Zaehler < 55
-            ZufZahl = random.Next(0, 56)
+      
+
+        While Zaehler < 64
+            ZufZahl = random.Next(0, 65)
 
             'If ZufZahl was taken before while loop continues to pick next
             'If Not then ZufZahl is valid, counter is increased by 1 and Loop is terminated
             If Not takenTracks(ZufZahl) = True Then
                 takenTracks(ZufZahl) = True
                 Zaehler = Zaehler + 1
-
+                s = SongInfoText(ZufZahl)
                 'If all tracks were played once set all takenTracks values to false
                 'Songs will be played again
-                If Zaehler = 55 Then
+                If Zaehler = 64 Then
                     Zaehler = 0
-                    For i = 1 To 56
+                    For i = 1 To 65
                         takenTracks(i) = False
                     Next
                 End If
@@ -3818,15 +3913,90 @@ Public Class Form1
         BassMOD.BASSMOD_Init(0, 44100, BASSInit.BASS_DEVICE_DEFAULT)
         'BassMOD.BASSMOD_MusicLoad(My.Resources.chris_glaister___lost_patrol_theme, 0, 0, BASSMusic.BASS_MUSIC_LOOP)
         BassMOD.BASSMOD_MusicLoad(obj, 0, 0, BASSMusic.BASS_MUSIC_CALCLE)
-
+        'Get actual time (in clicks)
+        startzeit = Now
+        'Start Music Play
         BassMOD.BASSMOD_MusicPlay()
+        BassMOD.BASSMOD_SetVolume(20)
 
-        BassMOD.BASSMOD_SetVolume(23)
+        'Get lenght of track in weird format
+        trackLenght = BassMOD.BASSMOD_MusicGetLength(True)
+        'Start Timer for Countdown
+        tracklenghtTimer.Enabled = True
+        'Calculation to approximitly get lenght of track in ms
+        Laenge = Math.Floor(trackLenght / 176000)
+        
+        'Timespan of actual track lenght converted in mm:ss
+        Dim Zeit As New TimeSpan(0, 0, Laenge)
+
+        If Zeit.Seconds < 10 Then
+            LblMusicLenghtSec.Text = "0" & Zeit.Seconds
+        Else
+            LblMusicLenghtSec.Text = Zeit.Seconds
+        End If
+
+        LblMusicLenghtMin.Text = Zeit.Minutes & ":"
+
         MOnToolStripMenuItem.Enabled = False
         MOffToolStripMenuItem.Enabled = True
         NextToolStripMenuItem.Enabled = True
 
-       
+        While TextRenderer.MeasureText(s, TxtBMusicText.Font).Width < TxtBMusicText.Width
+            s &= " "
+        End While
+        s = s.Substring(0, s.Length - 1)
+        TxtBMusicText.Text = s
+        TxtBMusicText.ReadOnly = True
+        t.Enabled = True
+
+    End Sub
+
+    'Eventhandler for moving text
+    Private WithEvents t As New System.Windows.Forms.Timer With {.Enabled = False, .Interval = 120}
+
+    Private Sub t_Tick(ByVal sender As Object, ByVal e As System.EventArgs) Handles t.Tick
+        Dim s As String = TxtBMusicText.Text
+        Dim c As Char = s(s.Length - 1)
+        TxtBMusicText.Text = c.ToString & s.Substring(0, s.Length - 1)
+    End Sub
+
+    'Timer for track lenght
+    'Note: It actually doesn't read the exact time of the track lenght
+    Private WithEvents tracklenghtTimer As New System.Windows.Forms.Timer With {.Enabled = False, .Interval = 1000}
+
+    Private Sub tracklenghtTimer_Tick(ByVal sender As Object, ByVal e As System.EventArgs) Handles tracklenghtTimer.Tick
+        'If Not Val(LblMusicLenghtSec.Text) = 0 And Not Val(LblMusicLenghtMin.Text) = 0 Then
+        'End If
+        'LblMusicLenghtSec.Text = Val(LblMusicLenghtSec.Text) - 1
+        'If Val(LblMusicLenghtSec.Text) = 0 And Not Val(LblMusicLenghtMin.Text) = 0 Then
+        'LblMusicLenghtMin.Text = Val(LblMusicLenghtMin.Text) - 1
+        'End If
+
+        Dim elapsedTimeSec = TimeSpan.FromTicks(Now.Ticks - startzeit.Ticks).Seconds
+        Dim elapsedTimeMin = TimeSpan.FromTicks(Now.Ticks - startzeit.Ticks).Minutes
+        Dim diffTime As New TimeSpan(0, 0, Laenge - elapsedTimeSec - (elapsedTimeMin * 60))
+
+        'elapsedTime = elapsedTime + 1
+
+        Label10.Text = "vergZeit: " & elapsedTimeSec
+        Label11.Text = "Diff: " & Laenge - elapsedTimeSec - (elapsedTimeMin * 60)
+
+        If Laenge - elapsedTimeSec - (elapsedTimeMin * 60) <= 0 Then
+            tracklenghtTimer.Enabled = False
+            tracklenghtTimer.Stop()
+            LblMusicLenghtSec.Text = "00"
+        Else
+            If diffTime.Seconds < 10 Then
+                LblMusicLenghtSec.Text = "0" & diffTime.Seconds
+            Else
+                LblMusicLenghtSec.Text = diffTime.Seconds
+            End If
+
+
+            LblMusicLenghtMin.Text = diffTime.Minutes & ":"
+        End If
+
+
     End Sub
 
     'Stop Music
@@ -3838,6 +4008,17 @@ Public Class Form1
         BtnMscPlay.Visible = False
         BtnMscSkip.Visible = False
         BtnMscStop.Visible = False
+        BtnMusicVolDown.Visible = False
+        BtnMusicVolUp.Visible = False
+        PicBoxMusicVol.Visible = False
+
+        TxtBMusicText.Visible = False
+        LblMusicLenghtMin.Visible = False
+        LblMusicLenghtSec.Visible = False
+        LblMusicNPlay.Visible = False
+        LblMusicTElap.Visible = False
+
+
 
         MOnToolStripMenuItem.Enabled = True
         MOffToolStripMenuItem.Enabled = False
@@ -3851,8 +4032,24 @@ Public Class Form1
 
         BtnMscStop.Visible = True
         BtnMscSkip.Visible = True
+        TxtBMusicText.Visible = True
 
         MOnToolStripMenuItem_Click(sender, e)
+    End Sub
+
+    'prevent IBeam Cursor to be shown in TextBox where floating Music-Title-Text is shown
+    <DllImport("user32")>
+    Private Shared Function HideCaret(ByVal hWnd As IntPtr) As Integer
+    End Function
+    <DllImport("user32")>
+    Private Shared Function ShowCaret(ByVal hWnd As IntPtr) As Integer
+    End Function
+    Private Sub Textbox1_GotFocus(ByVal sender As Object, ByVal e As System.EventArgs) Handles TxtBMusicText.GotFocus
+        If Me.TxtBMusicText.ReadOnly Then
+            HideCaret(TxtBMusicText.Handle)
+        Else
+            ShowCaret(TxtBMusicText.Handle)
+        End If
     End Sub
 
     'click stop btn
@@ -3862,6 +4059,17 @@ Public Class Form1
         BtnMscPlay.Visible = True
         BtnMscStop.Visible = False
         BtnMscSkip.Visible = False
+        BtnMusicVolDown.Visible = False
+        BtnMusicVolUp.Visible = False
+        PicBoxMusicVol.Visible = False
+
+        TxtBMusicText.Visible = False
+        LblMusicNPlay.Visible = False
+        LblMusicTElap.Visible = False
+
+        LblMusicLenghtMin.Visible = False
+        LblMusicLenghtSec.Visible = False
+
 
         BassMOD.BASSMOD_MusicStop()
         BassMOD.BASSMOD_Free()
@@ -3881,6 +4089,81 @@ Public Class Form1
         MOnToolStripMenuItem_Click(sender, e)
         MOffToolStripMenuItem.Enabled = True
     End Sub
+
+
+    'Volume
+    Private Sub BtnMusicVolDown_Click(sender As System.Object, e As System.EventArgs) Handles BtnMusicVolDown.Click
+        Dim Vol As Integer
+
+        Vol = BassMOD.BASSMOD_GetVolume
+        Label12.Text = Vol
+        If Not Vol <= 0 Then
+            Vol = Vol - 20
+        End If
+        BassMOD.BASSMOD_SetVolume(Vol)
+        Label12.Text = Vol
+
+        'Me.SuspendLayout()
+        Select Case Vol
+            Case 0
+
+                PicBoxMusicVol.BackgroundImage = My.Resources.VolumeMute
+            Case 20
+
+                PicBoxMusicVol.BackgroundImage = My.Resources.Volume0
+            Case 40
+
+                PicBoxMusicVol.BackgroundImage = My.Resources.Volume25
+            Case 60
+
+                PicBoxMusicVol.BackgroundImage = My.Resources.Volume50
+            Case 80
+
+                PicBoxMusicVol.BackgroundImage = My.Resources.Volume75
+            Case 100
+
+                PicBoxMusicVol.BackgroundImage = My.Resources.VolumeFull
+        End Select
+
+        'Me.ResumeLayout()
+    End Sub
+
+    Private Sub BtnMusicVolUp_Click(sender As System.Object, e As System.EventArgs) Handles BtnMusicVolUp.Click
+        Dim Vol As Integer
+
+        Vol = BassMOD.BASSMOD_GetVolume
+        Label12.Text = Vol
+        If Not Vol >= 100 Then
+            Vol = Vol + 20
+        End If
+        BassMOD.BASSMOD_SetVolume(Vol)
+        Label12.Text = Vol
+
+        'Me.SuspendLayout()
+        Select Case Vol
+            Case 0
+
+                PicBoxMusicVol.BackgroundImage = My.Resources.VolumeMute
+            Case 20
+
+                PicBoxMusicVol.BackgroundImage = My.Resources.Volume0
+            Case 40
+
+                PicBoxMusicVol.BackgroundImage = My.Resources.Volume25
+            Case 60
+
+                PicBoxMusicVol.BackgroundImage = My.Resources.Volume50
+            Case 80
+
+                PicBoxMusicVol.BackgroundImage = My.Resources.Volume75
+            Case 100
+
+                PicBoxMusicVol.BackgroundImage = My.Resources.VolumeFull
+        End Select
+
+        'Me.ResumeLayout()
+    End Sub
+
 
     'Credits/Info
     Private Sub ToolStripMenuItem2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem2.Click
@@ -5365,8 +5648,8 @@ Public Class Form1
                 fileName = loadBuildDialog.FileName
                 path = fileName
 
-            Dim sr As StreamReader = New StreamReader(path)
-            fileContent = sr.ReadToEnd()
+                Dim sr As StreamReader = New StreamReader(path)
+                fileContent = sr.ReadToEnd()
 
                 text = fileContent.Split(vbNewLine)
                 'text = Split(fileContent, " ")
@@ -5480,5 +5763,12 @@ Public Class Form1
 
     End Sub
 
+   
+    Private Sub BtnSKDown_MouseDown(sender As System.Object, e As System.EventArgs)
+
+    End Sub
+    Private Sub BtnSKUp_MouseDown(sender As System.Object, e As System.EventArgs)
+
+    End Sub
 End Class
 
