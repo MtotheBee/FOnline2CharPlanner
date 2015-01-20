@@ -3770,7 +3770,7 @@ Public Class Form1
         RandomSong(11) = "ctsewer"
         SongInfoText(11) = "Ctsewer"
         RandomSong(12) = "denaris_remix"
-        SongInfoText(12) = "Lost Patrol Theme - composed by: Chris Glaister"
+        SongInfoText(12) = "Denaris(rmx) - conversion by: John Stringer, comp. by: Chris Huelsbeck"
         RandomSong(13) = "feather"
         SongInfoText(13) = "..Feathers Fell.. - composed by: DARKSOUL"
         RandomSong(14) = "lastnin1"
@@ -3978,9 +3978,6 @@ Public Class Form1
 
         'elapsedTime = elapsedTime + 1
 
-        Label10.Text = "vergZeit: " & elapsedTimeSec
-        Label11.Text = "Diff: " & Laenge - elapsedTimeSec - (elapsedTimeMin * 60)
-
         If Laenge - elapsedTimeSec - (elapsedTimeMin * 60) <= 0 Then
             tracklenghtTimer.Enabled = False
             tracklenghtTimer.Stop()
@@ -4096,12 +4093,11 @@ Public Class Form1
         Dim Vol As Integer
 
         Vol = BassMOD.BASSMOD_GetVolume
-        Label12.Text = Vol
+
         If Not Vol <= 0 Then
             Vol = Vol - 20
         End If
         BassMOD.BASSMOD_SetVolume(Vol)
-        Label12.Text = Vol
 
         'Me.SuspendLayout()
         Select Case Vol
@@ -4132,12 +4128,10 @@ Public Class Form1
         Dim Vol As Integer
 
         Vol = BassMOD.BASSMOD_GetVolume
-        Label12.Text = Vol
         If Not Vol >= 100 Then
             Vol = Vol + 20
         End If
         BassMOD.BASSMOD_SetVolume(Vol)
-        Label12.Text = Vol
 
         'Me.SuspendLayout()
         Select Case Vol
@@ -5362,7 +5356,6 @@ Public Class Form1
             Return BooksatLevel(LevelNo, BookInd)
         End If
 
-
     End Function
 
     Function SaveLoadSpecial(ByVal LevelNo As Integer, ByVal saveload As Boolean, ByVal SPECIALInd As Integer, ByVal SPECIALVal As Integer)
@@ -5758,17 +5751,16 @@ Public Class Form1
         Skills.LoadSkills()
 
         'Books
-
+        For i = 1 To 100
+            For j = 0 To 5
+                ktemp = 4256 + (i * 6) - 6 + j
+                text(ktemp) = Replace(text(ktemp), vbLf, vbNullString)
+                SaveLoadBooks(i, True, j, CInt(text(ktemp)))
+            Next
+        Next
 
 
     End Sub
-
    
-    Private Sub BtnSKDown_MouseDown(sender As System.Object, e As System.EventArgs)
-
-    End Sub
-    Private Sub BtnSKUp_MouseDown(sender As System.Object, e As System.EventArgs)
-
-    End Sub
 End Class
 
