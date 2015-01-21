@@ -2614,6 +2614,7 @@ Partial Class Form1
         '
         'SaveBuildToolStripMenuItem
         '
+        Me.SaveBuildToolStripMenuItem.Enabled = False
         Me.SaveBuildToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SaveBuildToolStripMenuItem.Name = "SaveBuildToolStripMenuItem"
         Me.SaveBuildToolStripMenuItem.ShowShortcutKeys = False
@@ -2622,6 +2623,7 @@ Partial Class Form1
         '
         'LoadBuildToolStripMenuItem
         '
+        Me.LoadBuildToolStripMenuItem.Enabled = False
         Me.LoadBuildToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LoadBuildToolStripMenuItem.Name = "LoadBuildToolStripMenuItem"
         Me.LoadBuildToolStripMenuItem.Size = New System.Drawing.Size(152, 22)

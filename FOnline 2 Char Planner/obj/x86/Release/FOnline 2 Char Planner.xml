@@ -759,6 +759,30 @@ FOnline2CharPlanner
 	<summary>
   Looks up a localized resource of type System.Byte[].
 </summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.Volume0">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.Volume25">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.Volume50">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.Volume75">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.VolumeFull">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.VolumeMute">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.Wave___1999">
 	<summary>
   Looks up a localized resource of type System.Byte[].
