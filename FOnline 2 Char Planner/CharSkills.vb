@@ -177,6 +177,7 @@
         Dim SkName(30) As String
         Dim perks As New CharPerks
         perks.levelVal = Form1.LblLevelVal.Text
+        Debug.Print("LevelLoad2: " & perks.levelVal)
         SkName(0) = "ODMan"
         SkName(1) = "Gambling"
         SkName(2) = "Barter"

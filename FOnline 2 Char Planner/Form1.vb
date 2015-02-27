@@ -857,10 +857,12 @@ Public Class Form1
             Statistics.addHP = Statistics.addHP - 100
             Skills.addMutant = 0
             Statistics.addMutantDR = 0
+            Statistics.addMutantMDmg = 0
         Else
             Statistics.addHP = Statistics.addHP + 100
             Skills.addMutant = 100
             Statistics.addMutantDR = 5
+            Statistics.addMutantMDmg = 10
             isMutant = True
         End If
         Traits.TraitsCheck(sender, isMutant, sender.ToString)
@@ -1150,8 +1152,17 @@ Public Class Form1
         DetDescrText(135) = "Determines how far character can see and     therefore your weapon's effective range.     You can only shoot what your character can   see (except for Rocket Launcher)."
         DetDescrName(136) = "Anticritical"
         DetDescrText(136) = "The value you get when taking the            Anticritical Perk."
+        DetDescrName(137) = "Jet"
+        DetDescrText(137) = "Effect: +3 Action Points.                    Addiction: -1 Action Point."
+        DetDescrName(138) = "Buffout"
+        DetDescrText(138) = "Effect: +2 Strenght, +1 Endurance.           Addiction: -1 Strenght , -1 Endurance."
+        DetDescrName(139) = "Psycho"
+        DetDescrText(139) = "Effect: +20% to normal dmg. res,             -7 to PE, -2 to IN .                         Addiction: -10% Damage Resistance."
+        DetDescrName(140) = "Nuka Cola"
+        DetDescrText(140) = "Effect: +1 Action Point.                     Addiction: None."
+        DetDescrName(141) = "Cigarettes"
+        DetDescrText(141) = "Effect: +3 to Field of view.                 Addiction: None."
 
-        Perks.readPerks()
 
     End Sub
 
@@ -1877,6 +1888,9 @@ Public Class Form1
         My.Computer.Audio.Play(My.Resources.button_50, AudioPlayMode.Background)
         Dim ctl As Control
         Dim strItem As String
+        Dim ctlzaehler As Integer = 0
+
+        SaveBuildToolStripMenuItem.Enabled = True
         Stats.GetStats()
 
 
@@ -1961,7 +1975,7 @@ Public Class Form1
             DescPicIndex(70) = "ImplAccurDesc"
             DetDescrName(71) = "Chem Control Implant"
             DetDescrText(71) = "Your drug duration time is doubled and       every S-Stimpak you use heals +30% HP."
-            DescPicIndex(71) = "StandbySW" 'no pic yet
+            DescPicIndex(71) = "ChemControlImpDesc"
             DetDescrName(72) = "Defense Implant"
             DescPicIndex(72) = "ImplDefDesc"
             DetDescrText(72) = "You gain +4% to all types of Damage          Resistances and +2% to all Damage Thresholds."
@@ -2027,7 +2041,7 @@ Public Class Form1
             DetDescrText(16) = "You gain +2 Luck."
             DescPicIndex(16) = "GLuckDesc"
             DetDescrText(17) = "You gain +2 Perception."
-            DescPicIndex(17) = "StandbySW" 'no pic yet
+            DescPicIndex(17) = "GainPEDesc"
             DetDescrText(18) = "You gain +2 Strenght."
             DescPicIndex(18) = "StandbySW" 'no pic yet
             DetDescrText(19) = "You gain +30% Sneak in dark conditions."
@@ -2041,7 +2055,7 @@ Public Class Form1
             DetDescrText(23) = "You gain +40 Hit Points."
             DescPicIndex(23) = "LifeGDesc"
             DetDescrText(24) = "You chance to set off a trap is lowered by   -90%."
-            DescPicIndex(24) = "StandbySW" 'no pic yet
+            DescPicIndex(24) = "LStepDesc"
             DetDescrText(25) = "You gain +20% to your Doctor-Skill and deal  +5 damage to living creatures                (including other players)."
             DescPicIndex(25) = "StandbySW" 'no pic yet
             DetDescrText(26) = "You can carry 2 more people around with you."
@@ -2077,7 +2091,7 @@ Public Class Form1
             DetDescrText(41) = "You gain +8% to all types of Damage          Resistance."
             DescPicIndex(41) = "ThoughDesc"
             DetDescrText(42) = "You gain +3 ST for weapon Strenght checks."
-            DescPicIndex(42) = "StandbySW" 'no pic yet
+            DescPicIndex(42) = "WHandlDesc"
 
             'Achievements
             DetDescrName(43) = "Awareness"
@@ -2118,6 +2132,25 @@ Public Class Form1
             BtnQuests.Visible = True
             BtnAchievem.Visible = True
             BtnImpl.Visible = True
+
+            'Save SkillTags for later Load/Save 
+            SaveLoadSkillTag(0, True, isSGtag)
+            SaveLoadSkillTag(1, True, isBGtag)
+            SaveLoadSkillTag(2, True, isEWtag)
+            SaveLoadSkillTag(3, True, isCCtag)
+            SaveLoadSkillTag(4, True, isThrowtag)
+            SaveLoadSkillTag(5, True, isFAtag)
+            SaveLoadSkillTag(6, True, isDoctag)
+            SaveLoadSkillTag(7, True, isSneaktag)
+            SaveLoadSkillTag(8, True, isLPtag)
+            SaveLoadSkillTag(9, True, isStealtag)
+            SaveLoadSkillTag(10, True, isTrapstag)
+            SaveLoadSkillTag(11, True, isSciencetag)
+            SaveLoadSkillTag(12, True, isReptag)
+            SaveLoadSkillTag(13, True, isSpeechtag)
+            SaveLoadSkillTag(14, True, isBartertag)
+            SaveLoadSkillTag(15, True, isGambtag)
+            SaveLoadSkillTag(16, True, isODtag)
 
 
             'Books
@@ -2279,6 +2312,7 @@ Public Class Form1
     Friend SkPointstolastlvl As Integer
     Friend HitPointstolastlvl As Integer
     Friend lastLevel As Integer
+    Friend isFastUp As Boolean
 
     'Fast Up to lvl 99
     Private Sub BtnLvlFastUp_Click(sender As System.Object, e As System.EventArgs) Handles BtnLvlFastUp.Click
@@ -2419,7 +2453,10 @@ Public Class Form1
         BtnLvlDwn.Visible = False
 
         BtnLvlFastDwn.Visible = True
+        BtnLvlFastUp.Visible = False
         LblLevelVal.Text = Perks.levelVal
+
+        isFastUp = True
 
         Statistics.SetStatistics()
 
@@ -2445,7 +2482,13 @@ Public Class Form1
         BtnLvlUp.Visible = True
         BtnLvlFastUp.Visible = True
 
+        isFastUp = False
+
+        'MessageBox.Show("lastlevel: " & lastLevel)
+        'MessageBox.Show("HPtolast: " & HitPointstolastlvl)
+        'MessageBox.Show("SKPtolast: " & SkPointstolastlvl)
     End Sub
+
 
     '********************************************
     '* Color Behaviour of ListBItems/ListVItems *
@@ -2539,7 +2582,12 @@ Public Class Form1
         End If
         If Not LstBoxPerks.Items.Count = 0 Then
             Using b As New SolidBrush(e.ForeColor)
-                e.Graphics.DrawString(LstBoxPerks.GetItemText(LstBoxPerks.Items(e.Index)), e.Font, b, e.Bounds)
+                Try
+                    e.Graphics.DrawString(LstBoxPerks.GetItemText(LstBoxPerks.Items(e.Index)), e.Font, b, e.Bounds)
+                Catch ex As Exception
+
+                End Try
+
             End Using
         End If
         e.DrawFocusRectangle()
@@ -2609,6 +2657,7 @@ Public Class Form1
                 SavePerkStats(strItem & " (2)", Perks.levelVal)
             Else
                 SavePerkStats(strItem, Perks.levelVal)
+
             End If
 
         Next
@@ -2969,7 +3018,7 @@ Public Class Form1
         BtnLvlDwn.Enabled = True
         PanSkills.Enabled = True
         isPerklater = True
-        'todo --> write sub to save boolean value at each lvldown/up
+
         BtnBooks.Enabled = True
         BtnQuests.Enabled = True
         BtnAchievem.Enabled = True
@@ -2986,7 +3035,7 @@ Public Class Form1
     End Sub
 
     Function SaveLoadPerkLater(ByVal LevelNo As Integer, ByVal saveload As Boolean, ByVal isNotTaken As Boolean)
-        Static PerkNotTakenAtLvl(100, 1) As Integer
+        Static PerkNotTakenAtLvl(100, 1) As Boolean
 
         If saveload = True Then
             PerkNotTakenAtLvl(LevelNo, 0) = isNotTaken
@@ -3083,6 +3132,95 @@ Public Class Form1
 
     End Sub
 
+
+    'Drugs
+    'Visual Behaviour when hoovering
+    Private Sub BtnDrugsBuff_MouseHover(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDrugsBuff.MouseHover
+        BtnDrugsBuff.Image = My.Resources.BuffoutHighNew
+    End Sub
+
+    Private Sub BtnDrugsBuff_MouseLeave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDrugsBuff.MouseLeave
+        BtnDrugsBuff.Image = My.Resources.BuffoutNew
+    End Sub
+
+    Private Sub BtnDrugsJet_MouseHover(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDrugsJet.MouseHover
+        BtnDrugsJet.Image = My.Resources.JetHigh
+    End Sub
+
+    Private Sub BtnDrugsJet_MouseLeave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDrugsJet.MouseLeave
+        BtnDrugsJet.Image = My.Resources.Jet
+    End Sub
+
+    Private Sub BtnDrugsPsycho_MouseHover(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDrugsPsycho.MouseHover
+        BtnDrugsPsycho.Image = My.Resources.PsychoHigh
+    End Sub
+
+    Private Sub BtnDrugsPsycho_MouseLeave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDrugsPsycho.MouseLeave
+        BtnDrugsPsycho.Image = My.Resources.Psycho
+    End Sub
+
+    Private Sub BtnDrugsNuka_MouseHover(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDrugsNuka.MouseHover
+        BtnDrugsNuka.Image = My.Resources.NukaHigh
+    End Sub
+
+    Private Sub BtnDrugsNuka_MouseLeave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDrugsNuka.MouseLeave
+        BtnDrugsNuka.Image = My.Resources.Nuka
+    End Sub
+    Private Sub BtnDrugsCigs_MouseHover(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDrugsCigs.MouseHover
+        BtnDrugsCigs.Image = My.Resources.CigarettesHighNew
+    End Sub
+
+    Private Sub BtnDrugsCigs_MouseLeave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDrugsCigs.MouseLeave
+        BtnDrugsCigs.Image = My.Resources.CigarettesNew
+    End Sub
+
+    'Click on Drugs
+    Friend AddSubstractJetAP As Integer = 3
+    Friend AddSubstractBuffoutST As Integer = 2
+    Friend AddSubstractBuffoutEN As Integer = 1
+    Friend AddSubstractPsychoDMGRes As Integer = 20
+    Friend AddSubstractNukaAP As Integer = 1
+    Friend AddSubstractCigsFoV As Integer = 3
+
+    Dim isJetActive As Boolean
+    Dim isBuffoutActive As Boolean
+    Dim isPsychoActive As Boolean
+    Dim isNukaActive As Boolean
+    Dim isCigsActive As Boolean
+
+    Private Sub BtnDrugsJet_Click(sender As System.Object, e As System.EventArgs) Handles BtnDrugsJet.Click
+        Statistics.GetStatistics()
+        If isJetActive = True Then
+            isJetActive = False
+            BtnDrugsJet.Image = My.Resources.Jet
+            Statistics.APoints = Statistics.APoints - AddSubstractJetAP
+        Else
+            isJetActive = True
+            BtnDrugsJet.Image = My.Resources.JetHigh
+            Statistics.APoints = Statistics.APoints + AddSubstractJetAP
+        End If
+        Statistics.SetStatistics()
+    End Sub
+
+    Private Sub BtnDrugsBuff_Click(sender As System.Object, e As System.EventArgs) Handles BtnDrugsBuff.Click
+
+    End Sub
+
+    Private Sub BtnDrugsPsycho_Click(sender As System.Object, e As System.EventArgs) Handles BtnDrugsPsycho.Click
+
+    End Sub
+
+    Private Sub BtnDrugsNuka_Click(sender As System.Object, e As System.EventArgs) Handles BtnDrugsNuka.Click
+
+    End Sub
+
+    Private Sub BtnDrugsCigs_Click(sender As System.Object, e As System.EventArgs) Handles BtnDrugsCigs.Click
+
+    End Sub
+
+    Private Sub BtnAllDrugs_Click(sender As System.Object, e As System.EventArgs) Handles BtnAllDrugs.Click
+
+    End Sub
 
     'Quests
     Friend AuswBeschr As String
@@ -3366,6 +3504,13 @@ Public Class Form1
     Dim SGunBVal As Integer
     Dim BookAmount As Integer
     Dim BookAmountMax As Integer
+    Friend SavedSPBooksTemp As Integer
+    Friend savedSPbooksDiff As Integer
+    Friend SavedSPBooksSmallG As Integer
+    Friend SavedSPBooksFAid As Integer
+    Friend SavedSPBooksScience As Integer
+    Friend SavedSPBooksOD As Integer
+    Friend SavedSPBooksRep As Integer
 
     'Initial calculation of Book Values
     Private Sub BooksCalc()
@@ -3480,9 +3625,11 @@ Public Class Form1
         Select Case SPVal
             Case 0 To 93
                 newSKVal = SPVal + 8
+                SavedSPBooksTemp = 0
             Case 94 To 101
                 Diff = 101 - SPVal
-                newSKVal = SPVal + Diff + ((8 - Diff) / 2)
+                newSKVal = Math.Floor(SPVal + Diff + ((8 - Diff) / 2))
+                SavedSPBooksTemp = (8 - Diff) Mod 2
             Case 102 To 122
                 newSKVal = SPVal + 4
             Case 123 To 126
@@ -3492,17 +3639,65 @@ Public Class Form1
                     Diff = 0
                 End If
                 newSKVal = SPVal + Diff + Math.Floor(((8 - Diff) / 3))
+                SavedSPBooksTemp = (8 - Diff) Mod 3
             Case 127 To 150
                 newSKVal = SPVal + 2
+                SavedSPBooksTemp = 2
             Case 151 To 174
                 newSKVal = SPVal + 2
-            Case 175 To 299
+                SavedSPBooksTemp = 0
+            Case 175 To 199
                 newSKVal = SPVal + 1
+                SavedSPBooksTemp = 3
+            Case 200 To 299
+                newSKVal = SPVal + 1
+                SavedSPBooksTemp = 2
             Case 300
                 newSKVal = SPVal
 
         End Select
         Return newSKVal
+    End Function
+
+    Function SavedSPBooksCalk(ByVal SavedSP As Integer, ByVal SkVal As Integer) As Integer
+
+        Dim SPToAdd As Integer
+        Dim Diff As Integer
+        '0% - 100% : 1% further costs 1 skill point
+        '101% - 125% : 1% further costs 2 skill points
+        '126% - 150% : 1% further costs 3 skill points
+        '151% - 175% : 1% further costs 4 skill points
+        '176% - 200% : 1% further costs 5 skill points
+        '201% - 300% : 1% further costs 6 skill points
+
+        'Seems as books ignore wether skills are tagged or not.
+
+        Select Case SkVal
+            Case 0 To 125
+                SPToAdd = 0
+            Case 126 To 145
+                SPToAdd = Math.Floor(SavedSP / 3)
+                savedSPbooksDiff = SavedSP Mod 3
+            Case 146 To 150
+                'SavedSP - (Diff to 151% /3) + Diff/4
+                Diff = SavedSP - ((151 - SkVal) * 3)
+                'MessageBox.Show("Diff: " & Diff)
+                SPToAdd = Math.Floor((SavedSP - Diff) / 3) + Math.Floor(Diff / 4)
+                'MessageBox.Show("SPtoAdd: " & SPToAdd)
+                savedSPbooksDiff = (SavedSP - Diff) Mod 3 + (Diff Mod 4)
+            Case 151 To 175
+                SPToAdd = Math.Floor(SavedSP / 4)
+                savedSPbooksDiff = SavedSP Mod 4
+            Case 176 To 200
+                SPToAdd = Math.Floor(SavedSP / 5)
+                savedSPbooksDiff = SavedSP Mod 5
+            Case 201 To 299
+                SPToAdd = Math.Floor(SavedSP / 6)
+                savedSPbooksDiff = SavedSP Mod 6
+                SPToAdd = 0
+                savedSPbooksDiff = SavedSP
+        End Select
+        Return SPToAdd
     End Function
 
     'Close Form
@@ -3603,15 +3798,21 @@ Public Class Form1
                     'calculate new value of the skill after reading the book
                     For i = 1 To BookAmount
                         newSPoints = SPThroughBooksCalc(valueSK)
+                        SavedSPBooksFAid = SavedSPBooksFAid + SavedSPBooksTemp
+                        SavedSPBooksTemp = 0
                         Skills.FAid = newSPoints
                         valueSK = Skills.FAid
                     Next
-
+                    If newSPoints + SavedSPBooksCalk(SavedSPBooksFAid, newSPoints) >= 300 Then
+                        newSPoints = 300
+                    Else
+                        newSPoints = newSPoints + SavedSPBooksCalk(SavedSPBooksFAid, newSPoints)
+                    End If
                     Skills.FAid = newSPoints
                     LblFaidVal.Text = newSPoints & "%"
-
-
+                    SavedSPBooksFAid = savedSPbooksDiff
                 End If
+
             Case "Outdoorsman Book"
                 If Not ODBVal = 0 Then
                     BookAmountMax = ODBVal
@@ -3619,14 +3820,22 @@ Public Class Form1
                     ODBVal = ODBVal - BookAmount
                     For i = 1 To BookAmount
                         newSPoints = SPThroughBooksCalc(valueSK)
+                        SavedSPBooksOD = SavedSPBooksOD + SavedSPBooksTemp
+                        SavedSPBooksTemp = 0
                         Skills.ODMan = newSPoints
                         valueSK = Skills.ODMan
                     Next
-
+                    'MessageBox.Show("SavedSPBooksOD: " & SavedSPBooksOD)
+                    If newSPoints + SavedSPBooksCalk(SavedSPBooksOD, newSPoints) >= 300 Then
+                        newSPoints = 300
+                    Else
+                        newSPoints = newSPoints + SavedSPBooksCalk(SavedSPBooksOD, newSPoints)
+                    End If
+                    'MessageBox.Show("SavedSPDiff: " & savedSPbooksDiff)
                     Skills.ODMan = newSPoints
                     LblODVal.Text = newSPoints & "%"
-
-
+                    SavedSPBooksOD = savedSPbooksDiff
+                    'MessageBox.Show("savedSPBooksOD neu: " & SavedSPBooksOD)
                 End If
             Case "Repair Book"
                 If Not RepairBVal = 0 Then
@@ -3635,11 +3844,20 @@ Public Class Form1
                     RepairBVal = RepairBVal - BookAmount
                     For i = 1 To BookAmount
                         newSPoints = SPThroughBooksCalc(valueSK)
+                        SavedSPBooksRep = SavedSPBooksRep + SavedSPBooksTemp
+                        SavedSPBooksTemp = 0
                         Skills.Repair = newSPoints
                         valueSK = Skills.Repair
                     Next
+                    If newSPoints + SavedSPBooksCalk(SavedSPBooksRep, newSPoints) >= 300 Then
+                        newSPoints = 300
+                    Else
+                        newSPoints = newSPoints + SavedSPBooksCalk(SavedSPBooksRep, newSPoints)
+                    End If
+
                     Skills.Repair = newSPoints
                     LblRepairVal.Text = newSPoints & "%"
+                    SavedSPBooksRep = savedSPbooksDiff
 
                 End If
             Case "Science Book"
@@ -3649,12 +3867,19 @@ Public Class Form1
                     ScienceBVal = ScienceBVal - BookAmount
                     For i = 1 To BookAmount
                         newSPoints = SPThroughBooksCalc(valueSK)
+                        SavedSPBooksScience = SavedSPBooksScience + SavedSPBooksTemp
+                        SavedSPBooksTemp = 0
                         Skills.Science = newSPoints
                         valueSK = Skills.Science
                     Next
-
+                    If newSPoints + SavedSPBooksCalk(SavedSPBooksScience, newSPoints) >= 300 Then
+                        newSPoints = 300
+                    Else
+                        newSPoints = newSPoints + SavedSPBooksCalk(SavedSPBooksScience, newSPoints)
+                    End If
                     Skills.Science = newSPoints
                     LblScienceVal.Text = newSPoints & "%"
+                    SavedSPBooksScience = savedSPbooksDiff
                 End If
 
             Case "Small Guns Book"
@@ -3664,12 +3889,19 @@ Public Class Form1
                     SGunBVal = SGunBVal - BookAmount
                     For i = 1 To BookAmount
                         newSPoints = SPThroughBooksCalc(valueSK)
+                        SavedSPBooksSmallG = SavedSPBooksSmallG + SavedSPBooksTemp
+                        SavedSPBooksTemp = 0
                         Skills.SmallGuns = newSPoints
                         valueSK = Skills.SmallGuns
                     Next
-
+                    If newSPoints + SavedSPBooksCalk(SavedSPBooksSmallG, newSPoints) >= 300 Then
+                        newSPoints = 300
+                    Else
+                        newSPoints = newSPoints + SavedSPBooksCalk(SavedSPBooksSmallG, newSPoints)
+                    End If
                     Skills.SmallGuns = newSPoints
                     LblSGunsVal.Text = newSPoints & "%"
+                    SavedSPBooksSmallG = savedSPbooksDiff
                 End If
         End Select
         'STep 1
@@ -3719,6 +3951,8 @@ Public Class Form1
     Friend trackLenght As Long
     Friend startzeit As DateTime
     Friend Laenge As Integer
+    Friend Volume As Integer
+
 
     'Start Music
     Private Sub MOnToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MOnToolStripMenuItem.Click
@@ -3882,7 +4116,7 @@ Public Class Form1
         RandomSong(65) = "SNORWALK"
         SongInfoText(65) = "Snorwalk - composed by: deelite/enigma"
 
-      
+
 
         While Zaehler < 64
             ZufZahl = random.Next(0, 65)
@@ -3925,7 +4159,7 @@ Public Class Form1
         tracklenghtTimer.Enabled = True
         'Calculation to approximitly get lenght of track in ms
         Laenge = Math.Floor(trackLenght / 176000)
-        
+
         'Timespan of actual track lenght converted in mm:ss
         Dim Zeit As New TimeSpan(0, 0, Laenge)
 
@@ -4074,7 +4308,22 @@ Public Class Form1
 
     'Restart App
     Private Sub ResetToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ResetToolStripMenuItem.Click
-        Application.Restart()
+
+        Try
+
+            Application.Exit()
+            Application.ExitThread()
+            Application.Restart()
+
+            If Me.WindowState = FormWindowState.Minimized Then
+                Me.WindowState = FormWindowState.Normal
+            End If
+        Catch ex As Exception
+            Dim writer As New StreamWriter(My.Application.Info.DirectoryPath & "\datlog.txt", True, System.Text.Encoding.ASCII)
+            writer.WriteLine(ex.Message)
+            writer.Close()
+        End Try
+
     End Sub
 
     'Next Music Title
@@ -4085,6 +4334,27 @@ Public Class Form1
         MOnToolStripMenuItem.Enabled = False
         MOnToolStripMenuItem_Click(sender, e)
         MOffToolStripMenuItem.Enabled = True
+        BassMOD.BASSMOD_SetVolume(Volume)
+
+        Select Case Volume
+            Case 0
+                PicBoxMusicVol.BackgroundImage = My.Resources.VolumeMute
+            Case 20
+
+                PicBoxMusicVol.BackgroundImage = My.Resources.Volume0
+            Case 40
+
+                PicBoxMusicVol.BackgroundImage = My.Resources.Volume25
+            Case 60
+
+                PicBoxMusicVol.BackgroundImage = My.Resources.Volume50
+            Case 80
+
+                PicBoxMusicVol.BackgroundImage = My.Resources.Volume75
+            Case 100
+
+                PicBoxMusicVol.BackgroundImage = My.Resources.VolumeFull
+        End Select
     End Sub
 
 
@@ -4121,6 +4391,7 @@ Public Class Form1
                 PicBoxMusicVol.BackgroundImage = My.Resources.VolumeFull
         End Select
 
+        Volume = Vol
         'Me.ResumeLayout()
     End Sub
 
@@ -4128,6 +4399,7 @@ Public Class Form1
         Dim Vol As Integer
 
         Vol = BassMOD.BASSMOD_GetVolume
+
         If Not Vol >= 100 Then
             Vol = Vol + 20
         End If
@@ -4136,7 +4408,6 @@ Public Class Form1
         'Me.SuspendLayout()
         Select Case Vol
             Case 0
-
                 PicBoxMusicVol.BackgroundImage = My.Resources.VolumeMute
             Case 20
 
@@ -4155,6 +4426,7 @@ Public Class Form1
                 PicBoxMusicVol.BackgroundImage = My.Resources.VolumeFull
         End Select
 
+        Volume = Vol
         'Me.ResumeLayout()
     End Sub
 
@@ -4457,9 +4729,6 @@ Public Class Form1
                     LstVImpl.Visible = False
                     LstVPerks.Visible = True
                     BtnPerkLater.Visible = False
-                    'BtnLvlDwn.Enabled = False
-                    'BtnLvlUp.Enabled = False
-
                     Perks.availablePerks()
 
                 Case "Marksmanship Implant"
@@ -4553,7 +4822,7 @@ Public Class Form1
         'Dim s As String
 
         strItem = sender.text
-
+        Debug.Print("Perkdesc: " & strItem)
         If InStr(strItem, "(2)") Or InStr(strItem, "(3)") Then
             strItem = strItem.Substring(0, (Len(strItem) - 4))
         End If
@@ -4663,7 +4932,7 @@ Public Class Form1
         End If
 
 
-        saveFileDialog1.Filter = "JPEG Image|*.jpg"
+        saveFileDialog1.Filter = "PNG Image|*.png"
         saveFileDialog1.InitialDirectory = My.Application.Info.DirectoryPath
         scr = New Bitmap(w, h)
         Me.DrawToBitmap(scr, Rectangle.FromLTRB(0, 0, w, h))
@@ -4714,6 +4983,7 @@ Public Class Form1
         End If
     End Sub
 
+    Friend isBooksAll As Boolean
     'Button Books "Take All"
     Private Sub BtnBooksAll_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnBooksAll.Click
         Dim SKVal As Integer
@@ -4723,20 +4993,25 @@ Public Class Form1
         Statistics.GetStatistics()
         Skills.getSkillValues()
 
+        
         'FA
         If Not FABookVal = 0 Then
 
             SKVal = Skills.FAid
-
             For i = 1 To FABookVal
                 newSkPoints = SPThroughBooksCalc(SKVal)
+                SavedSPBooksFAid = SavedSPBooksFAid + SavedSPBooksTemp
+                SavedSPBooksTemp = 0
                 Skills.FAid = newSkPoints
                 SKVal = Skills.FAid
             Next
-
+            If newSkPoints + SavedSPBooksCalk(SavedSPBooksFAid, newSkPoints) >= 300 Then
+                newSkPoints = 300
+            Else
+                newSkPoints = newSkPoints + SavedSPBooksCalk(SavedSPBooksFAid, newSkPoints)
+            End If
             Skills.FAid = newSkPoints
             LblFaidVal.Text = newSkPoints & "%"
-
             FABookVal = 0
         End If
 
@@ -4747,13 +5022,18 @@ Public Class Form1
 
             For i = 1 To ODBVal
                 newSkPoints = SPThroughBooksCalc(SKVal)
+                SavedSPBooksOD = SavedSPBooksOD + SavedSPBooksTemp
+                SavedSPBooksTemp = 0
                 Skills.ODMan = newSkPoints
                 SKVal = Skills.ODMan
             Next
-
+            If newSkPoints + SavedSPBooksCalk(SavedSPBooksOD, newSkPoints) >= 300 Then
+                newSkPoints = 300
+            Else
+                newSkPoints = newSkPoints + SavedSPBooksCalk(SavedSPBooksOD, newSkPoints)
+            End If
             Skills.ODMan = newSkPoints
             LblODVal.Text = newSkPoints & "%"
-
             ODBVal = 0
         End If
 
@@ -4764,9 +5044,16 @@ Public Class Form1
 
             For i = 1 To RepairBVal
                 newSkPoints = SPThroughBooksCalc(SKVal)
+                SavedSPBooksRep = SavedSPBooksRep + SavedSPBooksTemp
+                SavedSPBooksTemp = 0
                 Skills.Repair = newSkPoints
                 SKVal = Skills.Repair
             Next
+            If newSkPoints + SavedSPBooksCalk(SavedSPBooksRep, newSkPoints) >= 300 Then
+                newSkPoints = 300
+            Else
+                newSkPoints = newSkPoints + SavedSPBooksCalk(SavedSPBooksRep, newSkPoints)
+            End If
             Skills.Repair = newSkPoints
             LblRepairVal.Text = newSkPoints & "%"
             RepairBVal = 0
@@ -4779,13 +5066,18 @@ Public Class Form1
 
             For i = 1 To ScienceBVal
                 newSkPoints = SPThroughBooksCalc(SKVal)
+                SavedSPBooksScience = SavedSPBooksScience + SavedSPBooksTemp
+                SavedSPBooksTemp = 0
                 Skills.Science = newSkPoints
                 SKVal = Skills.Science
             Next
-
+            If newSkPoints + SavedSPBooksCalk(SavedSPBooksScience, newSkPoints) >= 300 Then
+                newSkPoints = 300
+            Else
+                newSkPoints = newSkPoints + SavedSPBooksCalk(SavedSPBooksScience, newSkPoints)
+            End If
             Skills.Science = newSkPoints
             LblScienceVal.Text = newSkPoints & "%"
-
             ScienceBVal = 0
         End If
 
@@ -4796,13 +5088,18 @@ Public Class Form1
 
             For i = 1 To SGunBVal
                 newSkPoints = SPThroughBooksCalc(SKVal)
+                SavedSPBooksSmallG = SavedSPBooksSmallG + SavedSPBooksTemp
+                SavedSPBooksTemp = 0
                 Skills.SmallGuns = newSkPoints
                 SKVal = Skills.SmallGuns
             Next
-
+            If newSkPoints + SavedSPBooksCalk(SavedSPBooksSmallG, newSkPoints) >= 300 Then
+                newSkPoints = 300
+            Else
+                newSkPoints = newSkPoints + SavedSPBooksCalk(SavedSPBooksSmallG, newSkPoints)
+            End If
             Skills.SmallGuns = newSkPoints
             LblSGunsVal.Text = newSkPoints & "%"
-
             SGunBVal = 0
         End If
 
@@ -4818,6 +5115,8 @@ Public Class Form1
             PanBookValEdit.Enabled = False
             BtnBooksAll.Enabled = False
         End If
+
+        isBooksAll = True
     End Sub
 
     'Save Level
@@ -5054,11 +5353,22 @@ Public Class Form1
             End If
         End If
 
-
         'Erase entry
         SaveLoadPerks("", level, True)
 
     End Sub
+
+    Function SaveLoadSkillTag(ByVal SkillNo As Integer, ByVal saveload As Boolean, ByVal tagged As Boolean)
+        Static SkillTagged(16) As Boolean
+
+        If saveload = True Then
+            SkillTagged(SkillNo) = tagged
+            Return 1
+        Else
+            Return SkillTagged(SkillNo)
+        End If
+
+    End Function
 
     Function SaveLoadLvlSkills(ByVal LevelNo As Integer, ByVal saveload As Boolean, ByVal SkillInd As Integer, ByVal SkillVal As Integer, Optional ByVal SkillName As String = "Skill")
         Static SkillValue(100, 20) As Integer
@@ -5217,14 +5527,13 @@ Public Class Form1
             LstVImpl.Items.Insert(0, "Accuracy Implant")
             LstVImpl.Items.Insert(1, "Chem Control Implant")
             LstVImpl.Items.Insert(2, "Defense Implant")
-            LstVImpl.Items.Insert(3, "Engineering Implant")
-            LstVImpl.Items.Insert(4, "Enhancement Implant")
-            LstVImpl.Items.Insert(5, "Enviromental Implant")
-            LstVImpl.Items.Insert(6, "Marksmanship Implant")
-            LstVImpl.Items.Insert(7, "Medical Implant")
-            LstVImpl.Items.Insert(8, "Scouting Implant")
-            LstVImpl.Items.Insert(9, "Speed Implant")
-            LstVImpl.Items.Insert(10, "Survival Implant")
+            LstVImpl.Items.Insert(3, "Enhancement Implant")
+            LstVImpl.Items.Insert(4, "Enviromental Implant")
+            LstVImpl.Items.Insert(5, "Marksmanship Implant")
+            LstVImpl.Items.Insert(6, "Medical Implant")
+            LstVImpl.Items.Insert(7, "Scouting Implant")
+            LstVImpl.Items.Insert(8, "Speed Implant")
+            LstVImpl.Items.Insert(9, "Survival Implant")
 
             'delete actual entry in array
             SaveLoadImpl(level, True, "")
@@ -5256,12 +5565,18 @@ Public Class Form1
     Function SaveLoadAchievements(ByVal LevelNo As Integer, ByVal saveload As Boolean, ByVal AchievemName As String, Optional ByVal AchInd As Integer = 0)
         Static AchievementAtLvl(100, 10) As String
         If saveload = True Then
-            For i = 0 To 10
-                If AchievementAtLvl(LevelNo, i) = "" Then
-                    AchievementAtLvl(LevelNo, i) = AchievemName
-                    Exit For
-                End If
-            Next
+
+            If isLoad = True Then 'If function was called by Load-feature
+                AchievementAtLvl(LevelNo, AchInd) = AchievemName
+            Else
+                For i = 0 To 10
+
+                    If AchievementAtLvl(LevelNo, i) = "" Then
+                        AchievementAtLvl(LevelNo, i) = AchievemName
+                        Exit For
+                    End If
+                Next
+            End If
             Return 1
         Else
             Return AchievementAtLvl(LevelNo, AchInd)
@@ -5285,7 +5600,6 @@ Public Class Form1
             If Not QuestN(i) = "" Then
                 If InStr(QuestN(i), "Chess Game") > 0 Then
                     LstVQuests.Items.Insert(LstVQuests.Items.Count, "Chess Game")
-
                     LstBoxPerks.Items.Remove(QuestN(i))
                 Else
                     LstVQuests.Items.Insert(LstVQuests.Items.Count, QuestN(i))
@@ -5312,23 +5626,25 @@ Public Class Form1
             'check if the func is called by Sub "LoadQuests" to erase all entries
             If isEraseafterLoad = True Then
                 QuestatLevel(LevelNo, QuestInd) = QuestName
-
                 Return 1
             Else
-
-                For i = 0 To 2
-                    If QuestatLevel(LevelNo, i) = "Chess Game" And InStr(QuestName, "Chess Game") > 0 Then
-                        QuestatLevel(LevelNo, i) = QuestName
-                        Exit For
-                    ElseIf QuestatLevel(LevelNo, i) = "" Then
-                        QuestatLevel(LevelNo, i) = QuestName
-                        'Debug.Print(QuestatLevel(LevelNo, i))
-                        Exit For
-                    End If
-                Next
+                If isLoad = True Then 'If function was called by Load-feature
+                    QuestatLevel(LevelNo, QuestInd) = QuestName
+                Else
+                    For i = 0 To 2
+                        If QuestatLevel(LevelNo, i) = "Chess Game" And InStr(QuestName, "Chess Game") > 0 Then
+                            QuestatLevel(LevelNo, i) = QuestName
+                            Exit For
+                        ElseIf QuestatLevel(LevelNo, i) = "" Then
+                            QuestatLevel(LevelNo, i) = QuestName
+                            'Debug.Print(QuestatLevel(LevelNo, i))
+                            Exit For
+                        End If
+                    Next
+                End If
                 'QuestatLevel(LevelNo, 0) = QuestName
                 Return 1
-            End If
+        End If
         Else
             Return QuestatLevel(LevelNo, QuestInd)
         End If
@@ -5372,12 +5688,24 @@ Public Class Form1
 
     End Function
 
+    Function SaveLoadPerkRank(ByVal saveload As Boolean, ByVal PInd As Integer, ByVal Rank As Integer)
+        Static PerkRankAtLvl(43) As Integer
+        If saveload = True Then
+            PerkRankAtLvl(PInd) = Rank
+            Return 1
+        Else
+            Return PerkRankAtLvl(PInd)
+            'PerkstakenAtlLvl(LevelNo, 0) = 0
+        End If
+    End Function
+
     'When Going down in Level
     'Load saved Stats when going down in level
     Private Sub BtnLvlDwn_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnLvlDwn.Click
         Dim level As Integer
 
         level = CInt(LblLevelVal.Text)
+
 
         If level <= 24 Then
             BtnLvlFastUp.Visible = False
@@ -5407,7 +5735,11 @@ Public Class Form1
             LoadBooks(level)
             LoadQuests(level)
             LoadImplants(level)
+            LoadAchievements(level)
+        End If
 
+        If isFastUp = True And level = lastLevel Then
+            isFastUp = False
         End If
 
     End Sub
@@ -5424,6 +5756,7 @@ Public Class Form1
         Dim saveBuildDialog As New SaveFileDialog()
         Dim fileName As String
         Dim path As String
+        Dim skPLeft As Integer = LblSkPointsVal.Text
 
         Stats.GetStats()
         Statistics.GetStatistics()
@@ -5431,7 +5764,7 @@ Public Class Form1
         Perks.levelVal = LblLevelVal.Text
 
         'simulate click on lvlup Button to save values from actual level
-        'BtnLvlUp_Click(Nothing, Nothing)
+        SaveLevelStats(True, skPLeft)
 
         saveBuildDialog.Filter = "Text (*.txt)|*.txt"
         saveBuildDialog.InitialDirectory = My.Application.Info.DirectoryPath
@@ -5603,6 +5936,18 @@ Public Class Form1
                     Next
                 Next
 
+                'SkillPLeft @actual level
+                sw.WriteLine("Skill Points Left")
+                sw.WriteLine("-----------------")
+                sw.WriteLine(skPLeft)
+
+                'SkLeft @Levels
+                For i = 1 To 100
+                    For j = 0 To 1
+                        sw.WriteLine(SaveLoadSPLeft(i, j, False))
+                    Next
+                Next
+
                 'Save actual level stats
                 sw.WriteLine("*Stats @actual Level*")
                 sw.WriteLine("---------------------")
@@ -5616,28 +5961,119 @@ Public Class Form1
                 sw.WriteLine(LblStatsLKVal.Text)
                 sw.WriteLine("*Statistics*")
 
+                'SkillTags New
+                sw.WriteLine("Tagged Skills")
+                sw.WriteLine("-------------")
+
+                For i = 0 To 16
+                    sw.WriteLine(SaveLoadSkillTag(i, False, False))
+                Next
+
+                'Check if Quest "Chess Game" is available and if it was taken
+                sw.WriteLine("Chess Game - Booleans")
+                sw.WriteLine("---------------------")
+                sw.WriteLine(chessavailable)
+                sw.WriteLine(chessgametaken)
+
+                'Save Status of "PerkLater" option
+                sw.WriteLine("Perklater")
+                sw.WriteLine("---------")
+                For i = 1 To 100
+                    sw.WriteLine(SaveLoadPerkLater(i, False, False))
+                Next
+
+                sw.WriteLine("MedicPerk")
+                sw.WriteLine("---------")
+                sw.WriteLine(isMedic)
+
+                'Save Status of Book-Buttons
+                sw.WriteLine("BooksAllTaken")
+                sw.WriteLine("-------------")
+                sw.WriteLine(isBooksAll)
+
+                sw.WriteLine("MentatsBooksTaken")
+                sw.WriteLine("-----------------")
+                sw.WriteLine(isBookMentats)
+
+                'Save Books-SavedSP
+                sw.WriteLine("Saved SkP Books")
+                sw.WriteLine("---------------")
+                sw.WriteLine("OD,Rep,SG,SC,FA")
+                sw.WriteLine(SavedSPBooksOD)
+                sw.WriteLine(SavedSPBooksRep)
+                sw.WriteLine(SavedSPBooksSmallG)
+                sw.WriteLine(SavedSPBooksScience)
+                sw.WriteLine(SavedSPBooksFAid)
+
+                'Save if Implant was choosen
+                sw.WriteLine("Save ImplChoosen")
+                sw.WriteLine("----------------")
+                sw.WriteLine(isImplChoosen)
+
+                'FastUpLvl vars
+                sw.WriteLine("Skill Points to Last Level")
+                sw.WriteLine("--------------------------")
+                sw.WriteLine(SkPointstolastlvl)
+
+                sw.WriteLine("HP to Last Level")
+                sw.WriteLine("----------------")
+                sw.WriteLine(HitPointstolastlvl)
+
+                'was FastLvlUp pressed
+                sw.WriteLine("isFastup")
+                sw.WriteLine("--------")
+                sw.WriteLine(isFastUp)
+
+                'lastlevel
+                sw.WriteLine("Last level before Fast Up")
+                sw.WriteLine("-------------------------")
+                sw.WriteLine(lastLevel)
+
+                'PerkRanks
+                sw.WriteLine("PerkRank")
+                sw.WriteLine("--------")
+
+                For i = 0 To 43
+                    sw.WriteLine(Perks.PerkRank(i))
+                Next
 
                 sw.Close()
             End Using
         End If
     End Sub
-
+    Friend isLoad As Boolean = False
+    Friend isLoadedOnce As Boolean = False
     'Load previous saved text-file
     Private Sub LoadBuildToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LoadBuildToolStripMenuItem.Click
         Dim loadBuildDialog As New OpenFileDialog()
         Dim fileName As String
         Dim path As String
-        Dim text() As String
+        Dim text(8000) As String
         Dim fileContent As String
         Dim ktemp As Integer
         Dim level As String
+
+        If isBookactive = True Then
+            BtnBooks_Click(sender, e)
+        End If
+
+        If isImplantActive = True Then
+            BtnImpl_Click(sender, e)
+        End If
+
+        If isAchieveActive = True Then
+            BtnAchievem_Click(sender, e)
+        End If
+
+        If isQuestsActive = True Then
+            BtnQuests_Click(sender, e)
+        End If
 
         loadBuildDialog.Filter = "Text (*.txt)|*.txt"
         loadBuildDialog.InitialDirectory = My.Application.Info.DirectoryPath
         If loadBuildDialog.ShowDialog() = DialogResult.OK Then
             'todo --> exception handler
             Try
-
                 fileName = loadBuildDialog.FileName
                 path = fileName
 
@@ -5646,6 +6082,7 @@ Public Class Form1
 
                 text = fileContent.Split(vbNewLine)
                 'text = Split(fileContent, " ")
+                sr.Close()
 
             Catch ex As Security.SecurityException
                 MsgBox("Something went wrong! Seems as you don't own the rights to open this file. " & ex.Message)
@@ -5655,112 +6092,944 @@ Public Class Form1
                 MsgBox("Something went wrong! " & ex.Message)
             End Try
 
-            LblLevel.Visible = True
-            BtnLvlDwn.Visible = True
-            BtnLvlUp.Visible = True
-            PanTraits.Enabled = False
-            BtnImpl.Visible = True
-            BtnQuests.Visible = True
-            BtnAchievem.Visible = True
-            BtnBooks.Visible = True
+            If Not text(0) = "* FCP - Fallout Online 2 Character Planner *" Then
+                MessageBox.Show("Wrong File! - Please Choose a valid FCP-File")
 
-            'Test with Statistics
+            Else
+                isDone = True
+                isLoad = True
+                isImplChoosen = False
+                SaveBuildToolStripMenuItem.Enabled = True
 
-            For i = 1 To 100
-                'for j=index (Statistic type)
-                For j = 0 To 13
-                    'ktemp marks the line in text file
-                    ktemp = 810 + (i * 13) - 13 + j
+                'Reset CharPoints in Case Build was loaded before Done was clicked
+                Stats.CharPoints = 0
+                LblCPoints.Text = "0"
 
-                    If Not ktemp + 12 > 2110 Then
-                        'write saved values in static var
-                        SaveLoadStatistics(i, True, j, CInt(text(ktemp)))
-                        'careful if testing the following line, can take some time to compute :) :
-                        'Debug.Print("Level: " & i & ", Index: " & j & ", Value: " & CInt(text(ktemp)))
+                For Each ctl In PanStats.Controls
+                    If Not ctl.GetType Is GetType(Windows.Forms.Label) Then
+                        ctl.Visible = False
                     End If
                 Next
-            Next
 
-            'Perks
-            For i = 1 To 100
-                For j = 0 To 1
-                    ktemp = 3935 + (i * 2) - 2 + j
-                    If Not ktemp + 1 > 4135 Then
+                'Clear LstVChess and add Quests
+                LstVQuests.Items.Clear()
+                LstVQuests.Items.Insert(0, "Mary Ann - JT")
+                LstVQuests.Items.Insert(1, "Pete Quest - JT")
 
-                        'delete line feed from text()
-                        text(ktemp) = Replace(text(ktemp), vbLf, vbNullString)
-                        SaveLoadPerks(CStr(text(ktemp)), i, True, j)
+                Dim isChessinLBPerks As Boolean
+                If isLoadedOnce = True Then
+                    LstVQuests.Items.Clear()
+
+                    If Stats.Intelligence >= 6 Then
+                        For Each LBPerksItem As String In LstBoxPerks.Items
+                            If InStr(LBPerksItem, "Chess Game") Then
+                                isChessinLBPerks = True
+                            End If
+                        Next
+
+                        If isChessinLBPerks = False Then
+                            LstVQuests.Items.Insert(0, "Chess Game")
+                        End If
                     End If
-                Next
-            Next
 
-            'Perkstaken
-            Perkstaken = CInt(text(4154))
+                    If isChessinLBPerks = True Then
+                        LstVQuests.Items.Insert(0, "Mary Ann - JT")
+                        LstVQuests.Items.Insert(1, "Pete Quest - JT")
+                    Else
+                        If Not Stats.Intelligence >= 6 Then
+                            LstVQuests.Items.Insert(0, "Mary Ann - JT")
+                            LstVQuests.Items.Insert(1, "Pete Quest - JT")
+                        Else
+                            LstVQuests.Items.Insert(1, "Mary Ann - JT")
+                            LstVQuests.Items.Insert(2, "Pete Quest - JT")
+                        End If
+                    End If
 
-            'Skills
-            For i = 1 To 100
-                For j = 0 To 17
-                    ktemp = 2131 + (i * 18) - 18 + j
-                    text(ktemp) = Replace(text(ktemp), vbLf, vbNullString)
-                    SaveLoadLvlSkills(i, True, j, CInt(text(ktemp)))
-                Next
-            Next
-
-            'Special
-            For i = 1 To 100
-                For j = 0 To 7
-                    ktemp = 8 + (i * 8) - 8 + j
-                    text(ktemp) = Replace(text(ktemp), vbLf, vbNullString)
-                    SaveLoadSpecial(i, True, j, CInt(text(ktemp)))
-                Next
-            Next
-
-        End If
-
-        'Load Build
-        level = text(3933)
-        LblLevelVal.Text = Format(CInt(level), "##")
-        Perks.levelVal = LblLevelVal.Text
-
-        'delete lstboxperks
-        LstBoxPerks.Items.Clear()
-
-        'load special
-        LoadSPECIALS(CInt(text(3933)) - 1)
-        'Stats.GetStats()
-
-        'load statistics at level, at which the build was save
-        LoadStatistics(CInt(text(3933)) - 1)
-        'Statistics.SetStatistics()
-
-        'add loaded Perks to lstBoxPerks
-        Dim strTemp As String
-
-        For i = 1 To CInt(level)
-            For j = 0 To 1
-                strTemp = SaveLoadPerks("", i, False, j)
-
-                If Not strTemp = "" Then
-                    Debug.Print("strTemp" & "..." & strTemp & "...")
-                    LstBoxPerks.Items.Add(strTemp)
                 End If
-            Next
-        Next
 
-        LoadPerkStats(CInt(text(3933)))
-        Skills.LoadSkills()
+                LblLevel.Visible = True
+                BtnLvlDwn.Visible = True
+                BtnLvlUp.Visible = True
+                PanTraits.Enabled = False
+                BtnImpl.Visible = True
+                BtnQuests.Visible = True
+                BtnAchievem.Visible = True
+                BtnBooks.Visible = True
 
-        'Books
-        For i = 1 To 100
-            For j = 0 To 5
-                ktemp = 4256 + (i * 6) - 6 + j
-                text(ktemp) = Replace(text(ktemp), vbLf, vbNullString)
-                SaveLoadBooks(i, True, j, CInt(text(ktemp)))
-            Next
-        Next
+                'Write in Descriptions which else would only be written in when "Done" was clicked7
+                'DetDescr Perks
+                DetDescrName(0) = "Action Boy" 'rank 2
+                DetDescrName(1) = "Adrenaline Rush"
+                DetDescrName(2) = "Anticritical" 'rank 2
+                DetDescrName(3) = "Better Criticals"
+                DetDescrName(4) = "Bonus HtH Attacks"
+                DetDescrName(5) = "Bonus HtH Damage" 'rank 3
+                DetDescrName(6) = "Bonus Ranged Damage" 'rank 2
+                DetDescrName(7) = "Bonus Rate of Fire"
+                DetDescrName(8) = "Cautious Nature"
+                DetDescrName(9) = "Dodger"
+                DetDescrName(10) = "Earlier Sequence"
+                DetDescrName(11) = "Educated"
+                DetDescrName(12) = "Gain Agility"
+                DetDescrName(13) = "Gain Charisma"
+                DetDescrName(14) = "Gain Endurance"
+                DetDescrName(15) = "Gain Intelligence"
+                DetDescrName(16) = "Gain Luck"
+                DetDescrName(17) = "Gain Perception"
+                DetDescrName(18) = "Gain Strength"
+                DetDescrName(19) = "Ghost"
+                DetDescrName(20) = "Harmless"
+                DetDescrName(21) = "Healer" 'rank 2
+                DetDescrName(22) = "HtH Evade"
+                DetDescrName(23) = "Lifegiver" 'rank 2
+                DetDescrName(24) = "Light Step"
+                DetDescrName(25) = "Living Anatomy"
+                DetDescrName(26) = "Magnetic Personality"
+                DetDescrName(27) = "Master Thief"
+                DetDescrName(28) = "Medic"
+                DetDescrName(29) = "More Critical" 'rank 2
+                DetDescrName(30) = "Mr. Fixit"
+                DetDescrName(31) = "Pathfinder"
+                DetDescrName(32) = "Pickpocket"
+                DetDescrName(33) = "Quick Hands"
+                DetDescrName(34) = "Quick Recovery"
+                DetDescrName(35) = "Sharpshooter"
+                DetDescrName(36) = "Silent Death"
+                DetDescrName(37) = "Silent Running"
+                DetDescrName(38) = "Stonewall"
+                DetDescrName(39) = "Strong Back"
+                DetDescrName(40) = "Thief"
+                DetDescrName(41) = "Toughness" 'rank 2
+                DetDescrName(42) = "Weapon Handling"
 
 
+                'Implants
+                DetDescrName(70) = "Accuracy Implant"
+                DetDescrText(70) = "You gain +5 to your Sight (FOV) and +40%     to your SG/BG and EW-Skills."
+                DescPicIndex(70) = "ImplAccurDesc"
+                DetDescrName(71) = "Chem Control Implant"
+                DetDescrText(71) = "Your drug duration time is doubled and       every S-Stimpak you use heals +30% HP."
+                DescPicIndex(71) = "ChemControlImpDesc"
+                DetDescrName(72) = "Defense Implant"
+                DescPicIndex(72) = "ImplDefDesc"
+                DetDescrText(72) = "You gain +4% to all types of Damage          Resistances and +2% to all Damage Thresholds."
+                DetDescrName(73) = "Enviromental Implant"
+                DetDescrText(73) = "You gain +10 to your Healing Rate,           +40% Poison- and +50% Radiation Resistance."
+                DescPicIndex(73) = "EnvImplDesc"
+                DetDescrName(74) = "Engineering Implant"
+                DescPicIndex(74) = "ImplEngDesc"
+                DetDescrText(74) = "You gain +100% to Repair-, Science- and      EWeapons-Skill. Additionally your chance to  craft an item with updates is 10% higher."
+                DetDescrName(75) = "Enhancement Implant"
+                'check if there are all perks available
+                DetDescrText(75) = "You can choose an additional perk. Note:     Only Perks, for which you fullfill the requir-ements (Level/SPECIAL) can be taken!"
+                DescPicIndex(75) = "ImplEnhanceDesc"
+                DetDescrName(76) = "Marksmanship Implant"
+                DetDescrText(76) = "You gain +4% to your Crit Roll, +4% to       your Critical Chance and +2 Sight(FOV)."
+                DescPicIndex(76) = "StandbySW" 'no pic yet
+                DetDescrName(77) = "Medical Implant"
+                DetDescrText(77) = "You gain +50% to Doctor- and 50% to        FA-Skill. You deal +5 Damage to living creatures. The HP you can heal(FA) is now 175HP."
+                DescPicIndex(77) = "StandbySW" 'no pic yet
+                DetDescrName(78) = "Scouting Implant"
+                DetDescrText(78) = "You gain +30% to your sneak skill and        +30 to your Armor Class. Your skill can be    raised +20% over the cap. "
+                DescPicIndex(78) = "StandbySW" 'no pic yet
+                DetDescrName(79) = "Speed Implant"
+                DescPicIndex(79) = "ImplSpeedDesc"
+                DetDescrText(79) = "Your running animation is 10% faster.        You get +1 Action Point and +6 Sequence."
+                DetDescrName(80) = "Survival Implant"
+                DetDescrText(80) = "You gain +100% to your ODMan-Skill and       +30 Hit Points. Also you gain +30% experience"
+                DescPicIndex(80) = "ImplSurvivalDesc"
+
+                DetDescrText(0) = "You gain +1 Action Point."
+                DescPicIndex(0) = "ABoyDesc"
+                DetDescrText(1) = "If your Hit Points are below 50% you gain:    +1 AP and +10% to all restistances."
+                DescPicIndex(1) = "ARushDesc"
+                DetDescrText(2) = "You gain +18% to your Anti-Crit Resistance.   This stacks with armor anticrit bonuses."
+                DescPicIndex(2) = "AnticriticalDescNeu"
+                DetDescrText(3) = "You gain +20% on your critical hit table.     Note: This doesn't affect your      crit chance!"
+                DescPicIndex(3) = "BetterCrDesc"
+                DetDescrText(4) = "HtH attacks cost 1 Action Point less."
+                'Adds to melee dmg?
+                DescPicIndex(4) = "BHtHAtDesc"
+                DetDescrText(5) = "You gain +4 HtH Damge."
+                DescPicIndex(5) = "BHtHDmgDesc"
+                DetDescrText(6) = "You do +2 additional damage for each bullet   on ranged weapons."
+                DescPicIndex(6) = "BRDDesc"
+                DetDescrText(7) = "Ranged weapon attacks cost 1 AP less."
+                DescPicIndex(7) = "BRoFDesc"
+                DetDescrText(8) = "This perk doesn't affect anything at the      moment and needs to be reworked."
+                DescPicIndex(8) = ""
+                DetDescrText(9) = "You gain +40 Armor Class."
+                DescPicIndex(9) = "DodgerDesc"
+                DetDescrText(10) = "You gain +6 Sequence."
+                DescPicIndex(10) = "EarlSeqDesc"
+                DetDescrText(11) = "Each Level Up you gain +2 Skill Points,      additionaly to your base value."
+                DescPicIndex(11) = "EducatedDesc"
+                DetDescrText(12) = "You gain +2 Agility."
+                DescPicIndex(12) = "GAGDesc"
+                DetDescrText(13) = "You gain +2 Charisma."
+                DescPicIndex(13) = "StandbySW" 'no pic yet
+                DetDescrText(14) = "You gain +2 Endurance."
+                DescPicIndex(14) = "GENDesc"
+                DetDescrText(15) = "You gain +2 Intelligence."
+                DescPicIndex(15) = "StandbySW" 'no pic yet
+                DetDescrText(16) = "You gain +2 Luck."
+                DescPicIndex(16) = "GLuckDesc"
+                DetDescrText(17) = "You gain +2 Perception."
+                DescPicIndex(17) = "GainPEDesc"
+                DetDescrText(18) = "You gain +2 Strenght."
+                DescPicIndex(18) = "StandbySW" 'no pic yet
+                DetDescrText(19) = "You gain +30% Sneak in dark conditions."
+                DescPicIndex(19) = "StandbySW" 'no pic yet
+                DetDescrText(20) = "You gain +40% Steal-Skill."
+                DescPicIndex(20) = "HarmlessDesc"
+                DetDescrText(21) = "+4-10 HP are healed when using First Aid."
+                DescPicIndex(21) = "StandbySW" 'no pic yet
+                DetDescrText(22) = "You get an additional bonus to your Armor    Class at the end of a turn. Note:    This perk has probably no effect in Real Time mode!"
+                DescPicIndex(22) = "StandbySW" 'no pic yet
+                DetDescrText(23) = "You gain +40 Hit Points."
+                DescPicIndex(23) = "LifeGDesc"
+                DetDescrText(24) = "You chance to set off a trap is lowered by   -90%."
+                DescPicIndex(24) = "LStepDesc"
+                DetDescrText(25) = "You gain +20% to your Doctor-Skill and deal  +5 damage to living creatures                (including other players)."
+                DescPicIndex(25) = "StandbySW" 'no pic yet
+                DetDescrText(26) = "You can carry 2 more people around with you."
+                DescPicIndex(26) = "StandbySW" 'no pic yet
+                DetDescrText(27) = "You gain +20% to Steal- and Lockpick-Skills."
+                DescPicIndex(27) = "StandbySW" 'no pic yet
+                DetDescrText(28) = "You gain +25% to First Aid- and Doctor-      Skills and your timeouts are decreased by 40%."
+                DescPicIndex(28) = "MedicDesc"
+                DetDescrText(29) = "You gain +8% Crit Chance."
+                DescPicIndex(29) = "MCritsDesc"
+                DetDescrText(30) = "You gain +10% to Repair- and Science-Skills."
+                DescPicIndex(30) = "MrFixitDesc"
+                DetDescrText(31) = "You gain +30% to your Outdoorsman-Skill and  your travel time (on world map) is   reduced by 30%."
+                DescPicIndex(31) = "PFinderDesc"
+                DetDescrText(32) = "Size and facing modifiers are ignored when   stealing. Note: Size means the       weight of an item"
+                DescPicIndex(32) = "StandbySW" 'no pic yet
+                DetDescrText(33) = "Inventory actions cost half AP. Reload and   Use costs only 1 AP."
+                DescPicIndex(33) = "QHandsDesc"
+                DetDescrText(34) = "You recover more quickly from knockdowns."
+                DescPicIndex(34) = "QRecDesc"
+                DetDescrText(35) = "You gain +2PE for determining range          (= +6 FOV or +8% Hit Chance)."
+                DescPicIndex(35) = "SShootDesc"
+                DetDescrText(36) = "You deal twice the damage, when performing   a HtH attack from behind."
+                DescPicIndex(36) = "StandbySW" 'no pic yet
+                DetDescrText(37) = "Ability to sneak and run at the same time.   Note: Must have for a sneak          character!"
+                DescPicIndex(37) = "SilentRDesc"
+                DetDescrText(38) = "The chance to be knocked down is decreased."
+                DescPicIndex(38) = "StWallDesc"
+                DetDescrText(39) = "You gain +22kg to your Carry Weight."
+                DescPicIndex(39) = "StrBackDesc"
+                DetDescrText(40) = "-10 seconds to Steal cooldown + chance for   no cooldown at all."
+                DescPicIndex(40) = "ThiefDesc"
+                DetDescrText(41) = "You gain +8% to all types of Damage          Resistance."
+                DescPicIndex(41) = "ThoughDesc"
+                DetDescrText(42) = "You gain +3 ST for weapon Strenght checks."
+                DescPicIndex(42) = "WHandlDesc"
+
+                'Achievements
+                DetDescrName(43) = "Awareness"
+                DetDescrName(44) = "Heave Ho!"
+                DetDescrName(45) = "Pyromaniac"
+                DetDescrName(64) = "Albert the Abberation"
+                DetDescrName(65) = "Mother of God"
+                DetDescrName(116) = "Pack Rat"
+
+                DetDescrText(43) = "You now have detailed info about examined    critters/players. You will gain this perk automatically after reaching level 26."
+                DescPicIndex(43) = "AchievAwarenessDesc"
+                DetDescrText(44) = "You gain +3ST when determining throwing      range. In order to get this perk you need to kill 100 mans with throwing weapons."
+                DescPicIndex(44) = "AchievHeaveDesc"
+                DetDescrText(45) = "You gain +50 flat damage to fire-based       weapons. To obtain this achievement  you have to kill 100 humanoids with Flamer or        Improved Flamer."
+                DescPicIndex(45) = "AchievPyroDesc"
+                DetDescrText(64) = "You do +5 Damage to Floaters and Centaurs.   In order to achieve this you'll need to kill the Abberation in SF Tanker dungeon."
+                DescPicIndex(64) = "AchievAlAberDesc"
+                DetDescrText(65) = "You do +5 Damage to Deathclaws."
+                DescPicIndex(65) = "AchievMoGDesc"
+                DescPicIndex(116) = "AchievPackRDesc"
+                DetDescrText(116) = "Carry Weight is increased by 23kg."
+
+                'Clear and add Implants to list before loading
+                LstVImpl.Clear()
+                LstVImpl.Items.Insert(0, "Accuracy Implant")
+                LstVImpl.Items.Insert(1, "Chem Control Implant")
+                LstVImpl.Items.Insert(2, "Defense Implant")
+                LstVImpl.Items.Insert(3, "Enhancement Implant")
+                LstVImpl.Items.Insert(4, "Enviromental Implant")
+                LstVImpl.Items.Insert(5, "Marksmanship Implant")
+                LstVImpl.Items.Insert(6, "Medical Implant")
+                LstVImpl.Items.Insert(7, "Scouting Implant")
+                LstVImpl.Items.Insert(8, "Speed Implant")
+                LstVImpl.Items.Insert(9, "Survival Implant")
+
+
+                'Test with Statistics
+                For i = 1 To 100
+                    'for j=index (Statistic type)
+                    For j = 0 To 13
+                        'ktemp marks the line in text file
+                        ktemp = 810 + (i * 13) - 13 + j
+
+                        If Not ktemp + 12 > 2110 Then
+                            'write saved values in static var
+                            SaveLoadStatistics(i, True, j, CInt(text(ktemp)))
+                            'careful if testing the following line, can take some time to compute :) :
+                            'Debug.Print("Level: " & i & ", Index: " & j & ", Value: " & CInt(text(ktemp)))
+                        End If
+                    Next
+                Next
+
+                'Perks
+
+                'ranks
+                For i = 0 To 43
+                    If Not ktemp + 1 > 6779 Then
+                        ktemp = 6736 + i
+                        text(ktemp) = Replace(text(ktemp), vbLf, vbNullString)
+                        Perks.PerkRank(i) = CInt(text(ktemp))
+                    End If
+                    
+                Next
+
+                For i = 1 To 100
+                    For j = 0 To 1
+                        ktemp = 3935 + (i * 2) - 2 + j
+                        If Not ktemp + 1 > 4135 Then
+                            'delete line feed from text()
+                            text(ktemp) = Replace(text(ktemp), vbLf, vbNullString)
+                            SaveLoadPerks(CStr(text(ktemp)), i, True, j)
+                            Debug.Print("Perk: " & text(ktemp) & " , Level: " & i & " , Ind: " & j)
+                        End If
+                    Next
+                Next
+
+                'Perkstaken
+                Perkstaken = CInt(text(4154))
+
+                For i = 1 To 100
+                    If Not ktemp + 1 > 4254 Then
+                        ktemp = 4154 + i
+                        text(ktemp) = Replace(text(ktemp), vbLf, vbNullString)
+                        SaveLoadPerkstaken(i, True, CInt(text(ktemp)))
+                    End If
+                Next
+
+
+                'Perklater
+                For i = 1 To 100
+                    If Not ktemp + 1 > 6701 Then
+                        ktemp = 6602 + i
+                        text(ktemp) = Replace(text(ktemp), vbLf, vbNullString)
+                        SaveLoadPerkLater(i, True, CBool(text(ktemp)))
+                    End If
+                Next
+
+                'Skills
+                For i = 1 To 100
+                    For j = 0 To 17
+                        ktemp = 2131 + (i * 18) - 18 + j
+                        text(ktemp) = Replace(text(ktemp), vbLf, vbNullString)
+                        SaveLoadLvlSkills(i, True, j, CInt(text(ktemp)))
+                    Next
+                Next
+
+                'is Skill tagged?
+                For i = 0 To 16
+                    ktemp = 6579 + i
+                    text(ktemp) = Replace(text(ktemp), vbLf, vbNullString)
+                    SaveLoadSkillTag(i, True, text(ktemp))
+                Next
+
+                For i = 0 To 16
+                    If SaveLoadSkillTag(i, False, False) = True Then
+                        Select Case i
+                            Case 0
+                                LblSGuns.ForeColor = Color.WhiteSmoke
+                                LblSGunsVal.ForeColor = Color.WhiteSmoke
+                            Case 1
+                                LblBGuns.ForeColor = Color.WhiteSmoke
+                                LblBGunsVal.ForeColor = Color.WhiteSmoke
+                            Case 2
+                                LblEWeapons.ForeColor = Color.WhiteSmoke
+                                LblEWeaponsVal.ForeColor = Color.WhiteSmoke
+                            Case 3
+                                LblCCombat.ForeColor = Color.WhiteSmoke
+                                LblCCombVal.ForeColor = Color.WhiteSmoke
+                            Case 4
+                                LblThrow.ForeColor = Color.WhiteSmoke
+                                LblThrowVal.ForeColor = Color.WhiteSmoke
+                            Case 5
+                                LblFAid.ForeColor = Color.WhiteSmoke
+                                LblFaidVal.ForeColor = Color.WhiteSmoke
+                            Case 6
+                                LblDoctor.ForeColor = Color.WhiteSmoke
+                                LblDocVal.ForeColor = Color.WhiteSmoke
+                            Case 7
+                                LblSneak.ForeColor = Color.WhiteSmoke
+                                LblSneakVal.ForeColor = Color.WhiteSmoke
+                            Case 8
+                                LblLPick.ForeColor = Color.WhiteSmoke
+                                LblLPickVal.ForeColor = Color.WhiteSmoke
+                            Case 9
+                                LblSteal.ForeColor = Color.WhiteSmoke
+                                LblStealVal.ForeColor = Color.WhiteSmoke
+                            Case 10
+                                LblTraps.ForeColor = Color.WhiteSmoke
+                                LblTrapsVal.ForeColor = Color.WhiteSmoke
+                            Case 11
+                                LblScience.ForeColor = Color.WhiteSmoke
+                                LblScienceVal.ForeColor = Color.WhiteSmoke
+                            Case 9
+                                LblBarter.ForeColor = Color.WhiteSmoke
+                                LblBarterVal.ForeColor = Color.WhiteSmoke
+                            Case 8
+                                LblLPick.ForeColor = Color.WhiteSmoke
+                                LblLPickVal.ForeColor = Color.WhiteSmoke
+                            Case 10
+                                LblTraps.ForeColor = Color.WhiteSmoke
+                                LblTrapsVal.ForeColor = Color.WhiteSmoke
+                            Case 11
+                                LblScience.ForeColor = Color.WhiteSmoke
+                                LblScienceVal.ForeColor = Color.WhiteSmoke
+                            Case 12
+                                LblRepair.ForeColor = Color.WhiteSmoke
+                                LblRepairVal.ForeColor = Color.WhiteSmoke
+                            Case 13
+                                LblSpeech.ForeColor = Color.WhiteSmoke
+                                LblSpeechVal.ForeColor = Color.WhiteSmoke
+                            Case 14
+                                LblBarter.ForeColor = Color.WhiteSmoke
+                                LblBarterVal.ForeColor = Color.WhiteSmoke
+                            Case 15
+                                LblGambling.ForeColor = Color.WhiteSmoke
+                                LblGamblVal.ForeColor = Color.WhiteSmoke
+                            Case 16
+                                LblODMan.ForeColor = Color.WhiteSmoke
+                                LblODVal.ForeColor = Color.WhiteSmoke
+                        End Select
+                    End If
+                Next
+
+                'In case user clicked on skills to tag before lvl1
+                'make em green again
+                For i = 0 To 16
+                    If SaveLoadSkillTag(i, False, False) = False Then
+                        Select Case i
+                            Case 0
+                                LblSGuns.ForeColor = Color.LimeGreen
+                                LblSGunsVal.ForeColor = Color.LimeGreen
+                            Case 1
+                                LblBGuns.ForeColor = Color.LimeGreen
+                                LblBGunsVal.ForeColor = Color.LimeGreen
+                            Case 2
+                                LblEWeapons.ForeColor = Color.LimeGreen
+                                LblEWeaponsVal.ForeColor = Color.LimeGreen
+                            Case 3
+                                LblCCombat.ForeColor = Color.LimeGreen
+                                LblCCombVal.ForeColor = Color.LimeGreen
+                            Case 4
+                                LblThrow.ForeColor = Color.LimeGreen
+                                LblThrowVal.ForeColor = Color.LimeGreen
+                            Case 5
+                                LblFAid.ForeColor = Color.LimeGreen
+                                LblFaidVal.ForeColor = Color.LimeGreen
+                            Case 6
+                                LblDoctor.ForeColor = Color.LimeGreen
+                                LblDocVal.ForeColor = Color.LimeGreen
+                            Case 7
+                                LblSneak.ForeColor = Color.LimeGreen
+                                LblSneakVal.ForeColor = Color.LimeGreen
+                            Case 8
+                                LblLPick.ForeColor = Color.LimeGreen
+                                LblLPickVal.ForeColor = Color.LimeGreen
+                            Case 9
+                                LblSteal.ForeColor = Color.LimeGreen
+                                LblStealVal.ForeColor = Color.LimeGreen
+                            Case 10
+                                LblTraps.ForeColor = Color.LimeGreen
+                                LblTrapsVal.ForeColor = Color.LimeGreen
+                            Case 11
+                                LblScience.ForeColor = Color.LimeGreen
+                                LblScienceVal.ForeColor = Color.LimeGreen
+                            Case 9
+                                LblBarter.ForeColor = Color.LimeGreen
+                                LblBarterVal.ForeColor = Color.LimeGreen
+                            Case 8
+                                LblLPick.ForeColor = Color.LimeGreen
+                                LblLPickVal.ForeColor = Color.LimeGreen
+                            Case 10
+                                LblTraps.ForeColor = Color.LimeGreen
+                                LblTrapsVal.ForeColor = Color.LimeGreen
+                            Case 11
+                                LblScience.ForeColor = Color.LimeGreen
+                                LblScienceVal.ForeColor = Color.LimeGreen
+                            Case 12
+                                LblRepair.ForeColor = Color.LimeGreen
+                                LblRepairVal.ForeColor = Color.LimeGreen
+                            Case 13
+                                LblSpeech.ForeColor = Color.LimeGreen
+                                LblSpeechVal.ForeColor = Color.LimeGreen
+                            Case 14
+                                LblBarter.ForeColor = Color.LimeGreen
+                                LblBarterVal.ForeColor = Color.LimeGreen
+                            Case 15
+                                LblGambling.ForeColor = Color.LimeGreen
+                                LblGamblVal.ForeColor = Color.LimeGreen
+                            Case 16
+                                LblODMan.ForeColor = Color.LimeGreen
+                                LblODVal.ForeColor = Color.LimeGreen
+                        End Select
+                    End If
+                Next
+
+                'skPLeft
+                For i = 1 To 100
+                    For j = 0 To 1
+                        ktemp = 6366 + (i * 2) - 2 + j
+                        text(ktemp) = Replace(text(ktemp), vbLf, vbNullString)
+                        SaveLoadSPLeft(i, CInt(text(ktemp)), True)
+                    Next
+                Next i
+
+
+                'SkPLeft
+                'LblSkPointsVal.Text = CInt(text(6365))
+
+                'Special
+                For i = 1 To 100
+                    For j = 0 To 7
+                        ktemp = 8 + (i * 8) - 8 + j
+                        text(ktemp) = Replace(text(ktemp), vbLf, vbNullString)
+                        SaveLoadSpecial(i, True, j, CInt(text(ktemp)))
+                    Next
+                Next
+                'Books
+                For i = 1 To 100
+                    For j = 0 To 5
+                        ktemp = 4257 + (i * 6) - 6 + j
+                        text(ktemp) = Replace(text(ktemp), vbLf, vbNullString)
+                        SaveLoadBooks(i, True, j, CInt(text(ktemp)))
+                    Next
+                Next
+
+                'Quests
+                For i = 1 To 100
+                    For j = 0 To 2
+                        ktemp = 6063 + (i * 3) - 3 + j
+                        text(ktemp) = Replace(text(ktemp), vbLf, vbNullString)
+                        SaveLoadQuests(i, True, text(ktemp), j)
+                        'Debug.Print("Level: " & i & " , Ind: " & j & " , " & text(ktemp))
+                    Next
+                Next i
+
+                'Fill Achievement List before loading/adding/removing them
+                'in case user saved, then took achievements and then loads again
+                LstVAchiev.Clear()
+                LstVAchiev.Items.Insert(0, "Albert the Abberation")
+                LstVAchiev.Items.Insert(1, "Awareness")
+                LstVAchiev.Items.Insert(2, "Engineering Implant")
+                LstVAchiev.Items.Insert(3, "Heave Ho!")
+                LstVAchiev.Items.Insert(4, "Mother of God")
+                LstVAchiev.Items.Insert(5, "Pack Rat")
+                LstVAchiev.Items.Insert(6, "Pathfinder")
+                LstVAchiev.Items.Insert(0, "Pyromaniac")
+
+                'Achievements
+                For i = 1 To 100
+                    For j = 0 To 10
+                        ktemp = 4961 + (i * 11) - 11 + j
+                        text(ktemp) = Replace(text(ktemp), vbLf, vbNullString)
+                        SaveLoadAchievements(i, True, CStr(text(ktemp)), j)
+                        'Debug.Print("Level: " & i & " , Ind: " & j & " , " & text(ktemp))
+                    Next
+                Next
+
+                'test
+                Dim saveloadteststring As String
+                For i = 1 To 20
+                    For j = 0 To 10
+                        saveloadteststring = SaveLoadAchievements(i, False, "", j)
+                        Debug.Print("TestAch Lvl: " & i & " , Ind: " & j & " , Achiev: " & saveloadteststring)
+                    Next
+                Next
+
+                'was implant choosen
+                text(6721) = Replace(text(6721), vbLf, vbNullString)
+                isImplChoosen = CBool(text(6721))
+
+                'Implants
+                ktemp = 0
+                For i = 1 To 100
+                    If Not ktemp + 1 > 4958 Then
+                        ktemp = 4859 + i
+                        text(ktemp) = Replace(text(ktemp), vbLf, vbNullString)
+                        SaveLoadImpl(i, True, text(ktemp))
+                        Debug.Print("Level: " & i & " , Impl: " & text(ktemp))
+                    End If
+                Next
+
+                Dim strTemp As String
+                strTemp = ""
+
+                'Load Build
+                level = text(3933)
+                LblLevelVal.Text = Format(CInt(level), "##")
+                Perks.levelVal = LblLevelVal.Text
+                'Debug.Print("Levelload: " & Perks.levelVal & " , Level(level): " & level)
+
+                LstBoxPerks.Items.Clear()
+                LoadBooks(level)
+                LoadSPECIALS(CInt(text(3933)))
+
+                'load statistics at level, at which the build was save
+                'LoadStatistics(CInt(text(3933)) - 1)
+                LoadStatistics(CInt(text(3933)))
+                'Statistics.SetStatistics()
+
+                'HP/SP to last level
+                text(6724) = Replace(text(6724), vbLf, vbNullString)
+                SkPointstolastlvl = text(6724)
+
+                text(6727) = Replace(text(6727), vbLf, vbNullString)
+                HitPointstolastlvl = text(6727)
+
+                text(6733) = Replace(text(6733), vbLf, vbNullString)
+                lastLevel = text(6733)
+
+                'was FastLvlUp pressed
+                text(6730) = Replace(text(6730), vbLf, vbNullString)
+                isFastUp = CBool(text(6730))
+
+                'Traits
+
+                text(4136) = Replace(text(4136), vbLf, vbNullString)
+                isFastMeta = CBool(text(4136))
+                text(4137) = Replace(text(4137), vbLf, vbNullString)
+                isBruiser = CBool(text(4137))
+                text(4138) = Replace(text(4138), vbLf, vbNullString)
+                isSFrame = CBool(text(4138))
+                text(4139) = Replace(text(4139), vbLf, vbNullString)
+                isOHanded = CBool(text(4139))
+                text(4140) = Replace(text(4140), vbLf, vbNullString)
+                isFinesse = CBool(text(4140))
+                text(4141) = Replace(text(4141), vbLf, vbNullString)
+                isKamikaze = CBool(text(4141))
+                text(4142) = Replace(text(4142), vbLf, vbNullString)
+                isHHanded = CBool(text(4142))
+                text(4143) = Replace(text(4143), vbLf, vbNullString)
+                isFShot = CBool(text(4143))
+                text(4144) = Replace(text(4144), vbLf, vbNullString)
+                isBlMess = CBool(text(4144))
+                text(4145) = Replace(text(4145), vbLf, vbNullString)
+                isJinxed = CBool(text(4145))
+                text(4146) = Replace(text(4146), vbLf, vbNullString)
+                isGNatured = CBool(text(4146))
+                text(4147) = Replace(text(4147), vbLf, vbNullString)
+                isCRel = CBool(text(4147))
+                text(4148) = Replace(text(4148), vbLf, vbNullString)
+                isCRes = CBool(text(4148))
+                text(4149) = Replace(text(4149), vbLf, vbNullString)
+                isBHead = CBool(text(4149))
+                text(4150) = Replace(text(4150), vbLf, vbNullString)
+                isMutant = CBool(text(4150))
+                text(4151) = Replace(text(4151), vbLf, vbNullString)
+                isEvader = CBool(text(4151))
+
+
+                'sw.WriteLine(isFastMeta)
+                If isFastMeta = True Then
+                    LstBoxPerks.Items.Add("Fast Metabolism")
+                End If
+                'sw.WriteLine(isBruiser)
+                If isBruiser = True Then
+                    LstBoxPerks.Items.Add("Bruiser")
+                End If
+                'sw.WriteLine(isSFrame)
+                If isSFrame = True Then
+                    LstBoxPerks.Items.Add("Small Frame")
+                End If
+                'sw.WriteLine(isOHanded)
+                If isOHanded = True Then
+                    LstBoxPerks.Items.Add("One Handed")
+                End If
+                'sw.WriteLine(isFinesse)
+                If isFinesse = True Then
+                    LstBoxPerks.Items.Add("Finesse")
+                End If
+                'sw.WriteLine(isKamikaze)
+                If isKamikaze = True Then
+                    LstBoxPerks.Items.Add("Kamikaze")
+                End If
+                'sw.WriteLine(isHHanded)
+                If isHHanded = True Then
+                    LstBoxPerks.Items.Add("Heavy Handed")
+                End If
+                'sw.WriteLine(isFShot)
+                If isFShot = True Then
+                    LstBoxPerks.Items.Add("Fast Shot")
+                End If
+                'sw.WriteLine(isBlMess)
+                If isBlMess = True Then
+                    LstBoxPerks.Items.Add("Bloody Mess")
+                End If
+                'sw.WriteLine(isJinxed)
+                If isJinxed = True Then
+                    LstBoxPerks.Items.Add("Jinxed")
+                End If
+                'sw.WriteLine(isGNatured)
+                If isGNatured = True Then
+                    LstBoxPerks.Items.Add("Good Natured")
+                End If
+                'sw.WriteLine(isCRel)
+                If isCRel = True Then
+                    LstBoxPerks.Items.Add("Chem Reliant")
+                End If
+                'sw.WriteLine(isCRes)
+                If isCRes = True Then
+                    LstBoxPerks.Items.Add("Chem Resistant")
+                End If
+                'sw.WriteLine(isBHead)
+                If isBHead = True Then
+                    LstBoxPerks.Items.Add("Bonehead")
+                End If
+                'sw.WriteLine(isMutant)
+                If isMutant = True Then
+                    LstBoxPerks.Items.Add("Mutant")
+                End If
+                'sw.WriteLine(isEvader)
+                If isEvader = True Then
+                    LstBoxPerks.Items.Add("Evader")
+                End If
+
+                'add loaded Perks to lstBoxPerks
+                For i = 1 To CInt(level)
+                    For j = 0 To 1
+                        strTemp = SaveLoadPerks("", i, False, j)
+
+                        If Not strTemp = "" Then
+                            'Debug.Print("strTemp" & "..." & strTemp & "...")
+                            'MessageBox.Show(strTemp)
+                            LstBoxPerks.Items.Add(strTemp)
+                        End If
+                    Next
+                Next
+
+                'Check for doublettes in case a ranked perk was taken more then once, it has to be
+                'removed from list again
+
+                Dim PLItemTemp As String
+                Dim PLItems(100) As String
+                Dim PLzaehler As Integer = 0
+
+                'Write all ListItems into Array
+                For Each PLItem As String In LstBoxPerks.Items
+                    PLItems(PLzaehler) = PLItem
+                    PLzaehler = PLzaehler + 1
+                Next
+
+                For i = 0 To 100
+                    PLItemTemp = PLItems(i)
+                    'Debug.Print("items(" & i & ") : " & (PLItems(i)))
+                    If InStr(PLItems(i), "(3)") Then
+                        Try
+                            LstBoxPerks.Items.Remove(PLItemTemp.Replace("(3)", "(2)"))
+                            LstBoxPerks.Items.Remove(PLItemTemp.Substring(0, Len(PLItems(i)) - 4))
+                        Catch ex As Exception
+                        End Try
+
+                    ElseIf InStr(PLItems(i), "(2)") Then
+                        Try
+                            LstBoxPerks.Items.Remove(PLItemTemp.Substring(0, Len(PLItems(i)) - 4))
+                        Catch ex As Exception
+                        End Try
+                    End If
+                Next
+
+                'add loaded Achievements to Perk/Trait-List
+                Dim isItemInLBPerks As Boolean
+                For i = 1 To CInt(level)
+                    For j = 0 To 10
+                        strTemp = SaveLoadAchievements(i, False, "", j)
+                        isItemInLBPerks = False
+                        If Not strTemp = "" Then
+                            Debug.Print("strTemp Achievements" & "..." & strTemp & "...")
+                            If isLoadedOnce = True Then
+                                'MessageBox.Show("Trrueee")
+                                For Each LBAchievemItem As String In LstBoxPerks.Items
+                                    If strTemp = LBAchievemItem Then
+                                        isItemInLBPerks = True
+                                    End If
+                                Next
+
+                                If Not isItemInLBPerks = True Then
+                                    LstBoxPerks.Items.Add(strTemp)
+                                End If
+                            Else
+                                LstBoxPerks.Items.Add(strTemp)
+                            End If
+                        End If
+                    Next
+                Next
+
+                'Delete Achievements from A.List
+                Dim ALIstItemStr As String
+
+                For i = 1 To CInt(level)
+                    For j = 0 To 10
+                        strTemp = SaveLoadAchievements(i, False, "", j)
+
+                        If Not strTemp = "" Then
+                            For Each AListItem As ListViewItem In LstVAchiev.Items
+                                ALIstItemStr = AListItem.ToString
+                                ALIstItemStr = ALIstItemStr.Remove(0, 15)
+                                ALIstItemStr = ALIstItemStr.TrimEnd("}")
+
+                                If strTemp = ALIstItemStr Then
+                                    AListItem.Remove()
+                                End If
+
+                            Next
+                        End If
+                    Next
+                Next
+
+                'Add Implants to ListBPerks and Remove ImplListItems
+                For i = 1 To 100
+                    strTemp = SaveLoadImpl(i, False, "")
+                    If Not strTemp = "" Then
+                        LstBoxPerks.Items.Add(strTemp)
+                        For Each item In LstVImpl.Items
+                            item.Remove()
+                        Next
+                    End If
+                Next
+
+
+                Dim LItemStr As String
+                Dim LItem As ListViewItem
+
+                'Remove taken Quests from List
+                Dim zaehlerChessInListB As Integer = 0
+
+                For i = 1 To 100
+                    For j = 0 To 2
+                        strTemp = SaveLoadQuests(i, False, "Quest", j)
+                        'Debug.Print(strTemp)
+                        If Not strTemp = "" Then
+                            'If Not isLoadedOnce = True Then
+                            For Each LItem In LstVQuests.Items
+                                LItemStr = LItem.ToString
+                                LItemStr = LItemStr.Remove(0, 15)
+                                LItemStr = LItemStr.TrimEnd("}")
+                                Debug.Print("LItemStr: " & LItemStr)
+                                If InStr(strTemp, "Chess Game") Then
+                                    If Not zaehlerChessInListB > 0 Then
+                                        LstBoxPerks.Items.Add(strTemp)
+                                        zaehlerChessInListB = zaehlerChessInListB + 1
+
+                                    End If
+
+                                ElseIf LItemStr = strTemp Then
+                                    LItem.Remove()
+                                    LstBoxPerks.Items.Add(strTemp)
+                                End If
+                            Next
+                            'End If
+                        End If
+                    Next
+                Next
+
+                'Book Buttons and Saved Skill Points
+                text(6707) = Replace(text(6707), vbLf, vbNullString)
+                isBooksAll = CBool(text(6707))
+                text(6710) = Replace(text(6710), vbLf, vbNullString)
+                isBookMentats = CBool(text(6710))
+
+                If isBooksAll = True Then
+                    BtnBooksAll.Enabled = False
+                Else
+                    BtnBooksAll.Enabled = True
+                End If
+
+                If isBookMentats = True Then
+                    LblBMentats.Enabled = False
+                Else
+                    LblBMentats.Enabled = True
+                End If
+
+                SavedSPBooksOD = CInt(text(6714))
+                SavedSPBooksRep = CInt(text(6715))
+                SavedSPBooksSmallG = CInt(text(6716))
+                SavedSPBooksScience = CInt(text(6717))
+                SavedSPBooksFAid = CInt(text(6718))
+
+
+
+                'FA/Doc Timeouts            
+                text(6704) = Replace(text(6704), vbLf, vbNullString)
+                isMedic = CBool(text(6704))
+
+                Dim FACoolSecLoad As Double = 0
+                Dim DocCoolSecLoad As Double = 0
+                Dim DocAtLvl As Integer
+                Dim FAAtLvl As Integer
+
+                DocAtLvl = SaveLoadLvlSkills(level, False, 10, 1)
+                FAAtLvl = SaveLoadLvlSkills(level, False, 11, 1)
+
+                If isMedic = True Then
+                    FACoolSecLoad = 9000 / FAAtLvl * 0.6
+                Else
+                    FACoolSecLoad = 9000 / FAAtLvl
+                End If
+
+                If isMedic = True Then
+                    DocCoolSecLoad = 9000 / DocAtLvl * 0.6
+                Else
+                    DocCoolSecLoad = 9000 / DocAtLvl
+                End If
+
+                Dim DocCoolSpanLoad As TimeSpan = TimeSpan.FromSeconds(DocCoolSecLoad)
+                'Form1.Label2.Text = DocCoolSec
+                LblTODocVal.Text = DocCoolSpanLoad.Minutes.ToString.PadLeft(2, "0"c) & ":" & _
+                            DocCoolSpanLoad.Seconds.ToString.PadLeft(2, "0"c)
+                Dim FACoolSpanLoad As TimeSpan = TimeSpan.FromSeconds(FACoolSecLoad)
+                LblTOFAVal.Text = FACoolSpanLoad.Minutes.ToString.PadLeft(2, "0"c) & ":" & _
+                            FACoolSpanLoad.Seconds.ToString.PadLeft(2, "0"c)
+
+                'read in the value of those booleans to determine wether Chess Game was
+                'already taken or not at the level, the file was saved
+                text(6598) = Replace(text(6598), vbLf, vbNullString)
+                strTemp = text(6598)
+                chessavailable = CBool(strTemp)
+                text(6599) = Replace(text(6598), vbLf, vbNullString)
+                strTemp = text(6599)
+                chessgametaken = CBool(strTemp)
+
+                isPerklater = SaveLoadPerkLater(level, False, False)
+
+                'LoadPerkStats(CInt(text(3933)))
+                Skills.LoadSkills()
+                'SkillValAfterLoad()
+                isLoadedOnce = True
+                isLoad = False
+
+                If level >= 24 And level <= 99 Then
+                    BtnLvlFastUp.Visible = True
+                Else
+                    BtnLvlFastUp.Visible = False
+                End If
+
+                If isFastUp = True Then
+                    BtnLvlDwn.Visible = False
+                    BtnLvlFastDwn.Visible = True
+                    BtnLvlUp.Visible = False
+                    BtnLvlFastUp.Visible = False
+                End If
+
+            End If
+        End If
     End Sub
-   
+
+    
 End Class
 

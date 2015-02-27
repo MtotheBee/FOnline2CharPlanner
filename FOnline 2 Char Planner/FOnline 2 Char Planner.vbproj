@@ -389,6 +389,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FCPSymbol.ico" />
+    <None Include="Resources\BuffoutHighNew.png" />
+    <None Include="Resources\BuffoutNew.png" />
+    <None Include="Resources\CigarettesNew.png" />
+    <None Include="Resources\CigarettesHighNew.png" />
+    <None Include="Resources\ChemControlImpDesc.jpg" />
+    <None Include="Resources\GainPEDesc.jpg" />
+    <None Include="Resources\WHandlDesc.jpg" />
+    <None Include="Resources\LStepDesc.jpg" />
+    <None Include="Resources\PsychoHigh.png" />
+    <None Include="Resources\NukaHigh.png" />
+    <None Include="Resources\JetHigh.png" />
+    <None Include="Resources\CigarettesHigh.png" />
+    <None Include="Resources\BuffoutHigh.png" />
+    <None Include="Resources\Psycho.png" />
+    <None Include="Resources\Nuka.png" />
+    <None Include="Resources\Jet.png" />
+    <None Include="Resources\Cigarettes.png" />
+    <None Include="Resources\Buffout.png" />
     <None Include="Resources\VolumeMute.png" />
     <None Include="Resources\Volume75.png" />
     <None Include="Resources\Volume50.png" />

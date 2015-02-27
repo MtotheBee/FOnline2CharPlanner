@@ -275,13 +275,17 @@
             If Perks(i) = perk Then
                 If PerkRank(i) > 1 Then
                     PerkRank(i) = PerkRank(i) - 1
+                    'Form1.SaveLoadPerkRank(i, True, PerkRank(i))
                 Else
                     PerkRank(i) = PerkRank(i) - 1
+                    'Form1.SaveLoadPerkRank(i, True, PerkRank(i))
                     Perkstaken(i) = True
                 End If
 
             End If
         Next
+
+
     End Sub
 
     'Effects of Perks

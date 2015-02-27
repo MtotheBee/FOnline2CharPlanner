@@ -22,6 +22,7 @@
     Friend addCritChance As Integer
     Friend addHHanded As Integer
     Friend addBruiser As Integer
+    Friend addMutantMDmg As Integer
     Friend addKamikaze As Integer
     Friend addMutantDR As Integer
     Friend Sight As Integer
@@ -95,8 +96,7 @@
             End If
 
             'Melee Calc New
-            Form1.LblMDmgVal.Text = Strenght + (addHHanded) + (addBruiser)
-
+            Form1.LblMDmgVal.Text = Strenght + (addHHanded) + (addBruiser) + (addMutantMDmg)
 
             'HRate Calc
             If Endurance = 1 And Form1.isFastMeta = False Then

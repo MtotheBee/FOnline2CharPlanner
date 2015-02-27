@@ -197,6 +197,12 @@ Partial Class Form1
         Me.BtnLvlDwn = New System.Windows.Forms.Button()
         Me.BtnMusicVolDown = New System.Windows.Forms.Button()
         Me.BtnMusicVolUp = New System.Windows.Forms.Button()
+        Me.BtnDrugsCigs = New System.Windows.Forms.Button()
+        Me.BtnDrugsNuka = New System.Windows.Forms.Button()
+        Me.BtnDrugsPsycho = New System.Windows.Forms.Button()
+        Me.BtnDrugsBuff = New System.Windows.Forms.Button()
+        Me.BtnDrugsJet = New System.Windows.Forms.Button()
+        Me.BtnAllDrugs = New System.Windows.Forms.Button()
         Me.BtnMscStop = New System.Windows.Forms.Button()
         Me.BtnDone = New System.Windows.Forms.Button()
         Me.LstVPerks = New System.Windows.Forms.ListView()
@@ -265,6 +271,8 @@ Partial Class Form1
         Me.LblMusicTElap = New System.Windows.Forms.Label()
         Me.TxtBMusicText = New System.Windows.Forms.TextBox()
         Me.PicBoxMusicVol = New System.Windows.Forms.PictureBox()
+        Me.PanDrugs = New System.Windows.Forms.Panel()
+        Me.LblDrugs = New System.Windows.Forms.Label()
         Me.PanStats.SuspendLayout()
         Me.CPointsPan.SuspendLayout()
         Me.PanTraits.SuspendLayout()
@@ -281,6 +289,7 @@ Partial Class Form1
         Me.PanBookValEdit.SuspendLayout()
         Me.Panel2.SuspendLayout()
         CType(Me.PicBoxMusicVol, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.PanDrugs.SuspendLayout()
         Me.SuspendLayout()
         '
         'LblStatsST
@@ -723,7 +732,7 @@ Partial Class Form1
         Me.LblStatsENVal.AutoSize = True
         Me.LblStatsENVal.BackColor = System.Drawing.Color.FromArgb(CType(CType(20, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(21, Byte), Integer))
         Me.LblStatsENVal.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblStatsENVal.ForeColor = System.Drawing.Color.LimeGreen
+        Me.LblStatsENVal.ForeColor = System.Drawing.Color.LightSkyBlue
         Me.LblStatsENVal.Location = New System.Drawing.Point(46, 70)
         Me.LblStatsENVal.Name = "LblStatsENVal"
         Me.LblStatsENVal.Size = New System.Drawing.Size(18, 18)
@@ -1278,7 +1287,7 @@ Partial Class Form1
         Me.LblAPointsVal.BackColor = System.Drawing.Color.FromArgb(CType(CType(20, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(21, Byte), Integer))
         Me.LblAPointsVal.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.LblAPointsVal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblAPointsVal.ForeColor = System.Drawing.Color.LimeGreen
+        Me.LblAPointsVal.ForeColor = System.Drawing.Color.LightSkyBlue
         Me.LblAPointsVal.Location = New System.Drawing.Point(96, 18)
         Me.LblAPointsVal.Name = "LblAPointsVal"
         Me.LblAPointsVal.Padding = New System.Windows.Forms.Padding(2, 1, 2, 1)
@@ -2412,6 +2421,126 @@ Partial Class Form1
         Me.BtnMusicVolUp.UseVisualStyleBackColor = False
         Me.BtnMusicVolUp.Visible = False
         '
+        'BtnDrugsCigs
+        '
+        Me.BtnDrugsCigs.BackColor = System.Drawing.Color.Transparent
+        Me.BtnDrugsCigs.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnDrugsCigs.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.BtnDrugsCigs.FlatAppearance.BorderSize = 0
+        Me.BtnDrugsCigs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightYellow
+        Me.BtnDrugsCigs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.BtnDrugsCigs.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnDrugsCigs.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnDrugsCigs.ForeColor = System.Drawing.Color.White
+        Me.BtnDrugsCigs.Image = Global.FOnline_2_Char_Planner.My.Resources.Resources.CigarettesNew
+        Me.BtnDrugsCigs.Location = New System.Drawing.Point(142, -2)
+        Me.BtnDrugsCigs.Name = "BtnDrugsCigs"
+        Me.BtnDrugsCigs.Size = New System.Drawing.Size(32, 30)
+        Me.BtnDrugsCigs.TabIndex = 48
+        Me.ToolTip1.SetToolTip(Me.BtnDrugsCigs, "Cigarettes")
+        Me.BtnDrugsCigs.UseCompatibleTextRendering = True
+        Me.BtnDrugsCigs.UseVisualStyleBackColor = False
+        '
+        'BtnDrugsNuka
+        '
+        Me.BtnDrugsNuka.BackColor = System.Drawing.Color.Transparent
+        Me.BtnDrugsNuka.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnDrugsNuka.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.BtnDrugsNuka.FlatAppearance.BorderSize = 0
+        Me.BtnDrugsNuka.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightYellow
+        Me.BtnDrugsNuka.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.BtnDrugsNuka.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnDrugsNuka.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnDrugsNuka.ForeColor = System.Drawing.Color.White
+        Me.BtnDrugsNuka.Image = Global.FOnline_2_Char_Planner.My.Resources.Resources.Nuka
+        Me.BtnDrugsNuka.Location = New System.Drawing.Point(107, -1)
+        Me.BtnDrugsNuka.Name = "BtnDrugsNuka"
+        Me.BtnDrugsNuka.Size = New System.Drawing.Size(30, 29)
+        Me.BtnDrugsNuka.TabIndex = 47
+        Me.ToolTip1.SetToolTip(Me.BtnDrugsNuka, "Nuka Cola")
+        Me.BtnDrugsNuka.UseCompatibleTextRendering = True
+        Me.BtnDrugsNuka.UseVisualStyleBackColor = False
+        '
+        'BtnDrugsPsycho
+        '
+        Me.BtnDrugsPsycho.BackColor = System.Drawing.Color.Transparent
+        Me.BtnDrugsPsycho.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnDrugsPsycho.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.BtnDrugsPsycho.FlatAppearance.BorderSize = 0
+        Me.BtnDrugsPsycho.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightYellow
+        Me.BtnDrugsPsycho.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.BtnDrugsPsycho.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnDrugsPsycho.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnDrugsPsycho.ForeColor = System.Drawing.Color.White
+        Me.BtnDrugsPsycho.Image = Global.FOnline_2_Char_Planner.My.Resources.Resources.Psycho
+        Me.BtnDrugsPsycho.Location = New System.Drawing.Point(73, -1)
+        Me.BtnDrugsPsycho.Name = "BtnDrugsPsycho"
+        Me.BtnDrugsPsycho.Size = New System.Drawing.Size(34, 28)
+        Me.BtnDrugsPsycho.TabIndex = 46
+        Me.ToolTip1.SetToolTip(Me.BtnDrugsPsycho, "Psycho")
+        Me.BtnDrugsPsycho.UseCompatibleTextRendering = True
+        Me.BtnDrugsPsycho.UseVisualStyleBackColor = False
+        '
+        'BtnDrugsBuff
+        '
+        Me.BtnDrugsBuff.BackColor = System.Drawing.Color.Transparent
+        Me.BtnDrugsBuff.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnDrugsBuff.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.BtnDrugsBuff.FlatAppearance.BorderSize = 0
+        Me.BtnDrugsBuff.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightYellow
+        Me.BtnDrugsBuff.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.BtnDrugsBuff.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnDrugsBuff.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnDrugsBuff.ForeColor = System.Drawing.Color.White
+        Me.BtnDrugsBuff.Image = Global.FOnline_2_Char_Planner.My.Resources.Resources.BuffoutNew
+        Me.BtnDrugsBuff.Location = New System.Drawing.Point(37, 0)
+        Me.BtnDrugsBuff.Name = "BtnDrugsBuff"
+        Me.BtnDrugsBuff.Size = New System.Drawing.Size(32, 29)
+        Me.BtnDrugsBuff.TabIndex = 45
+        Me.ToolTip1.SetToolTip(Me.BtnDrugsBuff, "Buffout")
+        Me.BtnDrugsBuff.UseCompatibleTextRendering = True
+        Me.BtnDrugsBuff.UseVisualStyleBackColor = False
+        '
+        'BtnDrugsJet
+        '
+        Me.BtnDrugsJet.BackColor = System.Drawing.Color.Transparent
+        Me.BtnDrugsJet.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnDrugsJet.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.BtnDrugsJet.FlatAppearance.BorderSize = 0
+        Me.BtnDrugsJet.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightYellow
+        Me.BtnDrugsJet.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent
+        Me.BtnDrugsJet.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnDrugsJet.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnDrugsJet.ForeColor = System.Drawing.Color.White
+        Me.BtnDrugsJet.Image = Global.FOnline_2_Char_Planner.My.Resources.Resources.Jet
+        Me.BtnDrugsJet.Location = New System.Drawing.Point(0, 0)
+        Me.BtnDrugsJet.Name = "BtnDrugsJet"
+        Me.BtnDrugsJet.Size = New System.Drawing.Size(31, 29)
+        Me.BtnDrugsJet.TabIndex = 44
+        Me.ToolTip1.SetToolTip(Me.BtnDrugsJet, "Jet")
+        Me.BtnDrugsJet.UseCompatibleTextRendering = True
+        Me.BtnDrugsJet.UseVisualStyleBackColor = False
+        '
+        'BtnAllDrugs
+        '
+        Me.BtnAllDrugs.BackColor = System.Drawing.Color.FromArgb(CType(CType(20, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(21, Byte), Integer))
+        Me.BtnAllDrugs.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnAllDrugs.FlatAppearance.BorderColor = System.Drawing.Color.Silver
+        Me.BtnAllDrugs.FlatAppearance.BorderSize = 0
+        Me.BtnAllDrugs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightYellow
+        Me.BtnAllDrugs.FlatAppearance.MouseOverBackColor = System.Drawing.Color.DarkGreen
+        Me.BtnAllDrugs.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.BtnAllDrugs.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.BtnAllDrugs.ForeColor = System.Drawing.Color.Tomato
+        Me.BtnAllDrugs.Location = New System.Drawing.Point(241, 363)
+        Me.BtnAllDrugs.Name = "BtnAllDrugs"
+        Me.BtnAllDrugs.Size = New System.Drawing.Size(34, 25)
+        Me.BtnAllDrugs.TabIndex = 118
+        Me.BtnAllDrugs.Text = "All"
+        Me.ToolTip1.SetToolTip(Me.BtnAllDrugs, "Take all Drugs at once")
+        Me.BtnAllDrugs.UseCompatibleTextRendering = True
+        Me.BtnAllDrugs.UseVisualStyleBackColor = False
+        '
         'BtnMscStop
         '
         Me.BtnMscStop.BackColor = System.Drawing.Color.Black
@@ -2618,15 +2747,14 @@ Partial Class Form1
         Me.SaveBuildToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SaveBuildToolStripMenuItem.Name = "SaveBuildToolStripMenuItem"
         Me.SaveBuildToolStripMenuItem.ShowShortcutKeys = False
-        Me.SaveBuildToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SaveBuildToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
         Me.SaveBuildToolStripMenuItem.Text = "Save Build"
         '
         'LoadBuildToolStripMenuItem
         '
-        Me.LoadBuildToolStripMenuItem.Enabled = False
         Me.LoadBuildToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LoadBuildToolStripMenuItem.Name = "LoadBuildToolStripMenuItem"
-        Me.LoadBuildToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LoadBuildToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
         Me.LoadBuildToolStripMenuItem.Text = "Load Build"
         '
         'ExportToolStripMenuItem
@@ -2634,7 +2762,7 @@ Partial Class Form1
         Me.ExportToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AsImageToolStripMenuItem})
         Me.ExportToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ExportToolStripMenuItem.Name = "ExportToolStripMenuItem"
-        Me.ExportToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExportToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
         Me.ExportToolStripMenuItem.Text = "Export"
         '
         'AsImageToolStripMenuItem
@@ -2646,14 +2774,14 @@ Partial Class Form1
         'ResetToolStripMenuItem
         '
         Me.ResetToolStripMenuItem.Name = "ResetToolStripMenuItem"
-        Me.ResetToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ResetToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
         Me.ResetToolStripMenuItem.Text = "Reset"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ToolStripMenuItem1
@@ -3132,7 +3260,7 @@ Partial Class Form1
         Me.Label3.AutoSize = True
         Me.Label3.BackColor = System.Drawing.Color.Transparent
         Me.Label3.ForeColor = System.Drawing.Color.LightGreen
-        Me.Label3.Location = New System.Drawing.Point(276, 375)
+        Me.Label3.Location = New System.Drawing.Point(456, 300)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(39, 13)
         Me.Label3.TabIndex = 91
@@ -3144,7 +3272,7 @@ Partial Class Form1
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.Transparent
         Me.Label1.ForeColor = System.Drawing.Color.LightGreen
-        Me.Label1.Location = New System.Drawing.Point(276, 349)
+        Me.Label1.Location = New System.Drawing.Point(456, 324)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(39, 13)
         Me.Label1.TabIndex = 92
@@ -3156,7 +3284,7 @@ Partial Class Form1
         Me.Label2.AutoSize = True
         Me.Label2.BackColor = System.Drawing.Color.Transparent
         Me.Label2.ForeColor = System.Drawing.Color.LightGreen
-        Me.Label2.Location = New System.Drawing.Point(321, 349)
+        Me.Label2.Location = New System.Drawing.Point(459, 268)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(39, 13)
         Me.Label2.TabIndex = 93
@@ -3381,6 +3509,32 @@ Partial Class Form1
         Me.PicBoxMusicVol.TabStop = False
         Me.PicBoxMusicVol.Visible = False
         '
+        'PanDrugs
+        '
+        Me.PanDrugs.BackColor = System.Drawing.Color.FromArgb(CType(CType(20, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(21, Byte), Integer))
+        Me.PanDrugs.Controls.Add(Me.BtnDrugsCigs)
+        Me.PanDrugs.Controls.Add(Me.BtnDrugsNuka)
+        Me.PanDrugs.Controls.Add(Me.BtnDrugsPsycho)
+        Me.PanDrugs.Controls.Add(Me.BtnDrugsBuff)
+        Me.PanDrugs.Controls.Add(Me.BtnDrugsJet)
+        Me.PanDrugs.ForeColor = System.Drawing.Color.Black
+        Me.PanDrugs.Location = New System.Drawing.Point(279, 364)
+        Me.PanDrugs.Name = "PanDrugs"
+        Me.PanDrugs.Size = New System.Drawing.Size(174, 28)
+        Me.PanDrugs.TabIndex = 68
+        '
+        'LblDrugs
+        '
+        Me.LblDrugs.AutoSize = True
+        Me.LblDrugs.BackColor = System.Drawing.Color.Transparent
+        Me.LblDrugs.Font = New System.Drawing.Font("Tahoma", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.LblDrugs.ForeColor = System.Drawing.Color.Gold
+        Me.LblDrugs.Location = New System.Drawing.Point(283, 345)
+        Me.LblDrugs.Name = "LblDrugs"
+        Me.LblDrugs.Size = New System.Drawing.Size(46, 16)
+        Me.LblDrugs.TabIndex = 117
+        Me.LblDrugs.Text = "Drugs"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -3389,6 +3543,9 @@ Partial Class Form1
         Me.BackgroundImage = Global.FOnline_2_Char_Planner.My.Resources.Resources.Hintergrund
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
         Me.ClientSize = New System.Drawing.Size(789, 572)
+        Me.Controls.Add(Me.BtnAllDrugs)
+        Me.Controls.Add(Me.LblDrugs)
+        Me.Controls.Add(Me.PanDrugs)
         Me.Controls.Add(Me.PicBoxMusicVol)
         Me.Controls.Add(Me.BtnMusicVolUp)
         Me.Controls.Add(Me.BtnMusicVolDown)
@@ -3492,6 +3649,7 @@ Partial Class Form1
         Me.Panel2.ResumeLayout(False)
         Me.Panel2.PerformLayout()
         CType(Me.PicBoxMusicVol, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.PanDrugs.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -3709,5 +3867,13 @@ Partial Class Form1
     Friend WithEvents BtnMusicVolDown As System.Windows.Forms.Button
     Friend WithEvents BtnMusicVolUp As System.Windows.Forms.Button
     Friend WithEvents PicBoxMusicVol As System.Windows.Forms.PictureBox
+    Friend WithEvents PanDrugs As System.Windows.Forms.Panel
+    Friend WithEvents BtnDrugsJet As System.Windows.Forms.Button
+    Friend WithEvents BtnDrugsCigs As System.Windows.Forms.Button
+    Friend WithEvents BtnDrugsNuka As System.Windows.Forms.Button
+    Friend WithEvents BtnDrugsPsycho As System.Windows.Forms.Button
+    Friend WithEvents BtnDrugsBuff As System.Windows.Forms.Button
+    Friend WithEvents LblDrugs As System.Windows.Forms.Label
+    Friend WithEvents BtnAllDrugs As System.Windows.Forms.Button
 
 End Class

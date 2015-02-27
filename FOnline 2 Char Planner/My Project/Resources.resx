@@ -697,4 +697,58 @@
   <data name="VolumeMute" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\VolumeMute.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Buffout" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Buffout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BuffoutHigh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BuffoutHigh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cigarettes" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Cigarettes.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CigarettesHigh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CigarettesHigh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Jet" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Jet.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="JetHigh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\JetHigh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Nuka" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Nuka.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NukaHigh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NukaHigh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Psycho" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Psycho.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PsychoHigh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PsychoHigh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ChemControlImpDesc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ChemControlImpDesc.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GainPEDesc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GainPEDesc.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LStepDesc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LStepDesc.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="WHandlDesc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\WHandlDesc.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BuffoutHighNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BuffoutHighNew.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="BuffoutNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BuffoutNew.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CigarettesHighNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CigarettesHighNew.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CigarettesNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CigarettesNew.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
