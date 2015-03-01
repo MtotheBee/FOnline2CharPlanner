@@ -751,4 +751,28 @@
   <data name="CigarettesNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\CigarettesNew.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BuffoutDescPic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BuffoutDescPic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CigsDescPic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CigsDescPic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="JetDescPic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\JetDescPic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="NukaDescPic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\NukaDescPic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PsychoDescPic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PsychoDescPic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Antitoxin" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Antitoxin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="AntitoxinDescPic" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\AntitoxinDescPic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Creditsneu_v1_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Creditsneu_v1_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

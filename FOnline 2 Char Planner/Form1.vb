@@ -100,6 +100,12 @@ Public Class Form1
     'Achievements
     Friend isAchieveActive As Boolean
 
+    Friend myFontNormal As Font
+    Friend myFontBold As Font
+    Friend myFontStatsNormal As Font
+    Friend myFontStatsBold As Font
+    Friend myFontAll As Font
+
     'Colors for panel borders
     Private Sub Form1_Paint(ByVal sender As System.Object, ByVal e As PaintEventArgs) Handles MyBase.Paint
         Dim z As Graphics
@@ -949,6 +955,12 @@ Public Class Form1
         'LblPerks.Visible = False
         PanSkUpDown.Visible = False
 
+        myFontNormal = New Font(LblAPointsVal.Font, FontStyle.Regular)
+        myFontBold = New Font(LblAPointsVal.Font, FontStyle.Bold)
+        myFontStatsNormal = New Font(LblStatsENVal.Font, FontStyle.Regular)
+        myFontStatsBold = New Font(LblStatsENVal.Font, FontStyle.Bold)
+        myFontAll = New Font(BtnAllDrugs.Font, FontStyle.Bold)
+
         LstVPerks.Items.Add("Action Boy")
         LstVPerks.Items.Add("Adrenaline Rush")
         LstVPerks.Items.Add("Anticritical")
@@ -1154,15 +1166,21 @@ Public Class Form1
         DetDescrText(136) = "The value you get when taking the            Anticritical Perk."
         DetDescrName(137) = "Jet"
         DetDescrText(137) = "Effect: +3 Action Points.                    Addiction: -1 Action Point."
+        DescPicIndex(137) = "JetDescPic"
         DetDescrName(138) = "Buffout"
         DetDescrText(138) = "Effect: +2 Strenght, +1 Endurance.           Addiction: -1 Strenght , -1 Endurance."
+        DescPicIndex(138) = "BuffoutDescPic"
         DetDescrName(139) = "Psycho"
         DetDescrText(139) = "Effect: +20% to normal dmg. res,             -7 to PE, -2 to IN .                         Addiction: -10% Damage Resistance."
+        DescPicIndex(139) = "PsychoDescPic"
         DetDescrName(140) = "Nuka Cola"
         DetDescrText(140) = "Effect: +1 Action Point.                     Addiction: None."
+        DescPicIndex(140) = "NukaDescPic"
         DetDescrName(141) = "Cigarettes"
         DetDescrText(141) = "Effect: +3 to Field of view.                 Addiction: None."
+        DescPicIndex(141) = "CigsDescPic"
 
+        Perks.readPerks()
 
     End Sub
 
@@ -1891,8 +1909,10 @@ Public Class Form1
         Dim ctlzaehler As Integer = 0
 
         SaveBuildToolStripMenuItem.Enabled = True
-        Stats.GetStats()
+        PanDrugs.Enabled = True
+        BtnAllDrugs.Enabled = True
 
+        Stats.GetStats()
 
         'reset Description 
         LblDetDesc.Text = ""
@@ -2116,8 +2136,6 @@ Public Class Form1
 
             'Statistics
 
-
-
             LblTagSkills.Visible = False
             LblSkPoints.Visible = True
             'LblSkPointsVal.Text = (2 * Stats.Intelligence) + 5
@@ -2255,6 +2273,8 @@ Public Class Form1
         Dim ctl As Control
         Dim s As String
 
+        ResetDrugEffects()
+
         Stats.GetStats()
 
         'not sure if needed later on
@@ -2321,6 +2341,8 @@ Public Class Form1
         Dim s As String
         'Dim hptemp As Integer
         'Dim lvlTemp As Integer
+
+        ResetDrugEffects()
 
         Stats.GetStats()
 
@@ -2465,6 +2487,8 @@ Public Class Form1
     'Fast down from lvl 99
     Private Sub BtnLvlFastDwn_Click(sender As System.Object, e As System.EventArgs) Handles BtnLvlFastDwn.Click
         BtnLvlFastDwn.Visible = False
+
+        ResetDrugEffects()
 
         Statistics.GetStatistics()
         Statistics.HitPoints = Statistics.HitPoints - HitPointstolastlvl
@@ -3140,7 +3164,9 @@ Public Class Form1
     End Sub
 
     Private Sub BtnDrugsBuff_MouseLeave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDrugsBuff.MouseLeave
-        BtnDrugsBuff.Image = My.Resources.BuffoutNew
+        If Not isBuffoutActive = True Then
+            BtnDrugsBuff.Image = My.Resources.BuffoutNew
+        End If
     End Sub
 
     Private Sub BtnDrugsJet_MouseHover(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDrugsJet.MouseHover
@@ -3148,7 +3174,9 @@ Public Class Form1
     End Sub
 
     Private Sub BtnDrugsJet_MouseLeave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDrugsJet.MouseLeave
-        BtnDrugsJet.Image = My.Resources.Jet
+        If Not isJetActive = True Then
+            BtnDrugsJet.Image = My.Resources.Jet
+        End If
     End Sub
 
     Private Sub BtnDrugsPsycho_MouseHover(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDrugsPsycho.MouseHover
@@ -3156,7 +3184,9 @@ Public Class Form1
     End Sub
 
     Private Sub BtnDrugsPsycho_MouseLeave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDrugsPsycho.MouseLeave
-        BtnDrugsPsycho.Image = My.Resources.Psycho
+        If Not isPsychoActive = True Then
+            BtnDrugsPsycho.Image = My.Resources.Psycho
+        End If
     End Sub
 
     Private Sub BtnDrugsNuka_MouseHover(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDrugsNuka.MouseHover
@@ -3164,14 +3194,18 @@ Public Class Form1
     End Sub
 
     Private Sub BtnDrugsNuka_MouseLeave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDrugsNuka.MouseLeave
-        BtnDrugsNuka.Image = My.Resources.Nuka
+        If Not isNukaActive = True Then
+            BtnDrugsNuka.Image = My.Resources.Nuka
+        End If
     End Sub
     Private Sub BtnDrugsCigs_MouseHover(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDrugsCigs.MouseHover
         BtnDrugsCigs.Image = My.Resources.CigarettesHighNew
     End Sub
 
     Private Sub BtnDrugsCigs_MouseLeave(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnDrugsCigs.MouseLeave
-        BtnDrugsCigs.Image = My.Resources.CigarettesNew
+        If Not isCigsActive = True Then
+            BtnDrugsCigs.Image = My.Resources.CigarettesNew
+        End If
     End Sub
 
     'Click on Drugs
@@ -3179,8 +3213,13 @@ Public Class Form1
     Friend AddSubstractBuffoutST As Integer = 2
     Friend AddSubstractBuffoutEN As Integer = 1
     Friend AddSubstractPsychoDMGRes As Integer = 20
+    Friend AddSubstractPsychoIN As Integer = 2
+    Friend AddSubstractPsychoPE As Integer = 7
     Friend AddSubstractNukaAP As Integer = 1
     Friend AddSubstractCigsFoV As Integer = 3
+
+    Friend PEBeforePsycho As Integer
+    Friend INBeforePsycho As Integer
 
     Dim isJetActive As Boolean
     Dim isBuffoutActive As Boolean
@@ -3188,38 +3227,380 @@ Public Class Form1
     Dim isNukaActive As Boolean
     Dim isCigsActive As Boolean
 
+    'DetDescrName(137) = "Jet"
+    'DetDescrText(137) = "Effect: +3 Action Points.                    Addiction: -1 Action Point."
+    'DetDescrName(138) = "Buffout"
+    'DetDescrText(138) = "Effect: +2 Strenght, +1 Endurance.           Addiction: -1 Strenght , -1 Endurance."
+    'DetDescrName(139) = "Psycho"
+    'DetDescrText(139) = "Effect: +20% to normal dmg. res,             -7 to PE, -2 to IN .                         Addiction: -10% Damage Resistance."
+    'DetDescrName(140) = "Nuka Cola"
+    'DetDescrText(140) = "Effect: +1 Action Point.                     Addiction: None."
+    'DetDescrName(141) = "Cigarettes"
+    'DetDescrText(141) = "Effect: +3 to Field of view.          "
+
     Private Sub BtnDrugsJet_Click(sender As System.Object, e As System.EventArgs) Handles BtnDrugsJet.Click
+       
+        DetDescrChange(137, 137)
+        PicDesc.Image = My.Resources.JetDescPic
         Statistics.GetStatistics()
         If isJetActive = True Then
             isJetActive = False
             BtnDrugsJet.Image = My.Resources.Jet
             Statistics.APoints = Statistics.APoints - AddSubstractJetAP
+
+            If Not isNukaActive = True Then
+                LblAPointsVal.ForeColor = Color.LimeGreen
+                LblAPointsVal.Font = myFontNormal
+            End If
         Else
             isJetActive = True
             BtnDrugsJet.Image = My.Resources.JetHigh
             Statistics.APoints = Statistics.APoints + AddSubstractJetAP
+            LblAPointsVal.ForeColor = Color.LightSkyBlue
+            LblAPointsVal.Font = myFontBold
         End If
+
+        TestActiveDrugs()
         Statistics.SetStatistics()
     End Sub
 
     Private Sub BtnDrugsBuff_Click(sender As System.Object, e As System.EventArgs) Handles BtnDrugsBuff.Click
+        DetDescrChange(138, 138)
+        PicDesc.Image = My.Resources.BuffoutDescPic
+        Stats.GetStats()
+        Statistics.GetStatistics()
+        If isBuffoutActive = True Then
+            isBuffoutActive = False
+            BtnDrugsBuff.Image = My.Resources.BuffoutNew
+            Stats.Strenght = Stats.Strenght - AddSubstractBuffoutST
+            Stats.Endurance = Stats.Endurance - AddSubstractBuffoutEN
 
+            LblMDmgVal.ForeColor = Color.LimeGreen
+            LblMDmgVal.Font = myFontNormal
+            LblCWVal.ForeColor = Color.LimeGreen
+            LblCWVal.Font = myFontNormal
+            LblPoisonResVal.ForeColor = Color.LimeGreen
+            LblPoisonResVal.Font = myFontNormal
+            LblRadResVal.ForeColor = Color.LimeGreen
+            LblRadResVal.Font = myFontNormal
+            LblStatsENVal.ForeColor = Color.LimeGreen
+            LblStatsSTVal.ForeColor = Color.LimeGreen
+        Else
+            isBuffoutActive = True
+            BtnDrugsBuff.Image = My.Resources.BuffoutHighNew
+
+            If Not Stats.Strenght = 10 Then
+                If Not Stats.Strenght = 9 Then
+                    Stats.Strenght = Stats.Strenght + AddSubstractBuffoutST
+                Else
+                    Stats.Strenght = Stats.Strenght + 1
+                    AddSubstractBuffoutST = 1
+                End If
+            Else
+                AddSubstractBuffoutST = 0
+            End If
+
+            If Not Stats.Endurance = 10 Then
+                Stats.Endurance = Stats.Endurance + AddSubstractBuffoutEN
+            Else
+                AddSubstractBuffoutEN = 0
+            End If
+
+
+            LblMDmgVal.ForeColor = Color.LightSkyBlue
+            LblMDmgVal.Font = myFontBold
+            LblCWVal.ForeColor = Color.LightSkyBlue
+            LblCWVal.Font = myFontBold
+            LblPoisonResVal.ForeColor = Color.LightSkyBlue
+            LblPoisonResVal.Font = myFontBold
+            LblRadResVal.ForeColor = Color.LightSkyBlue
+            LblRadResVal.Font = myFontBold
+            LblStatsENVal.ForeColor = Color.LightSkyBlue
+            LblStatsSTVal.ForeColor = Color.LightSkyBlue
+
+        End If
+        Stats.SetStats()
+        Stats.GetStats()
+        'Radiation/Poison Resist Calc
+        If isFastMeta = False Then
+            Statistics.RadRes = 2 * Stats.Endurance
+        Else
+            Statistics.RadRes = 0
+        End If
+
+        If isFastMeta = False Then
+            Statistics.PoisonRes = 5 * Stats.Endurance
+        Else
+            Statistics.PoisonRes = 0
+        End If
+
+        'CW
+        If isSFrame = True Then
+            If Stats.Strenght = 2 Then
+                Statistics.CarryWeight = 33 + (Perks.levelVal - 1) '<-- todo --> 33 base value + 1 * N° of lvl!!!
+            ElseIf Stats.Strenght = 7 Then
+                Statistics.CarryWeight = 67 + (Perks.levelVal - 1)
+            Else
+                Statistics.CarryWeight = Math.Round((20 + (Stats.Strenght * 15) / 2.2046226), 0) + (Perks.levelVal - 1)
+            End If
+        Else
+            If Stats.Strenght = 8 Then
+                Statistics.CarryWeight = 110 + (Perks.levelVal - 1) '<-- todo --> 110 base value + 1 * N° of lvl!!!          
+            Else
+                Statistics.CarryWeight = Math.Round((20 + (Stats.Strenght * 25) / 2.2046226), 0) + (Perks.levelVal - 1)
+            End If
+        End If
+
+        'Melee Calc New
+        Statistics.MeleeDmg = Stats.Strenght + (Statistics.addHHanded) + (Statistics.addBruiser) + (Statistics.addMutantMDmg)
+        TestActiveDrugs()
+        Statistics.SetStatistics()
     End Sub
 
     Private Sub BtnDrugsPsycho_Click(sender As System.Object, e As System.EventArgs) Handles BtnDrugsPsycho.Click
 
+        DetDescrChange(139, 139)
+        PicDesc.Image = My.Resources.PsychoDescPic
+        Statistics.GetStatistics()
+        If isPsychoActive = True Then
+            isPsychoActive = False
+            BtnDrugsPsycho.Image = My.Resources.Psycho
+
+            Stats.Perception = PEBeforePsycho
+            Stats.Intelligence = INBeforePsycho
+
+            Statistics.DmgRes = Statistics.DmgRes - AddSubstractPsychoDMGRes
+
+            LblSightVal.ForeColor = Color.LimeGreen
+            LblSightVal.Font = myFontNormal
+            LblStatsPEVal.ForeColor = Color.LimeGreen
+            LblStatsINVal.ForeColor = Color.LimeGreen
+            LblDmgResVal.ForeColor = Color.LimeGreen
+            LblDmgResVal.Font = myFontNormal
+
+        Else
+            isPsychoActive = True
+            BtnDrugsPsycho.Image = My.Resources.PsychoHigh
+
+            PEBeforePsycho = Stats.Perception
+            INBeforePsycho = Stats.Intelligence
+
+            If Stats.Perception - 7 <= 1 Then
+                Stats.Perception = 1
+            Else
+                Stats.Perception = Stats.Perception - AddSubstractPsychoPE
+            End If
+
+            If Stats.Intelligence - 2 <= 1 Then
+                Stats.Intelligence = 1
+            Else
+                Stats.Intelligence = Stats.Intelligence - AddSubstractPsychoIN
+            End If
+
+            Statistics.DmgRes = Statistics.DmgRes + AddSubstractPsychoDMGRes
+
+            LblSightVal.ForeColor = Color.LightSkyBlue
+            LblSightVal.Font = myFontBold
+            LblStatsPEVal.ForeColor = Color.LightSkyBlue
+            LblStatsINVal.ForeColor = Color.LightSkyBlue
+            LblDmgResVal.ForeColor = Color.LightSkyBlue
+            LblDmgResVal.Font = myFontBold
+        End If
+        Stats.SetStats()
+        Stats.GetStats()
+        TestActiveDrugs()
+        Statistics.Sight = 20 + (Stats.Perception * 3)
+        Statistics.SetStatistics()
     End Sub
 
     Private Sub BtnDrugsNuka_Click(sender As System.Object, e As System.EventArgs) Handles BtnDrugsNuka.Click
 
+        DetDescrChange(140, 140)
+        PicDesc.Image = My.Resources.NukaDescPic
+        Statistics.GetStatistics()
+        If isNukaActive = True Then
+            isNukaActive = False
+            BtnDrugsNuka.Image = My.Resources.Nuka
+
+            Statistics.APoints = Statistics.APoints - AddSubstractNukaAP
+
+            If Not isJetActive = True Then
+                LblAPointsVal.ForeColor = Color.LimeGreen
+                LblAPointsVal.Font = myFontNormal
+            End If
+        Else
+            isNukaActive = True
+            BtnDrugsNuka.Image = My.Resources.NukaHigh
+            Statistics.APoints = Statistics.APoints + AddSubstractNukaAP
+            LblAPointsVal.ForeColor = Color.LightSkyBlue
+            LblAPointsVal.Font = myFontBold
+          
+        End If
+        TestActiveDrugs()
+        Statistics.SetStatistics()
     End Sub
 
     Private Sub BtnDrugsCigs_Click(sender As System.Object, e As System.EventArgs) Handles BtnDrugsCigs.Click
 
+        DetDescrChange(141, 141)
+        PicDesc.Image = My.Resources.CigsDescPic
+        Statistics.GetStatistics()
+        If isCigsActive = True Then
+            isCigsActive = False
+            BtnDrugsCigs.Image = My.Resources.CigarettesNew
+
+            Statistics.Sight = Statistics.Sight - AddSubstractCigsFoV
+            LblSightVal.ForeColor = Color.LimeGreen
+            LblSightVal.Font = myFontNormal
+
+
+        Else
+            isCigsActive = True
+            BtnDrugsCigs.Image = My.Resources.CigarettesHighNew
+            Statistics.Sight = Statistics.Sight + AddSubstractCigsFoV
+            LblSightVal.ForeColor = Color.LightSkyBlue
+            LblSightVal.Font = myFontBold
+        End If
+        TestActiveDrugs()
+        Statistics.SetStatistics()
     End Sub
 
     Private Sub BtnAllDrugs_Click(sender As System.Object, e As System.EventArgs) Handles BtnAllDrugs.Click
+        If isAllDrugsActive = False Then
+            ResetDrugEffects()
+            BtnDrugsJet_Click(sender, e)
+            BtnDrugsBuff_Click(sender, e)
+            BtnDrugsPsycho_Click(sender, e)
+            BtnDrugsNuka_Click(sender, e)
+            BtnDrugsCigs_Click(sender, e)
 
+            BtnAllDrugs.Image = My.Resources.Antitoxin
+            PicDesc.Image = My.Resources.AntitoxinDescPic
+            BtnAllDrugs.Text = Nothing
+
+            isAllDrugsActive = True
+        Else
+            BtnAllDrugs.Text = "All"
+            BtnAllDrugs.Font = myFontAll
+            BtnAllDrugs.Image = Nothing
+            ResetDrugEffects()
+            isAllDrugsActive = False
+        End If
+       
+    End Sub
+
+    Friend isAllDrugsActive As Boolean
+    Private Sub TestActiveDrugs()
+        If isJetActive = True And isBuffoutActive = True And isPsychoActive _
+            And isNukaActive And isCigsActive = True Then
+            BtnAllDrugs.Image = My.Resources.Antitoxin
+            PicDesc.Image = My.Resources.AntitoxinDescPic
+            BtnAllDrugs.Text = Nothing
+            isAllDrugsActive = True
+        Else
+            isAllDrugsActive = False
+        End If
+    End Sub
+
+    Private Sub ResetDrugEffects()
+        Statistics.GetStatistics()
+        Stats.GetStats()
+        If isJetActive = True Then
+            isJetActive = False
+            BtnDrugsJet.Image = My.Resources.Jet
+            Statistics.APoints = Statistics.APoints - AddSubstractJetAP
+            LblAPointsVal.ForeColor = Color.LimeGreen
+            LblAPointsVal.Font = myFontNormal
+        End If
+
+        If isBuffoutActive = True Then
+            isBuffoutActive = False
+            BtnDrugsBuff.Image = My.Resources.Buffout
+            Stats.Strenght = Stats.Strenght - AddSubstractBuffoutST
+            Stats.Endurance = Stats.Endurance - AddSubstractBuffoutEN
+
+            LblMDmgVal.ForeColor = Color.LimeGreen
+            LblMDmgVal.Font = myFontNormal
+            LblCWVal.ForeColor = Color.LimeGreen
+            LblCWVal.Font = myFontNormal
+            LblPoisonResVal.ForeColor = Color.LimeGreen
+            LblPoisonResVal.Font = myFontNormal
+            LblRadResVal.ForeColor = Color.LimeGreen
+            LblRadResVal.Font = myFontNormal
+            LblStatsENVal.ForeColor = Color.LimeGreen
+            LblStatsSTVal.ForeColor = Color.LimeGreen
+
+            'Radiation/Poison Resist Calc
+            If isFastMeta = False Then
+                Statistics.RadRes = 2 * Stats.Endurance
+            Else
+                Statistics.RadRes = 0
+            End If
+
+            If isFastMeta = False Then
+                Statistics.PoisonRes = 5 * Stats.Endurance
+            Else
+                Statistics.PoisonRes = 0
+            End If
+
+            'CW
+
+            If isSFrame = True Then
+                If Stats.Strenght = 2 Then
+                    Statistics.CarryWeight = 33 + (Perks.levelVal - 1) '<-- todo --> 33 base value + 1 * N° of lvl!!!
+                ElseIf Stats.Strenght = 7 Then
+                    Statistics.CarryWeight = 67 + (Perks.levelVal - 1)
+                Else
+                    Statistics.CarryWeight = Math.Round((20 + (Stats.Strenght * 15) / 2.2046226), 0) + (Perks.levelVal - 1)
+                End If
+            Else
+                If Stats.Strenght = 8 Then
+                    Statistics.CarryWeight = 110 + (Perks.levelVal - 1) '<-- todo --> 110 base value + 1 * N° of lvl!!!          
+                Else
+                    Statistics.CarryWeight = Math.Round((20 + (Stats.Strenght * 25) / 2.2046226), 0) + (Perks.levelVal - 1)
+                End If
+            End If
+
+            'Melee Calc New
+            Statistics.MeleeDmg = Stats.Strenght + (Statistics.addHHanded) + (Statistics.addBruiser) + (Statistics.addMutantMDmg)
+
+        End If
+
+        If isPsychoActive = True Then
+            isPsychoActive = False
+            BtnDrugsPsycho.Image = My.Resources.Psycho
+
+            Stats.Perception = PEBeforePsycho
+            Stats.Intelligence = INBeforePsycho
+
+            Statistics.DmgRes = Statistics.DmgRes - AddSubstractPsychoDMGRes
+
+            LblSightVal.ForeColor = Color.LimeGreen
+            LblSightVal.Font = myFontNormal
+            LblStatsPEVal.ForeColor = Color.LimeGreen
+            LblStatsINVal.ForeColor = Color.LimeGreen
+            LblDmgResVal.ForeColor = Color.LimeGreen
+            LblDmgResVal.Font = myFontNormal
+        End If
+
+        If isCigsActive = True Then
+            isCigsActive = False
+            BtnDrugsCigs.Image = My.Resources.CigarettesNew
+            Statistics.Sight = Statistics.Sight - AddSubstractCigsFoV
+            LblSightVal.ForeColor = Color.LimeGreen
+            LblSightVal.Font = myFontNormal
+        End If
+
+        If isNukaActive = True Then
+            isNukaActive = False
+            BtnDrugsNuka.Image = My.Resources.Nuka
+            Statistics.APoints = Statistics.APoints - AddSubstractNukaAP
+            LblAPointsVal.ForeColor = Color.LimeGreen
+            LblAPointsVal.Font = myFontNormal
+        End If
+
+        Stats.SetStats()
+        Statistics.SetStatistics()
     End Sub
 
     'Quests
@@ -4315,6 +4696,12 @@ Public Class Form1
             Application.ExitThread()
             Application.Restart()
 
+            'Windows.Forms.Application.DoEvents()
+            'Threading.Thread.Sleep(1000)
+            'Application.Restart()
+            'Application.Exit()
+            'End
+
             If Me.WindowState = FormWindowState.Minimized Then
                 Me.WindowState = FormWindowState.Normal
             End If
@@ -4438,7 +4825,7 @@ Public Class Form1
         LblDetDescrText.Hide()
         PanNormDesc.BackColor = Color.ForestGreen
         PanDetDesc.BackColor = Color.Brown
-        PicDesc.Image = My.Resources.Creditsneu_v1_4
+        PicDesc.Image = My.Resources.Creditsneu_v1_5
     End Sub
 
     'addMentats Effekt for reading Books -> 2 more Books readable
@@ -4923,6 +5310,10 @@ Public Class Form1
         'so you always have all taken perks, quests, traits etc on your screen
         If LstBoxPerks.ItemHeight * LstBoxPerks.Items.Count > LstBoxPerks.Height Then
             'Scrollbar must be visible
+            BtnAllDrugs.Visible = False
+            PanDrugs.Visible = False
+            LblDrugs.Visible = False
+
             LstBY = LstBoxPerks.Location.Y - ((LstBoxPerks.ItemHeight * LstBoxPerks.Items.Count) - LstBoxPerks.Height)
             LstBoxPerks.Location = New System.Drawing.Point(236, LstBY)
 
@@ -4946,6 +5337,10 @@ Public Class Form1
         LstBoxPerks.Height = 130
         LstBoxPerks.Location = New System.Drawing.Point(236, 425)
         LblPTraitsTaken.Location = New System.Drawing.Point(237, 406)
+
+        BtnAllDrugs.Visible = True
+        PanDrugs.Visible = True
+        LblDrugs.Visible = True
 
         Me.Refresh()
 
@@ -5706,6 +6101,7 @@ Public Class Form1
 
         level = CInt(LblLevelVal.Text)
 
+        ResetDrugEffects()
 
         If level <= 24 Then
             BtnLvlFastUp.Visible = False
@@ -5757,6 +6153,11 @@ Public Class Form1
         Dim fileName As String
         Dim path As String
         Dim skPLeft As Integer = LblSkPointsVal.Text
+
+        PanDrugs.Enabled = False
+        BtnAllDrugs.Enabled = False
+
+        ResetDrugEffects()
 
         Stats.GetStats()
         Statistics.GetStatistics()
@@ -6040,6 +6441,9 @@ Public Class Form1
                 sw.Close()
             End Using
         End If
+
+        PanDrugs.Enabled = True
+        BtnAllDrugs.Enabled = True
     End Sub
     Friend isLoad As Boolean = False
     Friend isLoadedOnce As Boolean = False
@@ -6100,7 +6504,9 @@ Public Class Form1
                 isLoad = True
                 isImplChoosen = False
                 SaveBuildToolStripMenuItem.Enabled = True
-
+                ResetDrugEffects()
+                PanDrugs.Enabled = True
+                BtnAllDrugs.Enabled = True
                 'Reset CharPoints in Case Build was loaded before Done was clicked
                 Stats.CharPoints = 0
                 LblCPoints.Text = "0"

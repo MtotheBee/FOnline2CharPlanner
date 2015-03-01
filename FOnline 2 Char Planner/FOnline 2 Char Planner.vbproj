@@ -389,6 +389,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FCPSymbol.ico" />
+    <None Include="Resources\Creditsneu_v1_5.png" />
+    <None Include="Resources\AntitoxinDescPic.png" />
+    <None Include="Resources\Antitoxin.png" />
+    <None Include="Resources\PsychoDescPic.png" />
+    <None Include="Resources\CigsDescPic.png" />
+    <None Include="Resources\NukaDescPic.png" />
+    <None Include="Resources\BuffoutDescPic.png" />
+    <None Include="Resources\JetDescPic.png" />
     <None Include="Resources\BuffoutHighNew.png" />
     <None Include="Resources\BuffoutNew.png" />
     <None Include="Resources\CigarettesNew.png" />

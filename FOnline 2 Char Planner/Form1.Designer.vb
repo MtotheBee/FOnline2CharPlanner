@@ -732,7 +732,7 @@ Partial Class Form1
         Me.LblStatsENVal.AutoSize = True
         Me.LblStatsENVal.BackColor = System.Drawing.Color.FromArgb(CType(CType(20, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(21, Byte), Integer))
         Me.LblStatsENVal.Font = New System.Drawing.Font("Tahoma", 11.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblStatsENVal.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.LblStatsENVal.ForeColor = System.Drawing.Color.LimeGreen
         Me.LblStatsENVal.Location = New System.Drawing.Point(46, 70)
         Me.LblStatsENVal.Name = "LblStatsENVal"
         Me.LblStatsENVal.Size = New System.Drawing.Size(18, 18)
@@ -1287,7 +1287,7 @@ Partial Class Form1
         Me.LblAPointsVal.BackColor = System.Drawing.Color.FromArgb(CType(CType(20, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(21, Byte), Integer))
         Me.LblAPointsVal.FlatStyle = System.Windows.Forms.FlatStyle.Flat
         Me.LblAPointsVal.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.LblAPointsVal.ForeColor = System.Drawing.Color.LightSkyBlue
+        Me.LblAPointsVal.ForeColor = System.Drawing.Color.LimeGreen
         Me.LblAPointsVal.Location = New System.Drawing.Point(96, 18)
         Me.LblAPointsVal.Name = "LblAPointsVal"
         Me.LblAPointsVal.Padding = New System.Windows.Forms.Padding(2, 1, 2, 1)
@@ -2525,6 +2525,7 @@ Partial Class Form1
         '
         Me.BtnAllDrugs.BackColor = System.Drawing.Color.FromArgb(CType(CType(20, Byte), Integer), CType(CType(50, Byte), Integer), CType(CType(21, Byte), Integer))
         Me.BtnAllDrugs.Cursor = System.Windows.Forms.Cursors.Hand
+        Me.BtnAllDrugs.Enabled = False
         Me.BtnAllDrugs.FlatAppearance.BorderColor = System.Drawing.Color.Silver
         Me.BtnAllDrugs.FlatAppearance.BorderSize = 0
         Me.BtnAllDrugs.FlatAppearance.MouseDownBackColor = System.Drawing.Color.LightYellow
@@ -3517,6 +3518,7 @@ Partial Class Form1
         Me.PanDrugs.Controls.Add(Me.BtnDrugsPsycho)
         Me.PanDrugs.Controls.Add(Me.BtnDrugsBuff)
         Me.PanDrugs.Controls.Add(Me.BtnDrugsJet)
+        Me.PanDrugs.Enabled = False
         Me.PanDrugs.ForeColor = System.Drawing.Color.Black
         Me.PanDrugs.Location = New System.Drawing.Point(279, 364)
         Me.PanDrugs.Name = "PanDrugs"

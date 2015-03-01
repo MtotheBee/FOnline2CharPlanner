@@ -33,7 +33,8 @@
             s = Form1.LstVPerks.Items.Item(i).ToString.Substring(15)
             Perks(i) = s.Substring(0, Len(s) - 1)
             PerkRank(i) = readRank(Perks(i))
-            'Debug.Print(Perks(i))
+            Debug.Print(Perks(i))
+            Debug.Print(PerkRank(i))
         Next
 
 
@@ -145,7 +146,7 @@
         'Test if user has to choose perk if skipped before
         'LevelTest(levelVal, Form1.Perkstaken)
 
-        Form1.Label1.Text = Form1.Perkstaken
+        'Form1.Label1.Text = Form1.Perkstaken
 
         If Not levelVal >= 99 And Not isPerkToTake = True Then
             levelVal = levelVal + 1
