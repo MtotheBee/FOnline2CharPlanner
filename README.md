@@ -31,9 +31,14 @@ Here's the list of all the classes, the program uses:
 
 --------------------------------------------------------------------------------------------------------------------------
 
+Version 1.5 - 01.03.15
+----------------------
+
+- Added Save/Load feature
+- Added Drugs Simulation
+
+
 There are still some things, that could be added:
 
-- simulation of drugs
 - calculation of HitChance according to character and equipment (not really necessary imo because there are already some good calculators for these out there)
-- Save/Load feature (in development, not yet implemented but already can be found in code)
 - "your suggestion here" 
