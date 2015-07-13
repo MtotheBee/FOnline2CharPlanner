@@ -69,6 +69,9 @@ Public Class Form1
     Friend isGambtag As Boolean
     Friend isODtag As Boolean
 
+    'Boolean for HtH Evade Perk
+    Friend isHtHEvade As Boolean
+
     'Check for next step after initial Stats are taken
     Friend isDone As Boolean
 
@@ -601,15 +604,23 @@ Public Class Form1
             isBruiser = False
         Else
             isBruiser = True
+
+            Form3.F3MsgBoxText.Text = "Note:" & vbCrLf & _
+                                      "The Value of your Crit Chance should" & vbCrLf & _
+                                      "be lowered by 30% now, although you" & vbCrLf & _
+                                      "won't see this in your ingame" & vbCrLf & _
+                                      "character screen."
+            Form3.BtnF3DontB.Visible = False
+            Form3.Show()
         End If
 
         If isBruiser = True Then
             If Not Stats.Strenght >= 9 Then
                 isMaxST = False
                 Stats.Strenght = Stats.Strenght + 2
-
+                Statistics.lowCritChance = 30
                 Statistics.addBruiser = 8
-                Statistics.APoints = Statistics.APoints - 2
+                'Statistics.APoints = Statistics.APoints - 2
                 If Stats.Strenght <= 2 Then
                     LblStatsSTVal.ForeColor = Color.LimeGreen
                 End If
@@ -617,7 +628,7 @@ Public Class Form1
                 isMaxST = True
                 Stats.Strenght = Stats.Strenght + 2
                 Statistics.addBruiser = 8
-                Statistics.APoints = Statistics.APoints - 2
+                'Statistics.APoints = Statistics.APoints - 2
                 LblStatsSTVal.ForeColor = Color.Red
             End If
         Else
@@ -625,22 +636,26 @@ Public Class Form1
                 If Stats.Strenght <= 2 Then
                     LblStatsSTVal.ForeColor = Color.Red
                     Stats.Strenght = Stats.Strenght - 2
-                    Statistics.APoints = Statistics.APoints + 2
+                    'Statistics.APoints = Statistics.APoints + 2
                     Statistics.addBruiser = 0
                 Else
                     Stats.Strenght = Stats.Strenght - 2
-                    Statistics.APoints = Statistics.APoints + 2
+                    Statistics.lowCritChance = 0
+                    'Statistics.APoints = Statistics.APoints + 2
                     Statistics.addBruiser = 0
                     LblStatsSTVal.ForeColor = Color.LimeGreen
                 End If
 
             ElseIf isBruiser = False And isMaxST = True Then
                 Stats.Strenght = Stats.Strenght - 2
-                Statistics.APoints = Statistics.APoints + 2
+                Statistics.lowCritChance = 0
+                
+                'Statistics.APoints = Statistics.APoints + 2
                 Statistics.addBruiser = 0
                 LblStatsSTVal.ForeColor = Color.LimeGreen
             End If
         End If
+
 
         Stats.SetStats()
         Traits.TraitsCheck(sender, isBruiser, sender.ToString)
@@ -1040,7 +1055,7 @@ Public Class Form1
         DetDescrText(52) = "Don't underestimate the power of flamers. If you plan to use (Avenger) Miniguns a lot,    keep in mind, that you'll need huge amounts  of 5mm rounds."
         DetDescrText(53) = "Good choice for beginners. Tier I Small Gun  weapons and ammunition are easy to find,     compared to other weapon types. "
         DetDescrText(54) = "EW can be pretty powerful in the hand of an  experienced player with a decent build.      It's also a good choice for TB-spammers."
-        DetDescrText(55) = "Increases your running speed. The bonus      starts after 100% and tops with 200%.        Your max bonus to speed is 25%. Also. This   skill is caped at 200%."
+        DetDescrText(55) = "Increases your running speed. The bonus      starts after 100% and tops with 200%.        Works only if BG,EW and SG skills are lesser then 100%."
         DetDescrText(56) = "Can be pretty effective while using plasma   grenades as weapon. Note: The Achievement    'Heave Ho!' can increase your throwing range."
         DetDescrText(57) = "Outside of combat every use of FA heals as   much hp as the value of your skill level.    In combat, when used on yourself you can't   heal more than 150 HP."
         DetDescrText(58) = "Good chances to steal from players starts    with a value above 200%. At NPCs it's        much harder. In protected towns you can get  problems for stealing, see Wiki for details."
@@ -1079,7 +1094,7 @@ Public Class Form1
         DetDescrText(90) = "+ Healing Rate +10                           + You heal HP every 15 seconds.              - Base values for Radiation- and Poison-      Resistances are 0."
         DetDescrName(91) = "Bruiser"
         DescPicIndex(91) = "BruiserDesc"
-        DetDescrText(91) = "+ Strength +2                                + Meele Damage +8                            - Action Points -2"
+        DetDescrText(91) = "+ Strength +2                                + Meele Damage +8                            - Crit Chance Penalty -30%"
         DetDescrName(92) = "Small Frame"
         DescPicIndex(92) = "SFrameDesc"
         DetDescrText(92) = "+ 1 to Agility                               - You have less carry weight.                - Every critical hit can have an aditional    effect besides the damage coming from hit."
@@ -1949,7 +1964,7 @@ Public Class Form1
             DetDescrName(2) = "Anticritical" 'rank 2
             DetDescrName(3) = "Better Criticals"
             DetDescrName(4) = "Bonus HtH Attacks"
-            DetDescrName(5) = "Bonus HtH Damage" 'rank 3
+            DetDescrName(5) = "Bonus HtH Damage" 'rank 1
             DetDescrName(6) = "Bonus Ranged Damage" 'rank 2
             DetDescrName(7) = "Bonus Rate of Fire"
             DetDescrName(8) = "Cautious Nature"
@@ -2036,7 +2051,7 @@ Public Class Form1
             DetDescrText(4) = "HtH attacks cost 1 Action Point less."
             'Adds to melee dmg?
             DescPicIndex(4) = "BHtHAtDesc"
-            DetDescrText(5) = "You gain +4 HtH Damge."
+            DetDescrText(5) = "You gain +10 HtH Damge."
             DescPicIndex(5) = "BHtHDmgDesc"
             DetDescrText(6) = "You do +2 additional damage for each bullet   on ranged weapons."
             DescPicIndex(6) = "BRDDesc"
@@ -2369,10 +2384,10 @@ Public Class Form1
             If Perks.levelVal <= 25 Then
                 If Perks.isEducated = True Then
                     Skills.SkillP = skillPLeft + (((2 * Stats.Intelligence) + 5 + 2) * (26 - Perks.levelVal))
-                    Skills.SkillP = Skills.SkillP + ((Math.Floor(((2 * Stats.Intelligence) + 5 + 2) / 2))) + ((99 - Perks.levelVal) - (26 - Perks.levelVal))
+                    Skills.SkillP = Skills.SkillP + ((Math.Floor(((2 * Stats.Intelligence) + 5 + 2) / 2))) * ((99 - Perks.levelVal) - (26 - Perks.levelVal))
                     SkPointstolastlvl = (((2 * Stats.Intelligence) + 5 + 2) * (26 - Perks.levelVal))
                     'save added SKPoints for later
-                    SkPointstolastlvl = SkPointstolastlvl + ((Math.Floor(((2 * Stats.Intelligence) + 5 + 2) / 2))) + ((99 - Perks.levelVal) - (26 - Perks.levelVal))
+                    SkPointstolastlvl = SkPointstolastlvl + ((Math.Floor(((2 * Stats.Intelligence) + 5 + 2) / 2))) * ((99 - Perks.levelVal) - (26 - Perks.levelVal))
                 Else
                     Skills.SkillP = skillPLeft + (((2 * Stats.Intelligence) + 5) * (26 - Perks.levelVal))
                     Skills.SkillP = Skills.SkillP + ((Math.Floor(((2 * Stats.Intelligence) + 5) / 2))) * ((99 - Perks.levelVal) - (26 - Perks.levelVal))
@@ -2878,6 +2893,7 @@ Public Class Form1
     End Sub
 
     'Raising Skill Points
+    Friend isDontBother As Boolean
     Private Sub BtnSKUp_MouseDown(ByVal sender As Object, _
       ByVal e As System.Windows.Forms.MouseEventArgs) Handles BtnSkUp.MouseDown, BtnSkUp.Click
         Dim ctl As Control
@@ -3002,10 +3018,38 @@ Public Class Form1
                             End If
                             If Not Skills.SkillP = 0 And Not ctl.Name = "LblScavenVal" And Not ctl.Name = "LblBarterVal" Then
                                 If Not skillVal >= skillMax And Skills.SkillP - neededSP >= 0 Then
-                                    skillVal = skillVal + incr
-                                    ctl.Text = skillVal & "%"
-                                    If skillVal > 300 Then
-                                        ctl.Text = "300%"
+                                    If ctl.Name = "LblSGunsVal" Or ctl.Name = "LblBGunsVal" Or ctl.Name = "LblEWeaponsVal" Then
+                                        If isHtHEvade = True Then
+                                            skillVal = skillVal + incr
+                                            ctl.Text = skillVal & "%"
+                                            If skillVal > 300 Then
+                                                ctl.Text = "300%"
+                                            End If
+                                            If skillVal > 100 Then
+                                                Form3.F3MsgBoxText.Text = "Warning!" & vbCrLf & "You are about to raise this skill" & vbCrLf & _
+                                                                          "above 100%, while HtH Evade is active." & vbCrLf &
+                                                                          "The perk will no longer have any effect!"
+                                                If Not isDontBother = True Then
+                                                    Form3.BtnF3DontB.Visible = True
+                                                    Form3.Show()
+                                                End If
+
+                                            End If
+
+                                        Else
+                                            skillVal = skillVal + incr
+                                            ctl.Text = skillVal & "%"
+                                            If skillVal > 300 Then
+                                                ctl.Text = "300%"
+                                            End If
+                                        End If
+
+                                    Else
+                                        skillVal = skillVal + incr
+                                        ctl.Text = skillVal & "%"
+                                        If skillVal > 300 Then
+                                            ctl.Text = "300%"
+                                        End If
                                     End If
                                     Skills.SkillP = Skills.SkillP - neededSP
                                     LblSkPointsVal.Text = Skills.SkillP
@@ -6569,7 +6613,7 @@ Public Class Form1
                 DetDescrName(2) = "Anticritical" 'rank 2
                 DetDescrName(3) = "Better Criticals"
                 DetDescrName(4) = "Bonus HtH Attacks"
-                DetDescrName(5) = "Bonus HtH Damage" 'rank 3
+                DetDescrName(5) = "Bonus HtH Damage" 'rank 1
                 DetDescrName(6) = "Bonus Ranged Damage" 'rank 2
                 DetDescrName(7) = "Bonus Rate of Fire"
                 DetDescrName(8) = "Cautious Nature"
@@ -6656,7 +6700,7 @@ Public Class Form1
                 DetDescrText(4) = "HtH attacks cost 1 Action Point less."
                 'Adds to melee dmg?
                 DescPicIndex(4) = "BHtHAtDesc"
-                DetDescrText(5) = "You gain +4 HtH Damge."
+                DetDescrText(5) = "You gain +10 HtH Damge."
                 DescPicIndex(5) = "BHtHDmgDesc"
                 DetDescrText(6) = "You do +2 additional damage for each bullet   on ranged weapons."
                 DescPicIndex(6) = "BRDDesc"

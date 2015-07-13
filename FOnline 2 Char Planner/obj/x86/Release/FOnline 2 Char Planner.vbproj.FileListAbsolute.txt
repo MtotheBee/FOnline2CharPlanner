@@ -34,3 +34,4 @@ C:\Users\M to the B\Documents\GitHub\FOnline2CharPlanner\FOnline 2 Char Planner\
 C:\Users\M to the B\Documents\GitHub\FOnline2CharPlanner\FOnline 2 Char Planner\obj\x86\Release\FOnline_2_Char_Planner.Form2.resources
 C:\Users\M to the B\Documents\GitHub\FOnline2CharPlanner\FOnline 2 Char Planner\obj\x86\Release\FOnline_2_Char_Planner.Resources.resources
 C:\Users\M to the B\Documents\GitHub\FOnline2CharPlanner\FOnline 2 Char Planner\obj\x86\Release\FOnline 2 Char Planner.vbproj.GenerateResource.Cache
+C:\Users\M to the B\Documents\GitHub\FOnline2CharPlanner\FOnline 2 Char Planner\obj\x86\Release\FOnline_2_Char_Planner.Form3.resources

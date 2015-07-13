@@ -47,8 +47,11 @@
                 rank = 2
                 'Case "Anticritical"
                 '   rank = 2
-            Case "Bonus HtH Damage"
-                rank = 3
+
+                'Client Update 12.7.15 --> http://forum.fonline2.com/index.php?topic=13301.0
+
+                'Case "Bonus HtH Damage"
+                'rank = 3
             Case "Bonus Ranged Damage"
                 rank = 2
             Case "Lifegiver"
@@ -251,6 +254,8 @@
                 'timeouts
                 If perk = "Medic" Then
                     Form1.isMedic = False
+                ElseIf perk = "HtH Evade" Then
+                    Form1.isHtHEvade = False
                 End If
                 'Form1.Label2.Text = "Removed Perk: " & perk
             End If
@@ -322,7 +327,7 @@
                 Form1.DetDescrChange(4, 4)
             Case "Bonus HtH Damage"
                 Form1.DetDescrChange(5, 5)
-                stats.MeleeDmg = stats.MeleeDmg + 4
+                stats.MeleeDmg = stats.MeleeDmg + 10
             Case "Bonus Ranged Damage"
                 Form1.DetDescrChange(6, 6)
             Case "Bonus Rate of Fire"
@@ -490,6 +495,7 @@
                 Form1.DetDescrChange(44, 44)
             Case "HtH Evade"
                 Form1.DetDescrChange(22, 22)
+                Form1.isHtHEvade = True
             Case "Lifegiver"
                 Form1.DetDescrChange(23, 23)
 
@@ -566,6 +572,7 @@
             Case "More Critical"
                 Form1.DetDescrChange(29, 29)
                 stats.CritChance = stats.CritChance + 8
+                
 
             Case "Mr. Fixit"
                 Form1.DetDescrChange(30, 30)
@@ -636,6 +643,11 @@
         'refresh SPECIAL and SKillminValues
         Form1.NUDSkillsMinValues()
         SetStats()
+        If Form1.LblCritChVal.Text < 0 Then
+            Form1.LblCritChVal.ForeColor = Color.Red
+        Else
+            Form1.LblCritChVal.ForeColor = Color.LimeGreen
+        End If
     End Sub
 
     'Check Perk Requirements
@@ -747,7 +759,7 @@
                 'achievement!!! --> todo: Select Achievement-Perks as special perks
                 isAvailable = False
             Case "HtH Evade"
-                If isTaken = False And Not levelVal < 12 And skills.CCombat >= 75 Then
+                If isTaken = False And Not levelVal < 12 And skills.CCombat >= 200 And skills.BigGuns <= 100 And skills.EWeapons <= 100 And skills.SmallGuns <= 100 Then
                     isAvailable = True
                 End If
             Case "Lifegiver"

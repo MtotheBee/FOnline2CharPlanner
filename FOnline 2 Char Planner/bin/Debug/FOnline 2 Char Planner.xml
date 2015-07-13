@@ -275,6 +275,10 @@ FOnline2CharPlanner
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.Creditsneu_v1_5">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.CReliantDesc">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.

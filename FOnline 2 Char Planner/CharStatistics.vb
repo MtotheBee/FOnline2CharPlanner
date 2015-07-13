@@ -25,6 +25,7 @@
     Friend addMutantMDmg As Integer
     Friend addKamikaze As Integer
     Friend addMutantDR As Integer
+    Friend lowCritChance As Integer
     Friend Sight As Integer
     Friend addSShooter As Integer
     Friend ACritical As Integer
@@ -89,11 +90,13 @@
             Form1.LblAClassVal.Text = CStr(Agility) '<--- todo --> additional AC through perks || probably not needed in this sub
 
             'ActionPoints Calc
-            If Form1.isBruiser = True Then
-                Form1.LblAPointsVal.Text = CStr((5 + Int(Agility / 2)) - 2)
-            Else
-                Form1.LblAPointsVal.Text = CStr(5 + Int(Agility / 2))
-            End If
+
+            'Bruiser doesnt effect AP anymore since Update 12.7.15
+            'If Form1.isBruiser = True Then
+            'Form1.LblAPointsVal.Text = CStr((5 + Int(Agility / 2)) - 2)
+            'Else
+            Form1.LblAPointsVal.Text = CStr(5 + Int(Agility / 2))
+            'End If
 
             'Melee Calc New
             Form1.LblMDmgVal.Text = Strenght + (addHHanded) + (addBruiser) + (addMutantMDmg)
@@ -126,10 +129,16 @@
             Form1.LblSeqVal.Text = 2 * Perception
 
             'CritChance Calc
-            If Form1.isFinesse = True Then
-                Form1.LblCritChVal.Text = Luck + addCritChance
+            If Form1.isFinesse = True Or Form1.isBruiser = True Then
+                Form1.LblCritChVal.Text = Luck + addCritChance - lowCritChance
             Else
-                Form1.LblCritChVal.Text = Luck
+                Form1.LblCritChVal.Text = Luck - lowCritChance
+            End If
+
+            If Form1.LblCritChVal.Text < 0 Then
+                Form1.LblCritChVal.ForeColor = Color.Red
+            Else
+                Form1.LblCritChVal.ForeColor = Color.LimeGreen
             End If
 
             'DmgRes Calc
@@ -147,6 +156,12 @@
 
             SetStats()
         Else
+
+            If Form1.LblCritChVal.Text < 0 Then
+                Form1.LblCritChVal.ForeColor = Color.Red
+            Else
+                Form1.LblCritChVal.ForeColor = Color.LimeGreen
+            End If
 
             Form1.LblHitPoints.Text = HitPoints
             Form1.LblAClassVal.Text = AClass
