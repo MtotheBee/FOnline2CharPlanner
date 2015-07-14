@@ -3044,7 +3044,7 @@ Public Class Form1
                                                 If skillVal > 110 Then
                                                     If Not isDontBother = True Then
                                                         Form3.F3MsgBoxText.Text = "Warning!" & vbCrLf & "You are about to raise this skill" & vbCrLf & _
-                                                                             "above 100%, while HtH Evade is active." & vbCrLf &
+                                                                             "above 110%, while HtH Evade is active." & vbCrLf &
                                                                              "The perk will no longer have any effect!"
                                                         Form3.BtnF3DontB.Visible = True
                                                         Form3.Show()
