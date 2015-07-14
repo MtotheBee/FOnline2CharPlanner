@@ -23,7 +23,12 @@
     End Sub
 
     Private Sub BtnF3DontB_Click(sender As System.Object, e As System.EventArgs) Handles BtnF3DontB.Click
-        Form1.isDontBother = True
-        Me.Close()
+        If Form1.isDone = False Then
+            Form1.isDontBotherBruiser = True
+            Me.Close()
+        Else
+            Form1.isDontBother = True
+            Me.Close()
+        End If
     End Sub
 End Class

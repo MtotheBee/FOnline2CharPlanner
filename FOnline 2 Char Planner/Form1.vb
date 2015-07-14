@@ -593,7 +593,7 @@ Public Class Form1
     '***********************************
     '* Traits Click/Behaviour Routines *
     '***********************************
-
+    Friend isDontBotherBruiser As Boolean
     Private Sub LblTraitsBruiser_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LblTraitsBruiser.Click
         Stats.GetStats()
         Dim isMaxST As Boolean
@@ -605,62 +605,63 @@ Public Class Form1
         Else
             isBruiser = True
 
-            Form3.F3MsgBoxText.Text = "Note:" & vbCrLf & _
+            If Not isDontBotherBruiser = True Then
+                Form3.F3MsgBoxText.Text = "Note:" & vbCrLf & _
                                       "The Value of your Crit Chance should" & vbCrLf & _
                                       "be lowered by 30% now, although you" & vbCrLf & _
                                       "won't see this in your ingame" & vbCrLf & _
                                       "character screen."
-            Form3.BtnF3DontB.Visible = False
-            Form3.Show()
+                Form3.Show()
+            End If
         End If
 
-        If isBruiser = True Then
-            If Not Stats.Strenght >= 9 Then
-                isMaxST = False
-                Stats.Strenght = Stats.Strenght + 2
-                Statistics.lowCritChance = 30
-                Statistics.addBruiser = 8
-                'Statistics.APoints = Statistics.APoints - 2
-                If Stats.Strenght <= 2 Then
-                    LblStatsSTVal.ForeColor = Color.LimeGreen
+            If isBruiser = True Then
+                If Not Stats.Strenght >= 9 Then
+                    isMaxST = False
+                    Stats.Strenght = Stats.Strenght + 2
+                    Statistics.lowCritChance = 30
+                    Statistics.addBruiser = 8
+                    'Statistics.APoints = Statistics.APoints - 2
+                    If Stats.Strenght <= 2 Then
+                        LblStatsSTVal.ForeColor = Color.LimeGreen
+                    End If
+                Else
+                    isMaxST = True
+                    Stats.Strenght = Stats.Strenght + 2
+                    Statistics.addBruiser = 8
+                    'Statistics.APoints = Statistics.APoints - 2
+                    LblStatsSTVal.ForeColor = Color.Red
                 End If
             Else
-                isMaxST = True
-                Stats.Strenght = Stats.Strenght + 2
-                Statistics.addBruiser = 8
-                'Statistics.APoints = Statistics.APoints - 2
-                LblStatsSTVal.ForeColor = Color.Red
-            End If
-        Else
-            If isBruiser = False And isMaxST = False Then
-                If Stats.Strenght <= 2 Then
-                    LblStatsSTVal.ForeColor = Color.Red
-                    Stats.Strenght = Stats.Strenght - 2
-                    'Statistics.APoints = Statistics.APoints + 2
-                    Statistics.addBruiser = 0
-                Else
+                If isBruiser = False And isMaxST = False Then
+                    If Stats.Strenght <= 2 Then
+                        LblStatsSTVal.ForeColor = Color.Red
+                        Stats.Strenght = Stats.Strenght - 2
+                        'Statistics.APoints = Statistics.APoints + 2
+                        Statistics.addBruiser = 0
+                    Else
+                        Stats.Strenght = Stats.Strenght - 2
+                        Statistics.lowCritChance = 0
+                        'Statistics.APoints = Statistics.APoints + 2
+                        Statistics.addBruiser = 0
+                        LblStatsSTVal.ForeColor = Color.LimeGreen
+                    End If
+
+                ElseIf isBruiser = False And isMaxST = True Then
                     Stats.Strenght = Stats.Strenght - 2
                     Statistics.lowCritChance = 0
+
                     'Statistics.APoints = Statistics.APoints + 2
                     Statistics.addBruiser = 0
                     LblStatsSTVal.ForeColor = Color.LimeGreen
                 End If
-
-            ElseIf isBruiser = False And isMaxST = True Then
-                Stats.Strenght = Stats.Strenght - 2
-                Statistics.lowCritChance = 0
-                
-                'Statistics.APoints = Statistics.APoints + 2
-                Statistics.addBruiser = 0
-                LblStatsSTVal.ForeColor = Color.LimeGreen
             End If
-        End If
 
 
-        Stats.SetStats()
-        Traits.TraitsCheck(sender, isBruiser, sender.ToString)
-        Statistics.SetStatistics()
-        Skills.setSkillValues()
+            Stats.SetStats()
+            Traits.TraitsCheck(sender, isBruiser, sender.ToString)
+            Statistics.SetStatistics()
+            Skills.setSkillValues()
 
     End Sub
 
@@ -3026,10 +3027,10 @@ Public Class Form1
                                                 ctl.Text = "300%"
                                             End If
                                             If skillVal > 100 Then
-                                                Form3.F3MsgBoxText.Text = "Warning!" & vbCrLf & "You are about to raise this skill" & vbCrLf & _
-                                                                          "above 100%, while HtH Evade is active." & vbCrLf &
-                                                                          "The perk will no longer have any effect!"
                                                 If Not isDontBother = True Then
+                                                    Form3.F3MsgBoxText.Text = "Warning!" & vbCrLf & "You are about to raise this skill" & vbCrLf & _
+                                                                         "above 100%, while HtH Evade is active." & vbCrLf &
+                                                                         "The perk will no longer have any effect!"
                                                     Form3.BtnF3DontB.Visible = True
                                                     Form3.Show()
                                                 End If
