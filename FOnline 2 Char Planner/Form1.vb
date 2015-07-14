@@ -3020,21 +3020,37 @@ Public Class Form1
                             If Not Skills.SkillP = 0 And Not ctl.Name = "LblScavenVal" And Not ctl.Name = "LblBarterVal" Then
                                 If Not skillVal >= skillMax And Skills.SkillP - neededSP >= 0 Then
                                     If ctl.Name = "LblSGunsVal" Or ctl.Name = "LblBGunsVal" Or ctl.Name = "LblEWeaponsVal" Then
+
                                         If isHtHEvade = True Then
                                             skillVal = skillVal + incr
                                             ctl.Text = skillVal & "%"
                                             If skillVal > 300 Then
                                                 ctl.Text = "300%"
                                             End If
-                                            If skillVal > 100 Then
-                                                If Not isDontBother = True Then
-                                                    Form3.F3MsgBoxText.Text = "Warning!" & vbCrLf & "You are about to raise this skill" & vbCrLf & _
-                                                                         "above 100%, while HtH Evade is active." & vbCrLf &
-                                                                         "The perk will no longer have any effect!"
-                                                    Form3.BtnF3DontB.Visible = True
-                                                    Form3.Show()
+                                            If Not ctl.Name = "LblSGunsVal" Then
+
+                                                If skillVal > 100 Then
+                                                    If Not isDontBother = True Then
+                                                        Form3.F3MsgBoxText.Text = "Warning!" & vbCrLf & "You are about to raise this skill" & vbCrLf & _
+                                                                             "above 100%, while HtH Evade is active." & vbCrLf &
+                                                                             "The perk will no longer have any effect!"
+                                                        Form3.BtnF3DontB.Visible = True
+                                                        Form3.Show()
+                                                    End If
+
                                                 End If
 
+                                            Else
+                                                If skillVal > 110 Then
+                                                    If Not isDontBother = True Then
+                                                        Form3.F3MsgBoxText.Text = "Warning!" & vbCrLf & "You are about to raise this skill" & vbCrLf & _
+                                                                             "above 100%, while HtH Evade is active." & vbCrLf &
+                                                                             "The perk will no longer have any effect!"
+                                                        Form3.BtnF3DontB.Visible = True
+                                                        Form3.Show()
+                                                    End If
+
+                                                End If
                                             End If
 
                                         Else
