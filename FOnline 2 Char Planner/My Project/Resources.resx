@@ -775,4 +775,37 @@
   <data name="Creditsneu_v1_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Creditsneu_v1_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="BarterDescPicNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\BarterDescPicNew.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="CCombDescPicNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\CCombDescPicNew.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="DocDescPicNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\DocDescPicNew.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FAidDescPicNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FAidDescPicNew.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LPickDescPicNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LPickDescPicNew.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ODManDescPicNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ODManDescPicNew.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="RepairDescPicNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\RepairDescPicNew.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ScavengeDescPicNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ScavengeDescPicNew.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ScienceDescPicNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ScienceDescPicNew.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SneakDescPicNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SneakDescPicNew.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="StealDescPicNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\StealDescPicNew.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

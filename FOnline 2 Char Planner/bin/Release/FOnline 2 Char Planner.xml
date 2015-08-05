@@ -123,6 +123,10 @@ FOnline2CharPlanner
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.BarterDescPicNew">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.BetterCrDesc">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -227,6 +231,10 @@ FOnline2CharPlanner
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.CCombDescPicNew">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.CHDesc">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -319,6 +327,10 @@ FOnline2CharPlanner
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.DocDescPicNew">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.DodgerDesc">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -388,6 +400,10 @@ FOnline2CharPlanner
   Looks up a localized resource of type System.Byte[].
 </summary>
 </member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.FADesc">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.FAidDescPicNew">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
@@ -603,6 +619,10 @@ FOnline2CharPlanner
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.LPickDescPicNew">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.LStepDesc">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
@@ -668,6 +688,10 @@ FOnline2CharPlanner
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.ODDEsc">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.ODManDescPicNew">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
@@ -743,11 +767,23 @@ FOnline2CharPlanner
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.RepairDescPicNew">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.ScavengeDesc">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.ScavengeDescPicNew">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.ScienceDesc">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.ScienceDescPicNew">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
@@ -787,6 +823,10 @@ FOnline2CharPlanner
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.SneakDescPicNew">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
 </member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.SNORWALK">
 	<summary>
   Looks up a localized resource of type System.Byte[].
@@ -812,6 +852,10 @@ FOnline2CharPlanner
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>
 </member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.StealDesc">
+	<summary>
+  Looks up a localized resource of type System.Drawing.Bitmap.
+</summary>
+</member><member name="P:FOnline_2_Char_Planner.My.Resources.Resources.StealDescPicNew">
 	<summary>
   Looks up a localized resource of type System.Drawing.Bitmap.
 </summary>

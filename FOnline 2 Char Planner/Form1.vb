@@ -69,6 +69,8 @@ Public Class Form1
     Friend isGambtag As Boolean
     Friend isODtag As Boolean
 
+    Friend isGainPE As Boolean
+
     'Boolean for HtH Evade Perk
     Friend isHtHEvade As Boolean
 
@@ -1470,7 +1472,7 @@ Public Class Form1
 
     Private Sub LblCCombat_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LblCCombat.Click, LblCCombVal.Click
         PanChangePos(sender, isCCtag)
-        PicDesc.Image = My.Resources.CCombatDesc
+        PicDesc.Image = My.Resources.CCombDescPicNew
         DetDescrChange(55, 55)
 
         If Not isDone = True Then
@@ -1499,7 +1501,7 @@ Public Class Form1
 
     Private Sub LblScavenge_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LblScavenge.Click, LblScavenVal.Click
         PanChangePos(sender, isScavtag)
-        PicDesc.Image = My.Resources.ScavengeDesc
+        PicDesc.Image = My.Resources.ScavengeDescPicNew
         DetDescrChange(51, 51)
 
         If Not isDone = True Then
@@ -1528,7 +1530,7 @@ Public Class Form1
 
     Private Sub LblFAid_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LblFAid.Click, LblFaidVal.Click
         PanChangePos(sender, isFAtag)
-        PicDesc.Image = My.Resources.FADesc
+        PicDesc.Image = My.Resources.FAidDescPicNew
         DetDescrChange(57, 57)
 
         If Not isDone = True Then
@@ -1563,7 +1565,7 @@ Public Class Form1
 
     Private Sub LblDoctor_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LblDoctor.Click, LblDocVal.Click
         PanChangePos(sender, isDoctag)
-        PicDesc.Image = My.Resources.DocDesc
+        PicDesc.Image = My.Resources.DocDescPicNew
         DetDescrChange(50, 50)
 
         If Not isDone = True Then
@@ -1599,7 +1601,7 @@ Public Class Form1
 
     Private Sub LblSneak_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LblSneak.Click, LblSneakVal.Click
         PanChangePos(sender, isSneaktag)
-        PicDesc.Image = My.Resources.SneakDesc
+        PicDesc.Image = My.Resources.SneakDescPicNew
         DetDescrChange(49, 49)
 
         If Not isDone = True Then
@@ -1628,7 +1630,7 @@ Public Class Form1
 
     Private Sub LblSteal_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LblSteal.Click, LblStealVal.Click
         PanChangePos(sender, isStealtag)
-        PicDesc.Image = My.Resources.StealDesc
+        PicDesc.Image = My.Resources.StealDescPicNew
         DetDescrChange(58, 58)
 
         If Not isDone = True Then
@@ -1686,7 +1688,7 @@ Public Class Form1
 
     Private Sub LblScience_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LblScience.Click, LblScienceVal.Click
         PanChangePos(sender, isSciencetag)
-        PicDesc.Image = My.Resources.ScienceDesc
+        PicDesc.Image = My.Resources.ScienceDescPicNew
         DetDescrChange(60, 60)
 
         If Not isDone = True Then
@@ -1715,7 +1717,7 @@ Public Class Form1
 
     Private Sub LblRepair_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LblRepair.Click, LblRepairVal.Click
         PanChangePos(sender, isReptag)
-        PicDesc.Image = My.Resources.RepairDesc
+        PicDesc.Image = My.Resources.RepairDescPicNew
         DetDescrChange(46, 46)
 
         If Not isDone = True Then
@@ -1773,7 +1775,7 @@ Public Class Form1
 
     Private Sub LblBarter_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LblBarter.Click, LblBarterVal.Click
         PanChangePos(sender, isBartertag)
-        PicDesc.Image = My.Resources.BarterDesc
+        PicDesc.Image = My.Resources.BarterDescPicNew
         DetDescrChange(62, 62)
 
         If Not isDone = True Then
@@ -1831,7 +1833,7 @@ Public Class Form1
 
     Private Sub LblODMan_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LblODMan.Click, LblODVal.Click
         PanChangePos(sender, isODtag)
-        PicDesc.Image = My.Resources.ODDEsc
+        PicDesc.Image = My.Resources.ODManDescPicNew
         DetDescrChange(63, 63)
 
         If Not isDone = True Then
@@ -1929,7 +1931,7 @@ Public Class Form1
         BtnAllDrugs.Enabled = True
 
         Stats.GetStats()
-
+        SightBeforeDrugs = 20 + (Stats.Perception * 3)
         'reset Description 
         LblDetDesc.Text = ""
         LblDetDescrText.Text = ""
@@ -2289,8 +2291,12 @@ Public Class Form1
         Dim ctl As Control
         Dim s As String
 
+        'Reset Drug Effects if active
         ResetDrugEffects()
+        'SightBeforeDrugs = 20 + (Stats.Perception * 3) + AddSubstractMarksmanImpl + AddSubstractSShooter
 
+        BtnAllDrugs.Image = Nothing
+        BtnAllDrugs.Text = "All"
         Stats.GetStats()
 
         'not sure if needed later on
@@ -2358,8 +2364,10 @@ Public Class Form1
         'Dim hptemp As Integer
         'Dim lvlTemp As Integer
 
+        'SightBeforeDrugs = 20 + (Stats.Perception * 3) + AddSubstractMarksmanImpl + AddSubstractSShooter
         ResetDrugEffects()
-
+        BtnAllDrugs.Image = Nothing
+        BtnAllDrugs.Text = "All"
         Stats.GetStats()
 
         For Each ctl In PanSkills.Controls
@@ -2505,7 +2513,8 @@ Public Class Form1
         BtnLvlFastDwn.Visible = False
 
         ResetDrugEffects()
-
+        BtnAllDrugs.Image = Nothing
+        BtnAllDrugs.Text = "All"
         Statistics.GetStatistics()
         Statistics.HitPoints = Statistics.HitPoints - HitPointstolastlvl
         Statistics.CarryWeight = Statistics.CarryWeight - (99 - lastLevel)
@@ -2642,6 +2651,7 @@ Public Class Form1
         Dim perkFoundInLstB As Boolean
         Dim rankhigh As Boolean
 
+        
         isPerkchoosen = False
         For Each item In LstVPerks.SelectedItems
             isPerkchoosen = True
@@ -3012,6 +3022,10 @@ Public Class Form1
                                 If skillMax >= 200 Then
                                     skillMax = 200
                                 End If
+                            ElseIf ctl.Name = "LblODVal" Then
+                                If skillMax >= 100 Then
+                                    skillMax = 100
+                                End If
                             Else
                                 If skillMax >= 300 Then
                                     skillMax = 300
@@ -3150,7 +3164,7 @@ Public Class Form1
     'Achievements
     Private Sub LstVAchieve_Indexchange(ByVal sender As System.Object, ByVal e As EventArgs) Handles LstVAchiev.ItemSelectionChanged
         Dim strItem As ListViewItem
-        Dim Achievement As String
+        Dim Achievement As String = ""
         Dim valueSK As Integer
         Dim s As String
 
@@ -3176,33 +3190,34 @@ Public Class Form1
 
             End If
 
-            If Achievement = "Engineering Implant" Then
-                
-                Skills.getSkillValues()
-                If Skills.Repair + 100 >= 300 Then
-                    Skills.Repair = 300
-                    LblRepairVal.Text = 300 & "%"
-                Else
-                    Skills.Repair = Skills.Repair + 100
-                    LblRepairVal.Text = Skills.Repair & "%"
-                End If
+            'Not active now..when implemented later this should be the code for changes
+            'If Achievement = "Engineering Implant" Then
 
-                If Skills.Science + 100 >= 300 Then
-                    Skills.Science = 300
-                    LblScienceVal.Text = 300 & "%"
-                Else
-                    Skills.Science = Skills.Science + 100
-                    LblScienceVal.Text = Skills.Science & "%"
-                End If
+            '    Skills.getSkillValues()
+            '    If Skills.Repair + 100 >= 300 Then
+            '        Skills.Repair = 300
+            '        LblRepairVal.Text = 300 & "%"
+            '    Else
+            '        Skills.Repair = Skills.Repair + 100
+            '        LblRepairVal.Text = Skills.Repair & "%"
+            '    End If
 
-                If Skills.EWeapons + 100 >= 300 Then
-                    Skills.EWeapons = 300
-                    LblEWeaponsVal.Text = 300 & "%"
-                Else
-                    Skills.EWeapons = Skills.EWeapons + 100
-                    LblEWeaponsVal.Text = Skills.EWeapons & "%"
-                End If
-            End If
+            '    If Skills.Science + 100 >= 300 Then
+            '        Skills.Science = 300
+            '        LblScienceVal.Text = 300 & "%"
+            '    Else
+            '        Skills.Science = Skills.Science + 100
+            '        LblScienceVal.Text = Skills.Science & "%"
+            '    End If
+
+            '    If Skills.EWeapons + 100 >= 300 Then
+            '        Skills.EWeapons = 300
+            '        LblEWeaponsVal.Text = 300 & "%"
+            '    Else
+            '        Skills.EWeapons = Skills.EWeapons + 100
+            '        LblEWeaponsVal.Text = Skills.EWeapons & "%"
+            '    End If
+            'End If
 
             If Achievement = "Pack Rat" Then
                 Statistics.GetStatistics()
@@ -3277,16 +3292,19 @@ Public Class Form1
     Friend AddSubstractPsychoIN As Integer = 2
     Friend AddSubstractPsychoPE As Integer = 7
     Friend AddSubstractNukaAP As Integer = 1
-    Friend AddSubstractCigsFoV As Integer = 3
+    Friend AddSubstractCigsFoV As Integer = 0
+    Friend AddSubstractMarksmanImpl As Integer = 0
+    Friend AddSubstractSShooter As Integer = 0
 
     Friend PEBeforePsycho As Integer
     Friend INBeforePsycho As Integer
+    Friend SightBeforeDrugs As Integer
 
     Dim isJetActive As Boolean
     Dim isBuffoutActive As Boolean
-    Dim isPsychoActive As Boolean
+    Friend isPsychoActive As Boolean
     Dim isNukaActive As Boolean
-    Dim isCigsActive As Boolean
+    Friend isCigsActive As Boolean
 
     'DetDescrName(137) = "Jet"
     'DetDescrText(137) = "Effect: +3 Action Points.                    Addiction: -1 Action Point."
@@ -3423,23 +3441,36 @@ Public Class Form1
         DetDescrChange(139, 139)
         PicDesc.Image = My.Resources.PsychoDescPic
         Statistics.GetStatistics()
+
         If isPsychoActive = True Then
             isPsychoActive = False
             BtnDrugsPsycho.Image = My.Resources.Psycho
 
             Stats.Perception = PEBeforePsycho
             Stats.Intelligence = INBeforePsycho
-
+            'If isCigsActive Then
+            '    Statistics.Sight = SightBeforeDrugs + 3
+            'Else
+            '    Statistics.Sight = SightBeforeDrugs
+            'End If
             Statistics.DmgRes = Statistics.DmgRes - AddSubstractPsychoDMGRes
-
-            LblSightVal.ForeColor = Color.LimeGreen
-            LblSightVal.Font = myFontNormal
+            If Not isCigsActive Then
+                LblSightVal.ForeColor = Color.LimeGreen
+                LblSightVal.Font = myFontNormal
+            End If
             LblStatsPEVal.ForeColor = Color.LimeGreen
             LblStatsINVal.ForeColor = Color.LimeGreen
             LblDmgResVal.ForeColor = Color.LimeGreen
             LblDmgResVal.Font = myFontNormal
 
         Else
+            'If isCigsActive Then
+            '    AddSubstractCigsFoV = 3
+            '    SightBeforeDrugs = Statistics.Sight - 3
+            'Else
+            '    AddSubstractCigsFoV = 0
+            '    SightBeforeDrugs = Statistics.Sight
+            'End If
             isPsychoActive = True
             BtnDrugsPsycho.Image = My.Resources.PsychoHigh
 
@@ -3459,7 +3490,7 @@ Public Class Form1
             End If
 
             Statistics.DmgRes = Statistics.DmgRes + AddSubstractPsychoDMGRes
-
+            'Statistics.Sight = 20 + (Stats.Perception * 3) + AddSubstractCigsFoV + AddSubstractMarksmanImpl + AddSubstractSShooter
             LblSightVal.ForeColor = Color.LightSkyBlue
             LblSightVal.Font = myFontBold
             LblStatsPEVal.ForeColor = Color.LightSkyBlue
@@ -3468,9 +3499,10 @@ Public Class Form1
             LblDmgResVal.Font = myFontBold
         End If
         Stats.SetStats()
-        Stats.GetStats()
+        'Stats.GetStats()
         TestActiveDrugs()
-        Statistics.Sight = 20 + (Stats.Perception * 3)
+        'Statistics.Sight = 20 + (Stats.Perception * 3)
+        Statistics.RefreshSight()
         Statistics.SetStatistics()
     End Sub
 
@@ -3506,29 +3538,40 @@ Public Class Form1
         DetDescrChange(141, 141)
         PicDesc.Image = My.Resources.CigsDescPic
         Statistics.GetStatistics()
+
         If isCigsActive = True Then
+
             isCigsActive = False
             BtnDrugsCigs.Image = My.Resources.CigarettesNew
-
-            Statistics.Sight = Statistics.Sight - AddSubstractCigsFoV
-            LblSightVal.ForeColor = Color.LimeGreen
-            LblSightVal.Font = myFontNormal
-
+            'AddSubstractCigsFoV = 0
+            'Statistics.Sight = Statistics.Sight - AddSubstractCigsFoV
+            If Not isPsychoActive Then
+                LblSightVal.ForeColor = Color.LimeGreen
+                LblSightVal.Font = myFontNormal
+            End If
 
         Else
+            'AddSubstractCigsFoV = 3
+            'If isPsychoActive Then
+            '    SightBeforeDrugs = (PEBeforePsycho * 3) + 20 + AddSubstractMarksmanImpl + AddSubstractSShooter
+            'Else
+            '    SightBeforeDrugs = Statistics.Sight
+            'End If
             isCigsActive = True
             BtnDrugsCigs.Image = My.Resources.CigarettesHighNew
-            Statistics.Sight = Statistics.Sight + AddSubstractCigsFoV
+            'Statistics.Sight = Statistics.Sight + AddSubstractCigsFoV
             LblSightVal.ForeColor = Color.LightSkyBlue
             LblSightVal.Font = myFontBold
         End If
         TestActiveDrugs()
+        Statistics.RefreshSight()
         Statistics.SetStatistics()
     End Sub
 
     Private Sub BtnAllDrugs_Click(sender As System.Object, e As System.EventArgs) Handles BtnAllDrugs.Click
         If isAllDrugsActive = False Then
             ResetDrugEffects()
+
             BtnDrugsJet_Click(sender, e)
             BtnDrugsBuff_Click(sender, e)
             BtnDrugsPsycho_Click(sender, e)
@@ -3540,12 +3583,14 @@ Public Class Form1
             BtnAllDrugs.Text = Nothing
 
             isAllDrugsActive = True
+            Statistics.RefreshSight()
         Else
             BtnAllDrugs.Text = "All"
             BtnAllDrugs.Font = myFontAll
             BtnAllDrugs.Image = Nothing
             ResetDrugEffects()
             isAllDrugsActive = False
+            Statistics.RefreshSight()
         End If
        
     End Sub
@@ -3647,7 +3692,8 @@ Public Class Form1
         If isCigsActive = True Then
             isCigsActive = False
             BtnDrugsCigs.Image = My.Resources.CigarettesNew
-            Statistics.Sight = Statistics.Sight - AddSubstractCigsFoV
+
+            'Statistics.Sight = Statistics.Sight - AddSubstractCigsFoV
             LblSightVal.ForeColor = Color.LimeGreen
             LblSightVal.Font = myFontNormal
         End If
@@ -3659,9 +3705,12 @@ Public Class Form1
             LblAPointsVal.ForeColor = Color.LimeGreen
             LblAPointsVal.Font = myFontNormal
         End If
-
+        'Statistics.Sight = SightBeforeDrugs
         Stats.SetStats()
+        Statistics.RefreshSight()
         Statistics.SetStatistics()
+
+
     End Sub
 
     'Quests
@@ -3725,6 +3774,7 @@ Public Class Form1
         NUDSkillsMinValues()
     End Sub
 
+    Friend isChessFoV As Boolean
     Private Sub LstVChess_Indexchange(ByVal sender As System.Object, ByVal e As EventArgs) Handles LstVChess.ItemSelectionChanged
         Dim strItem As ListViewItem
         Dim reward As String
@@ -3751,6 +3801,7 @@ Public Class Form1
                 Statistics.Sight = Statistics.Sight + 1
                 LblSightVal.Text = Statistics.Sight
                 AuswBeschr = "+1 FOV, +5% HitC."
+                isChessFoV = True
 
             Case "+10HP, +4 Healing Rate"
                 Statistics.HealRate = Statistics.HealRate + 4
@@ -3946,6 +3997,7 @@ Public Class Form1
     Dim SGunBVal As Integer
     Dim BookAmount As Integer
     Dim BookAmountMax As Integer
+    Friend addGainINVal As Integer
     Friend SavedSPBooksTemp As Integer
     Friend savedSPbooksDiff As Integer
     Friend SavedSPBooksSmallG As Integer
@@ -4196,6 +4248,13 @@ Public Class Form1
             PanSkUpDown.Enabled = False
 
             LblBMentats.Visible = True
+
+            'Add +2 Books if Gain IN was taken
+            FABookVal = FABookVal + addGainINVal
+            ODBVal = ODBVal + addGainINVal
+            RepairBVal = RepairBVal + addGainINVal
+            ScienceBVal = ScienceBVal + addGainINVal
+            SGunBVal = SGunBVal + addGainINVal
 
             'Read in BookAmountVal in LstView Books Sub Items
             LstVBooks.Items(0).SubItems(1).Text = FABookVal
@@ -4948,65 +5007,69 @@ Public Class Form1
 
     'Button Implants
     Friend isEnhancedRemoved As Boolean
+    Friend isMarksmanship As Boolean
     Private Sub BtnImpl_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnImpl.Click
         Dim Level As Integer
         Level = CInt(LblLevelVal.Text)
 
-        If isImplantActive = True Then
-            BtnImpl.ForeColor = Color.LightGray
-            BtnBooks.Enabled = True
-            BtnQuests.Enabled = True
-            BtnAchievem.Enabled = True
-
-            isImplantActive = False
-            LstVImpl.Visible = False
-            LblImpl.Visible = False
-            LblPerks.Visible = True
-            PanSkUpDown.Enabled = True
-            'PanSkUpDown.Visible = True
-            BtnLvlDwn.Enabled = True
-            BtnLvlUp.Enabled = True
-
-            Level = CInt(LblLevelVal.Text)
-            Label3.Text = Level
-
-
+        If Level = 1 Then
+            MsgBox("Please choose an implant when you are at least Level 2.")
         Else
-            BtnImpl.ForeColor = Color.SkyBlue
-            isImplantActive = True
-            BtnBooks.Enabled = False
-            BtnQuests.Enabled = False
-            BtnAchievem.Enabled = False
-            LstVImpl.Visible = True
-            LblImpl.Visible = True
-            LblPerks.Visible = False
-            PanSkUpDown.Enabled = False
-            PanSkUpDown.Visible = False
-            BtnLvlDwn.Enabled = False
-            BtnLvlUp.Enabled = False
 
-            Level = CInt(LblLevelVal.Text)
-            'Label3.Text = Level
+            If isImplantActive = True Then
+                BtnImpl.ForeColor = Color.LightGray
+                BtnBooks.Enabled = True
+                BtnQuests.Enabled = True
+                BtnAchievem.Enabled = True
+
+                isImplantActive = False
+                LstVImpl.Visible = False
+                LblImpl.Visible = False
+                LblPerks.Visible = True
+                PanSkUpDown.Enabled = True
+                'PanSkUpDown.Visible = True
+                BtnLvlDwn.Enabled = True
+                BtnLvlUp.Enabled = True
+
+                Level = CInt(LblLevelVal.Text)
+                Label3.Text = Level
 
 
-            If Level < 3 Then
-                For Each ctl As ListViewItem In LstVImpl.Items
-                    If ctl.Text = "Enhancement Implant" Then
-                        ctl.Remove()
-                        isEnhancedRemoved = True
-                        Exit For
+            Else
+                BtnImpl.ForeColor = Color.SkyBlue
+                isImplantActive = True
+                BtnBooks.Enabled = False
+                BtnQuests.Enabled = False
+                BtnAchievem.Enabled = False
+                LstVImpl.Visible = True
+                LblImpl.Visible = True
+                LblPerks.Visible = False
+                PanSkUpDown.Enabled = False
+                PanSkUpDown.Visible = False
+                BtnLvlDwn.Enabled = False
+                BtnLvlUp.Enabled = False
+
+                Level = CInt(LblLevelVal.Text)
+                'Label3.Text = Level
+
+
+                If Level < 3 Then
+                    For Each ctl As ListViewItem In LstVImpl.Items
+                        If ctl.Text = "Enhancement Implant" Then
+                            ctl.Remove()
+                            isEnhancedRemoved = True
+                            Exit For
+                        End If
+                    Next
+                End If
+
+                If Level >= 3 Then
+                    If isEnhancedRemoved = True Then
+                        LstVImpl.Items.Insert(LstVImpl.Items.Count, "Enhancement Implant")
+                        isEnhancedRemoved = False
                     End If
-                Next
-            End If
-
-            If Level >= 3 Then
-                If isEnhancedRemoved = True Then
-                    LstVImpl.Items.Insert(LstVImpl.Items.Count, "Enhancement Implant")
-                    isEnhancedRemoved = False
                 End If
             End If
-
-
         End If
     End Sub
 
@@ -5077,162 +5140,165 @@ Public Class Form1
         Dim s As String
         Dim item As ListViewItem
         'Dim skillVal As Integer
-
+        Dim skPLeft As Integer = LblSkPointsVal.Text
         Stats.GetStats()
         Statistics.GetStatistics()
         Skills.getSkillValues()
         If Not isImplChoosen = True Then
-            isImplChoosen = True
 
-            s = LstVImpl.SelectedItems(0).Text
+                isImplChoosen = True
 
-            'Implant Name is saved for later use when restoring levels
-            ImplantName = s
-            LstBoxPerks.Items.Add(s)
+                s = LstVImpl.SelectedItems(0).Text
 
-            Select Case s
-                Case "Accuracy Implant"
-                    Statistics.Sight = Statistics.Sight + 5
+                'Implant Name is saved for later use when restoring levels
+                ImplantName = s
+                LstBoxPerks.Items.Add(s)
 
-                    If Skills.BigGuns + 40 >= 300 Then
-                        Skills.BigGuns = 300
-                        LblBGunsVal.Text = 300 & "%"
-                    Else
-                        Skills.BigGuns = Skills.BigGuns + 40
-                        LblBGunsVal.Text = Skills.BigGuns & "%"
-                    End If
+                Select Case s
+                    Case "Accuracy Implant"
+                        Statistics.Sight = Statistics.Sight + 5
 
-                    If Skills.SmallGuns + 40 >= 300 Then
-                        Skills.SmallGuns = 300
-                        LblSGunsVal.Text = 300 & "%"
-                    Else
-                        Skills.SmallGuns = Skills.SmallGuns + 40
-                        LblSGunsVal.Text = Skills.SmallGuns & "%"
-                    End If
+                        If Skills.BigGuns + 40 >= 300 Then
+                            Skills.BigGuns = 300
+                            LblBGunsVal.Text = 300 & "%"
+                        Else
+                            Skills.BigGuns = Skills.BigGuns + 40
+                            LblBGunsVal.Text = Skills.BigGuns & "%"
+                        End If
 
-                    If Skills.EWeapons + 40 >= 300 Then
-                        Skills.EWeapons = 300
-                        LblEWeaponsVal.Text = 300 & "%"
-                    Else
-                        Skills.EWeapons = Skills.EWeapons + 40
-                        LblEWeaponsVal.Text = Skills.EWeapons & "%"
-                    End If
+                        If Skills.SmallGuns + 40 >= 300 Then
+                            Skills.SmallGuns = 300
+                            LblSGunsVal.Text = 300 & "%"
+                        Else
+                            Skills.SmallGuns = Skills.SmallGuns + 40
+                            LblSGunsVal.Text = Skills.SmallGuns & "%"
+                        End If
 
-                Case "Chem Control Implant"
-                    'doesnt change any visible values
-                Case "Defense Implant"
-                    Statistics.DmgRes = Statistics.DmgRes + 4
-                Case "Enviromental Implant"
-                    Statistics.HealRate = Statistics.HealRate + 10
-                    If Statistics.PoisonRes + 40 >= 95 Then
-                        Statistics.PoisonRes = 95
-                    Else
-                        Statistics.PoisonRes = Statistics.PoisonRes + 40
-                    End If
+                        If Skills.EWeapons + 40 >= 300 Then
+                            Skills.EWeapons = 300
+                            LblEWeaponsVal.Text = 300 & "%"
+                        Else
+                            Skills.EWeapons = Skills.EWeapons + 40
+                            LblEWeaponsVal.Text = Skills.EWeapons & "%"
+                        End If
 
-                    If Statistics.RadRes + 50 >= 95 Then
-                        Statistics.RadRes = 95
-                    Else
-                        Statistics.RadRes = Statistics.RadRes + 50
-                    End If
+                    Case "Chem Control Implant"
+                        'doesnt change any visible values
+                    Case "Defense Implant"
+                        Statistics.DmgRes = Statistics.DmgRes + 4
+                    Case "Enviromental Implant"
+                        Statistics.HealRate = Statistics.HealRate + 10
+                        If Statistics.PoisonRes + 40 >= 95 Then
+                            Statistics.PoisonRes = 95
+                        Else
+                            Statistics.PoisonRes = Statistics.PoisonRes + 40
+                        End If
+
+                        If Statistics.RadRes + 50 >= 95 Then
+                            Statistics.RadRes = 95
+                        Else
+                            Statistics.RadRes = Statistics.RadRes + 50
+                        End If
+
+                    'Not active atm...activate this code when implemented later
+                    'Case "Engineering Implant"
+                    'If Skills.Repair + 100 >= 300 Then
+                    'Skills.Repair = 300
+                    'LblRepairVal.Text = 300 & "%"
+                    'Else
+                    'Skills.Repair = Skills.Repair + 100
+                    'LblRepairVal.Text = Skills.Repair & "%"
+                    'End If
+
+                    'If Skills.Science + 100 >= 300 Then
+                    'Skills.Science = 300
+                    'LblScienceVal.Text = 300 & "%"
+                    'Else
+                    'Skills.Science = Skills.Science + 100
+                    'LblScienceVal.Text = Skills.Science & "%"
+                    'End If
+
+                    'If Skills.EWeapons + 100 >= 300 Then
+                    'Skills.EWeapons = 300
+                    'LblEWeaponsVal.Text = 300 & "%"
+                    'Else
+                    'Skills.EWeapons = Skills.EWeapons + 100
+                    'LblEWeaponsVal.Text = Skills.EWeapons & "%"
+                    'End If
 
 
-                Case "Engineering Implant"
-                    If Skills.Repair + 100 >= 300 Then
-                        Skills.Repair = 300
-                        LblRepairVal.Text = 300 & "%"
-                    Else
-                        Skills.Repair = Skills.Repair + 100
-                        LblRepairVal.Text = Skills.Repair & "%"
-                    End If
+                    Case "Enhancement Implant"
+                        'todo --> check if perk choosement isnt affected at all by doing this
+                        'if taken at low level no perks can be choosen --> somehow do check to check if list is empty to go on
+                        BtnLvlDwn.Enabled = False
+                        BtnLvlUp.Enabled = False
+                        isEnhanceImpl = True
+                        isSaveEnhanceImplPerk = True
+                        BtnImpl.Enabled = False
+                        LblImpl.Visible = False
 
-                    If Skills.Science + 100 >= 300 Then
-                        Skills.Science = 300
-                        LblScienceVal.Text = 300 & "%"
-                    Else
-                        Skills.Science = Skills.Science + 100
-                        LblScienceVal.Text = Skills.Science & "%"
-                    End If
+                        LblPerks.Visible = True
+                        LstVImpl.Visible = False
+                        LstVPerks.Visible = True
+                        BtnPerkLater.Visible = False
+                        Perks.availablePerks()
 
-                    If Skills.EWeapons + 100 >= 300 Then
-                        Skills.EWeapons = 300
-                        LblEWeaponsVal.Text = 300 & "%"
-                    Else
-                        Skills.EWeapons = Skills.EWeapons + 100
-                        LblEWeaponsVal.Text = Skills.EWeapons & "%"
-                    End If
+                    Case "Marksmanship Implant"
+                        Statistics.Sight = Statistics.Sight + 2
+                        Statistics.CritChance = Statistics.CritChance + 4
+                        isMarksmanship = True
+                        AddSubstractMarksmanImpl = 2
+                    Case "Medical Implant"
+                        If Skills.Doctor + 50 >= 300 Then
+                            Skills.Doctor = 300
+                            LblDocVal.Text = 300 & "%"
+                        Else
+                            Skills.Doctor = Skills.Doctor + 50
+                            LblDocVal.Text = Skills.Doctor & "%"
+                        End If
 
+                        If Skills.FAid + 50 >= 300 Then
+                            Skills.FAid = 300
+                            LblFaidVal.Text = 300 & "%"
+                        Else
+                            Skills.FAid = Skills.FAid + 50
+                            LblFaidVal.Text = Skills.FAid & "%"
+                        End If
 
-                Case "Enhancement Implant"
-                    'todo --> check if perk choosement isnt affected at all by doing this
-                    'if taken at low level no perks can be choosen --> somehow do check to check if list is empty to go on
-                    BtnLvlDwn.Enabled = False
-                    BtnLvlUp.Enabled = False
-                    isEnhanceImpl = True
-                    isSaveEnhanceImplPerk = True
-                    BtnImpl.Enabled = False
-                    LblImpl.Visible = False
+                        LstBoxPerks.Items.Add("Living Anatomy (by Implant)")
 
-                    LblPerks.Visible = True
-                    LstVImpl.Visible = False
-                    LstVPerks.Visible = True
-                    BtnPerkLater.Visible = False
-                    Perks.availablePerks()
+                    Case "Scouting Implant"
+                        If Skills.Sneak + 50 >= 320 Then
+                            Skills.Sneak = 320
+                            LblSneakVal.Text = 320 & "%"
+                            LblSneakVal.ForeColor = Color.Tomato
+                        Else
+                            Skills.Sneak = Skills.Sneak + 50
+                            LblSneakVal.Text = Skills.Sneak & "%"
+                        End If
 
-                Case "Marksmanship Implant"
-                    Statistics.Sight = Statistics.Sight + 2
-                    Statistics.CritChance = Statistics.CritChance + 4
-                Case "Medical Implant"
-                    If Skills.Doctor + 50 >= 300 Then
-                        Skills.Doctor = 300
-                        LblDocVal.Text = 300 & "%"
-                    Else
-                        Skills.Doctor = Skills.Doctor + 50
-                        LblDocVal.Text = Skills.Doctor & "%"
-                    End If
+                        Statistics.AClass = Statistics.AClass + 30
+                    Case "Speed Implant"
+                        Statistics.APoints = Statistics.APoints + 1
+                        Statistics.Sequence = Statistics.Sequence + 6
+                    Case "Survival Implant"
+                        Statistics.HitPoints = Statistics.HitPoints + 30
+                        If Skills.ODMan + 100 >= 300 Then
+                            Skills.ODMan = 300
+                            LblODVal.Text = 300 & "%"
+                        Else
+                            Skills.ODMan = Skills.ODMan + 100
+                            LblODVal.Text = Skills.ODMan & "%"
+                        End If
+                End Select
 
-                    If Skills.FAid + 50 >= 300 Then
-                        Skills.FAid = 300
-                        LblFaidVal.Text = 300 & "%"
-                    Else
-                        Skills.FAid = Skills.FAid + 50
-                        LblFaidVal.Text = Skills.FAid & "%"
-                    End If
+                Stats.SetStats()
+                Statistics.SetStatistics()
+                SaveImplants(Perks.levelVal, ImplantName)
 
-                    LstBoxPerks.Items.Add("Living Anatomy (by Implant)")
-
-                Case "Scouting Implant"
-                    If Skills.Sneak + 50 >= 320 Then
-                        Skills.Sneak = 320
-                        LblSneakVal.Text = 320 & "%"
-                        LblSneakVal.ForeColor = Color.Tomato
-                    Else
-                        Skills.Sneak = Skills.Sneak + 50
-                        LblSneakVal.Text = Skills.Sneak & "%"
-                    End If
-
-                    Statistics.AClass = Statistics.AClass + 30
-                Case "Speed Implant"
-                    Statistics.APoints = Statistics.APoints + 1
-                    Statistics.Sequence = Statistics.Sequence + 6
-                Case "Survival Implant"
-                    Statistics.HitPoints = Statistics.HitPoints + 30
-                    If Skills.ODMan + 100 >= 300 Then
-                        Skills.ODMan = 300
-                        LblODVal.Text = 300 & "%"
-                    Else
-                        Skills.ODMan = Skills.ODMan + 100
-                        LblODVal.Text = Skills.ODMan & "%"
-                    End If
-            End Select
-
-            Stats.SetStats()
-            Statistics.SetStatistics()
-            SaveImplants(Perks.levelVal, ImplantName)
-
-            For Each item In LstVImpl.Items
-                item.Remove()
-            Next
+                For Each item In LstVImpl.Items
+                    item.Remove()
+                Next
 
         End If
         Stats.SetStats()
@@ -5258,8 +5324,6 @@ Public Class Form1
             BtnLvlDwn.Enabled = True
             BtnLvlUp.Enabled = True
         End If
-
-
 
     End Sub
 
@@ -5374,13 +5438,22 @@ Public Class Form1
             BtnAllDrugs.Visible = False
             PanDrugs.Visible = False
             LblDrugs.Visible = False
+            LblLevel.Visible = False
 
             LstBY = LstBoxPerks.Location.Y - ((LstBoxPerks.ItemHeight * LstBoxPerks.Items.Count) - LstBoxPerks.Height)
             LstBoxPerks.Location = New System.Drawing.Point(236, LstBY)
 
             LstBoxPerks.Height = LstBoxPerks.ItemHeight * LstBoxPerks.Items.Count
             LblPTraitsTaken.Location = New System.Drawing.Point(237, LstBY - 19)
+            'move Skillpoints panel
+            Panel4.Location = New System.Drawing.Point(595, 281)
+            PanLvlInfo.Location = New System.Drawing.Point(637, Panel4.Location.Y + PanLvlInfo.Height + 1)
+
+            
             Me.Refresh()
+            Panel4.BringToFront()
+            PanLvlInfo.BringToFront()
+
         End If
 
 
@@ -5399,6 +5472,10 @@ Public Class Form1
         LstBoxPerks.Location = New System.Drawing.Point(236, 425)
         LblPTraitsTaken.Location = New System.Drawing.Point(237, 406)
 
+        Panel4.Location = New System.Drawing.Point(279, 300)
+        PanLvlInfo.Location = New System.Drawing.Point(141, 300)
+
+        LblLevel.Visible = True
         BtnAllDrugs.Visible = True
         PanDrugs.Visible = True
         LblDrugs.Visible = True
@@ -5408,34 +5485,41 @@ Public Class Form1
     End Sub
 
     'Button Achievements
+    
     Private Sub BtnAchievem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnAchievem.Click
-        If isAchieveActive = True Then
-            BtnAchievem.ForeColor = Color.LightGray
-            BtnBooks.Enabled = True
-            BtnImpl.Enabled = True
-            BtnQuests.Enabled = True
-            isAchieveActive = False
-            LstVAchiev.Visible = False
-            LblAchieve.Visible = False
-            LblPerks.Visible = True
-            PanSkUpDown.Enabled = True
-            'PanSkUpDown.Visible = True
-            BtnLvlUp.Enabled = True
-            BtnLvlDwn.Enabled = True
+        Dim Level As Integer
+        Level = CInt(LblLevelVal.Text)
+        If Level = 1 Then
+            MsgBox("Please choose an achievement when you are at least Level 2.")
         Else
-            BtnAchievem.ForeColor = Color.SkyBlue
-            isAchieveActive = True
-            BtnBooks.Enabled = False
-            BtnImpl.Enabled = False
-            BtnQuests.Enabled = False
-            LstVAchiev.Visible = True
-            LblAchieve.Visible = True
-            LblPerks.Visible = False
-            PanSkUpDown.Enabled = False
-            PanSkUpDown.Visible = False
-            BtnLvlUp.Enabled = False
-            BtnLvlDwn.Enabled = False
+            If isAchieveActive = True Then
+                BtnAchievem.ForeColor = Color.LightGray
+                BtnBooks.Enabled = True
+                BtnImpl.Enabled = True
+                BtnQuests.Enabled = True
+                isAchieveActive = False
+                LstVAchiev.Visible = False
+                LblAchieve.Visible = False
+                LblPerks.Visible = True
+                PanSkUpDown.Enabled = True
+                'PanSkUpDown.Visible = True
+                BtnLvlUp.Enabled = True
+                BtnLvlDwn.Enabled = True
+            Else
+                BtnAchievem.ForeColor = Color.SkyBlue
+                isAchieveActive = True
+                BtnBooks.Enabled = False
+                BtnImpl.Enabled = False
+                BtnQuests.Enabled = False
+                LstVAchiev.Visible = True
+                LblAchieve.Visible = True
+                LblPerks.Visible = False
+                PanSkUpDown.Enabled = False
+                PanSkUpDown.Visible = False
+                BtnLvlUp.Enabled = False
+                BtnLvlDwn.Enabled = False
 
+            End If
         End If
     End Sub
 
@@ -5965,6 +6049,9 @@ Public Class Form1
     Sub LoadImplants(ByVal level As Integer)
         Dim ImplName As String
 
+        Stats.GetStats()
+        Statistics.GetStatistics()
+        Skills.getSkillValues()
         ImplName = SaveLoadImpl(level, False, "Impl")
 
         If Not ImplName = "" Then
@@ -5972,6 +6059,9 @@ Public Class Form1
                 LstBoxPerks.Items.Remove(ImplName)
                 If ImplName = "Medical Implant" Then
                     LstBoxPerks.Items.Remove("Living Anatomy (by Implant)")
+                ElseIf ImplName = "Marksmanship Implant" Then
+                    isMarksmanship = False
+                    AddSubstractMarksmanImpl = 0
                 End If
             Catch ex As Exception
 
@@ -5994,26 +6084,82 @@ Public Class Form1
             'delete actual entry in array
             SaveLoadImpl(level, True, "")
 
+            'If Perks.levelVal = 1 Then
+
+            '    Select Case ImplName
+            '        Case "Accuracy Implant"
+            '            Statistics.Sight = Statistics.Sight - 5
+
+            '            Skills.BigGuns = Skills.BigGuns - 40
+            '            LblBGunsVal.Text = Skills.BigGuns & "%"
+
+            '            Skills.SmallGuns = Skills.SmallGuns - 40
+            '            LblSGunsVal.Text = Skills.SmallGuns & "%"
+
+            '            Skills.EWeapons = Skills.EWeapons - 40
+            '            LblEWeaponsVal.Text = Skills.EWeapons & "%"
+
+            '        Case "Defense Implant"
+            '            Statistics.DmgRes = Statistics.DmgRes - 4
+            '        Case "Enviromental Implant"
+            '            Statistics.HealRate = Statistics.HealRate - 10
+            '            Statistics.PoisonRes = Statistics.PoisonRes - 40
+            '            Statistics.RadRes = Statistics.RadRes - 50
+
+            '        Case "Engineering Implant"
+
+            '        Case "Marksmanship Implant"
+            '            Statistics.Sight = Statistics.Sight - 2
+            '            Statistics.CritChance = Statistics.CritChance - 4
+            '        Case "Medical Implant"
+            '            Skills.Doctor = Skills.Doctor - 50
+            '            LblDocVal.Text = Skills.Doctor & "%"
+
+            '            Skills.FAid = Skills.FAid - 50
+            '            LblFaidVal.Text = Skills.FAid & "%"
+
+            '        Case "Scouting Implant"
+            '            Skills.Sneak = Skills.Sneak - 50
+            '            LblSneakVal.Text = Skills.Sneak & "%"
+            '            Statistics.AClass = Statistics.AClass - 30
+            '        Case "Speed Implant"
+            '            Statistics.APoints = Statistics.APoints - 1
+            '            Statistics.Sequence = Statistics.Sequence - 6
+            '        Case "Survival Implant"
+            '            Statistics.HitPoints = Statistics.HitPoints - 30
+
+            '            Skills.ODMan = Skills.ODMan - 100
+            '            LblODVal.Text = Skills.ODMan & "%"
+            '            Stats.SetStats()
+            '            Statistics.SetStatistics()
+            '    End Select
+            'End If
+
         End If
 
     End Sub
 
     Sub LoadAchievements(ByVal level As Integer)
         Dim AchievmName As String
-
+        Dim isInList As Boolean = False
         For i = 0 To 10
             AchievmName = SaveLoadAchievements(level, False, "", i)
 
             If Not AchievmName = "" Then
                 Try
                     LstBoxPerks.Items.Remove(AchievmName)
-                    LstVAchiev.Items.Insert(LstVAchiev.Items.Count, AchievmName)
+                    For Each AListItem As ListViewItem In LstVAchiev.Items
+                        If AchievmName = AListItem.Text Then
+                            isInList = True
+                        End If
+                    Next
+                    If Not isInList = True Then
+                        LstVAchiev.Items.Insert(LstVAchiev.Items.Count, AchievmName)
+                    End If
+
                 Catch ex As Exception
                 End Try
-
-
             End If
-
         Next
 
     End Sub
@@ -6056,6 +6202,7 @@ Public Class Form1
             If Not QuestN(i) = "" Then
                 If InStr(QuestN(i), "Chess Game") > 0 Then
                     LstVQuests.Items.Insert(LstVQuests.Items.Count, "Chess Game")
+                    isChessFoV = False
                     LstBoxPerks.Items.Remove(QuestN(i))
                 Else
                     LstVQuests.Items.Insert(LstVQuests.Items.Count, QuestN(i))
@@ -6161,9 +6308,10 @@ Public Class Form1
         Dim level As Integer
 
         level = CInt(LblLevelVal.Text)
-
+        addGainINVal = 0
         ResetDrugEffects()
-
+        BtnAllDrugs.Image = Nothing
+        BtnAllDrugs.Text = "All"
         If level <= 24 Then
             BtnLvlFastUp.Visible = False
         Else
@@ -6201,9 +6349,9 @@ Public Class Form1
 
     End Sub
 
-    '***************************************************
-    '* Save/Load complete builds - NOT IMPLEMENTED YET *
-    '***************************************************
+    '******************************
+    '* Save/Load complete builds  *
+    '******************************
 
     'also not finished...still some elements/values have to be saved and to be loaded
     'whole feature needs also to be tested later on!!
@@ -6219,7 +6367,8 @@ Public Class Form1
         BtnAllDrugs.Enabled = False
 
         ResetDrugEffects()
-
+        BtnAllDrugs.Image = Nothing
+        BtnAllDrugs.Text = "All"
         Stats.GetStats()
         Statistics.GetStatistics()
         Skills.getSkillValues()
@@ -6499,6 +6648,12 @@ Public Class Form1
                     sw.WriteLine(Perks.PerkRank(i))
                 Next
 
+                sw.WriteLine("Saved FoV Values for Perk SSHoter and Marksmans. Implant")
+                sw.WriteLine("--------------------------------------------------------")
+                sw.WriteLine(AddSubstractMarksmanImpl)
+                sw.WriteLine(AddSubstractSShooter)
+
+
                 sw.Close()
             End Using
         End If
@@ -6517,7 +6672,9 @@ Public Class Form1
         Dim fileContent As String
         Dim ktemp As Integer
         Dim level As String
-
+        ResetDrugEffects()
+        BtnAllDrugs.Image = Nothing
+        BtnAllDrugs.Text = "All"
         If isBookactive = True Then
             BtnBooks_Click(sender, e)
         End If
@@ -6566,6 +6723,8 @@ Public Class Form1
                 isImplChoosen = False
                 SaveBuildToolStripMenuItem.Enabled = True
                 ResetDrugEffects()
+                BtnAllDrugs.Image = Nothing
+                BtnAllDrugs.Text = "All"
                 PanDrugs.Enabled = True
                 BtnAllDrugs.Enabled = True
                 'Reset CharPoints in Case Build was loaded before Done was clicked
@@ -7093,12 +7252,11 @@ Public Class Form1
                 LstVAchiev.Clear()
                 LstVAchiev.Items.Insert(0, "Albert the Abberation")
                 LstVAchiev.Items.Insert(1, "Awareness")
-                LstVAchiev.Items.Insert(2, "Engineering Implant")
-                LstVAchiev.Items.Insert(3, "Heave Ho!")
-                LstVAchiev.Items.Insert(4, "Mother of God")
-                LstVAchiev.Items.Insert(5, "Pack Rat")
-                LstVAchiev.Items.Insert(6, "Pathfinder")
-                LstVAchiev.Items.Insert(0, "Pyromaniac")
+                LstVAchiev.Items.Insert(2, "Heave Ho!")
+                LstVAchiev.Items.Insert(3, "Mother of God")
+                LstVAchiev.Items.Insert(4, "Pack Rat")
+                LstVAchiev.Items.Insert(5, "Pathfinder")
+                LstVAchiev.Items.Insert(6, "Pyromaniac")
 
                 'Achievements
                 For i = 1 To 100
@@ -7429,7 +7587,12 @@ Public Class Form1
                 SavedSPBooksScience = CInt(text(6717))
                 SavedSPBooksFAid = CInt(text(6718))
 
-
+                'Values for Sharpshooter perk and Marksmansh. Impl 
+                'if taken, for Drug calc
+                text(6782) = Replace(text(6782), vbLf, vbNullString)
+                AddSubstractMarksmanImpl = CInt(text(6782))
+                text(6783) = Replace(text(6783), vbLf, vbNullString)
+                AddSubstractSShooter = CInt(text(6783))
 
                 'FA/Doc Timeouts            
                 text(6704) = Replace(text(6704), vbLf, vbNullString)

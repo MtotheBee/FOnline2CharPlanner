@@ -15,6 +15,7 @@
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -26,9 +27,9 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
-    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ApplicationVersion>1.5.0.0</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -69,6 +70,18 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\FOPlanner.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>A4A0944A9CAAC99022126F56FA15810B254B72AC</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>FOnline 2 Char Planner_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BassMOD.Net, Version=2.0.0.2, Culture=neutral, PublicKeyToken=d4db1103f7215e10, processorArchitecture=MSIL">
@@ -176,6 +189,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.vb</LastGenOutput>
     </EntityDeploy>
+    <None Include="FOnline 2 Char Planner_TemporaryKey.pfx" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -398,6 +412,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FCPSymbol.ico" />
+    <None Include="Resources\LPickDescPicNew.jpg" />
+    <None Include="Resources\SneakDescPicNew.jpg" />
+    <None Include="Resources\FAidDescPicNew.jpg" />
+    <None Include="Resources\DocDescPicNew.jpg" />
+    <None Include="Resources\ScavengeDescPicNew.jpg" />
+    <None Include="Resources\ScienceDescPicNew.jpg" />
+    <None Include="Resources\ODManDescPicNew.jpg" />
+    <None Include="Resources\BarterDescPicNew.jpg" />
+    <None Include="Resources\RepairDescPicNew.jpg" />
+    <None Include="Resources\CCombDescPicNew.jpg" />
+    <None Include="Resources\StealDescPicNew.jpg" />
     <None Include="Resources\Creditsneu_v1_5.png" />
     <None Include="Resources\AntitoxinDescPic.png" />
     <None Include="Resources\Antitoxin.png" />

@@ -53,8 +53,6 @@
         Sight = Form1.LblSightVal.Text
         ACritical = Form1.LblACritVal.Text
 
-        
-
     End Sub
    
     Sub SetStatistics()
@@ -206,5 +204,24 @@
         End If
     End Sub
 
+    Sub RefreshSight()
+        GetStats()
+        Sight = 20 + (Perception * 3) + Form1.AddSubstractMarksmanImpl + Form1.AddSubstractSShooter
+
+        If Form1.isCigsActive = True Then
+            Sight = Sight + 3
+        End If
+
+        If Form1.isChessFoV = True Then
+            Sight = Sight + 1
+            SetStatistics()
+        End If
+
+        If Form1.isGainPE = True Then
+            SetStatistics()
+        End If
+
+
+    End Sub
 
 End Class

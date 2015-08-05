@@ -21,6 +21,7 @@
     Friend addLifegiver As Integer
     Friend isPerkToTake As Boolean
     Friend TakenPerks(15) As String
+    Friend isGainPerception As Boolean
     'Friend isMedic As Boolean
 
     Dim skills As New CharSkills
@@ -78,6 +79,7 @@
                     Form1.PanSkUpDown.Visible = False
                     Form1.PanSkills.Enabled = False
                     Form1.BtnLvlUp.Enabled = False
+                    Form1.BtnLvlDwn.Enabled = False
                     isPerkToTake = True
                 End If
             Case 8
@@ -87,6 +89,7 @@
                     Form1.PanSkUpDown.Visible = False
                     Form1.PanSkills.Enabled = False
                     Form1.BtnLvlUp.Enabled = False
+                    Form1.BtnLvlDwn.Enabled = False
                     isPerkToTake = True
                 End If
             Case 11
@@ -96,6 +99,7 @@
                     Form1.PanSkUpDown.Visible = False
                     Form1.PanSkills.Enabled = False
                     Form1.BtnLvlUp.Enabled = False
+                    Form1.BtnLvlDwn.Enabled = False
                     isPerkToTake = True
                 End If
             Case 14
@@ -105,6 +109,7 @@
                     Form1.PanSkUpDown.Visible = False
                     Form1.PanSkills.Enabled = False
                     Form1.BtnLvlUp.Enabled = False
+                    Form1.BtnLvlDwn.Enabled = False
                     isPerkToTake = True
 
                 End If
@@ -115,6 +120,7 @@
                     Form1.PanSkUpDown.Visible = False
                     Form1.PanSkills.Enabled = False
                     Form1.BtnLvlUp.Enabled = False
+                    Form1.BtnLvlDwn.Enabled = False
                     isPerkToTake = True
                 End If
             Case 20
@@ -124,6 +130,7 @@
                     Form1.PanSkUpDown.Visible = False
                     Form1.PanSkills.Enabled = False
                     Form1.BtnLvlUp.Enabled = False
+                    Form1.BtnLvlDwn.Enabled = False
                     isPerkToTake = True
                 End If
             Case 23
@@ -133,6 +140,7 @@
                     Form1.PanSkUpDown.Visible = False
                     Form1.PanSkills.Enabled = False
                     Form1.BtnLvlUp.Enabled = False
+                    Form1.BtnLvlDwn.Enabled = False
                     isPerkToTake = True
                 End If
         End Select
@@ -256,6 +264,10 @@
                     Form1.isMedic = False
                 ElseIf perk = "HtH Evade" Then
                     Form1.isHtHEvade = False
+                ElseIf perk = "Sharpshooter" Then
+                    Form1.AddSubstractSShooter = 0
+                ElseIf (perk = "Gain Perception") Then
+                    Form1.isGainPE = False
                 End If
                 'Form1.Label2.Text = "Removed Perk: " & perk
             End If
@@ -397,6 +409,8 @@
                 Form1.DetDescrChange(15, 15)
                 Intelligence = Intelligence + 2
 
+                Form1.addGainINVal = 2
+
                 If Intelligence <= 3 Then
                     Form1.chessavailable = False
                 Else
@@ -414,6 +428,7 @@
                 stats.CritChance = stats.CritChance + 2
                 'End If
 
+
             Case "Gain Perception"
                 Form1.DetDescrChange(17, 17)
                 Perception = Perception + 2
@@ -424,7 +439,8 @@
                     stats.Sequence = 2 * Perception
                 End If
                 'new Sight calc
-                stats.Sight = 20 + (Perception * 3)
+                'stats.Sight = 20 + (Perception * 3) + Form1.AddSubstractMarksmanImpl + Form1.AddSubstractSShooter
+                Form1.isGainPE = True
 
             Case "Gain Strenght"
                 Form1.DetDescrChange(18, 18)
@@ -620,6 +636,8 @@
                 Form1.DetDescrChange(35, 35)
                 'stats.Sight = 20 + (Perception * 3) + 6
                 stats.Sight = stats.Sight + 6
+                'Form1.SightBeforeDrugs
+                Form1.AddSubstractSShooter = 6
             Case "Silent Death"
                 Form1.DetDescrChange(36, 36)
             Case "Silent Running"
@@ -647,6 +665,10 @@
             Form1.LblCritChVal.ForeColor = Color.Red
         Else
             Form1.LblCritChVal.ForeColor = Color.LimeGreen
+        End If
+
+        If Form1.isGainPE = True Then
+            stats.RefreshSight()
         End If
     End Sub
 

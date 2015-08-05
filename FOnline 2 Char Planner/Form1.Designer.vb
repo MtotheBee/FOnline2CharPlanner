@@ -42,15 +42,14 @@ Partial Class Form1
         Dim ListViewItem17 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Pete Quest - JT")
         Dim ListViewItem18 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Albert the Abberation")
         Dim ListViewItem19 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Awareness")
-        Dim ListViewItem20 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Engineering Implant")
-        Dim ListViewItem21 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Heave Ho!")
-        Dim ListViewItem22 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Mother of God")
-        Dim ListViewItem23 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Pack Rat")
-        Dim ListViewItem24 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Pathfinder")
-        Dim ListViewItem25 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Pyromaniac")
-        Dim ListViewItem26 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("+1 to FOV, +5% HitChance")
-        Dim ListViewItem27 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("+10HP, +4 Healing Rate")
-        Dim ListViewItem28 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("+3 to Crit Chance")
+        Dim ListViewItem20 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Heave Ho!")
+        Dim ListViewItem21 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Mother of God")
+        Dim ListViewItem22 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Pack Rat")
+        Dim ListViewItem23 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Pathfinder")
+        Dim ListViewItem24 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("Pyromaniac")
+        Dim ListViewItem25 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("+1 to FOV, +5% HitChance")
+        Dim ListViewItem26 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("+10HP, +4 Healing Rate")
+        Dim ListViewItem27 As System.Windows.Forms.ListViewItem = New System.Windows.Forms.ListViewItem("+3 to Crit Chance")
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.LblStatsST = New System.Windows.Forms.Label()
         Me.LblStatsPE = New System.Windows.Forms.Label()
@@ -2748,14 +2747,14 @@ Partial Class Form1
         Me.SaveBuildToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.SaveBuildToolStripMenuItem.Name = "SaveBuildToolStripMenuItem"
         Me.SaveBuildToolStripMenuItem.ShowShortcutKeys = False
-        Me.SaveBuildToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.SaveBuildToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SaveBuildToolStripMenuItem.Text = "Save Build"
         '
         'LoadBuildToolStripMenuItem
         '
         Me.LoadBuildToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LoadBuildToolStripMenuItem.Name = "LoadBuildToolStripMenuItem"
-        Me.LoadBuildToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.LoadBuildToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.LoadBuildToolStripMenuItem.Text = "Load Build"
         '
         'ExportToolStripMenuItem
@@ -2763,26 +2762,26 @@ Partial Class Form1
         Me.ExportToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AsImageToolStripMenuItem})
         Me.ExportToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ExportToolStripMenuItem.Name = "ExportToolStripMenuItem"
-        Me.ExportToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.ExportToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExportToolStripMenuItem.Text = "Export"
         '
         'AsImageToolStripMenuItem
         '
         Me.AsImageToolStripMenuItem.Name = "AsImageToolStripMenuItem"
-        Me.AsImageToolStripMenuItem.Size = New System.Drawing.Size(123, 22)
+        Me.AsImageToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.AsImageToolStripMenuItem.Text = "As Image"
         '
         'ResetToolStripMenuItem
         '
         Me.ResetToolStripMenuItem.Name = "ResetToolStripMenuItem"
-        Me.ResetToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.ResetToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ResetToolStripMenuItem.Text = "Reset"
         '
         'ExitToolStripMenuItem
         '
         Me.ExitToolStripMenuItem.Font = New System.Drawing.Font("Segoe UI Semibold", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ExitToolStripMenuItem.Name = "ExitToolStripMenuItem"
-        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(130, 22)
+        Me.ExitToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ExitToolStripMenuItem.Text = "Exit"
         '
         'ToolStripMenuItem1
@@ -2803,7 +2802,7 @@ Partial Class Form1
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
         Me.ToolStripMenuItem2.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.A), System.Windows.Forms.Keys)
         Me.ToolStripMenuItem2.ShowShortcutKeys = False
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(100, 22)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(152, 22)
         Me.ToolStripMenuItem2.Text = "About"
         '
         'MusicToolStrMenu
@@ -3171,7 +3170,7 @@ Partial Class Form1
         Me.LstVAchiev.Cursor = System.Windows.Forms.Cursors.Hand
         Me.LstVAchiev.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LstVAchiev.ForeColor = System.Drawing.Color.Chartreuse
-        Me.LstVAchiev.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem18, ListViewItem19, ListViewItem20, ListViewItem21, ListViewItem22, ListViewItem23, ListViewItem24, ListViewItem25})
+        Me.LstVAchiev.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem18, ListViewItem19, ListViewItem20, ListViewItem21, ListViewItem22, ListViewItem23, ListViewItem24})
         Me.LstVAchiev.LabelWrap = False
         Me.LstVAchiev.Location = New System.Drawing.Point(512, 132)
         Me.LstVAchiev.MultiSelect = False
@@ -3207,7 +3206,7 @@ Partial Class Form1
         Me.LstVChess.Cursor = System.Windows.Forms.Cursors.Hand
         Me.LstVChess.Font = New System.Drawing.Font("Tahoma", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.LstVChess.ForeColor = System.Drawing.Color.Chartreuse
-        Me.LstVChess.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem26, ListViewItem27, ListViewItem28})
+        Me.LstVChess.Items.AddRange(New System.Windows.Forms.ListViewItem() {ListViewItem25, ListViewItem26, ListViewItem27})
         Me.LstVChess.LabelWrap = False
         Me.LstVChess.Location = New System.Drawing.Point(512, 132)
         Me.LstVChess.MultiSelect = False
