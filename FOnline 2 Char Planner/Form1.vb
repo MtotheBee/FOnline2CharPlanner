@@ -5425,6 +5425,7 @@ Public Class Form1
     Private Sub AsImageToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles AsImageToolStripMenuItem.Click
         Dim scr As Bitmap
         Dim saveFileDialog1 As New SaveFileDialog()
+        Dim wasVisible(3) As Boolean
 
         Dim w As Integer = Me.Width
         Dim h As Integer = Me.Height
@@ -5440,6 +5441,31 @@ Public Class Form1
             LblDrugs.Visible = False
             LblLevel.Visible = False
 
+            If BtnLvlUp.Visible = True Then
+                wasVisible(0) = True
+                BtnLvlUp.Visible = False
+            Else
+                wasVisible(0) = False
+            End If
+            If BtnLvlDwn.Visible = True Then
+                wasVisible(1) = True
+                BtnLvlDwn.Visible = False
+            Else
+                wasVisible(1) = False
+            End If
+            If BtnLvlFastUp.Visible = True Then
+                wasVisible(2) = True
+                BtnLvlFastUp.Visible = False
+            Else
+                wasVisible(2) = False
+            End If
+            If BtnLvlFastDwn.Visible = True Then
+                wasVisible(3) = True
+                BtnLvlFastDwn.Visible = False
+            Else
+                wasVisible(3) = False
+            End If
+
             LstBY = LstBoxPerks.Location.Y - ((LstBoxPerks.ItemHeight * LstBoxPerks.Items.Count) - LstBoxPerks.Height)
             LstBoxPerks.Location = New System.Drawing.Point(236, LstBY)
 
@@ -5449,13 +5475,10 @@ Public Class Form1
             Panel4.Location = New System.Drawing.Point(595, 281)
             PanLvlInfo.Location = New System.Drawing.Point(637, Panel4.Location.Y + PanLvlInfo.Height + 1)
 
-            
-            Me.Refresh()
             Panel4.BringToFront()
             PanLvlInfo.BringToFront()
-
+            Me.Refresh()
         End If
-
 
         saveFileDialog1.Filter = "PNG Image|*.png"
         saveFileDialog1.InitialDirectory = My.Application.Info.DirectoryPath
@@ -5474,6 +5497,19 @@ Public Class Form1
 
         Panel4.Location = New System.Drawing.Point(279, 300)
         PanLvlInfo.Location = New System.Drawing.Point(141, 300)
+
+        If wasVisible(0) = True Then
+            BtnLvlUp.Visible = True
+        End If
+        If wasVisible(1) = True Then
+            BtnLvlDwn.Visible = True
+        End If
+        If wasVisible(2) = True Then
+            BtnLvlFastUp.Visible = True
+        End If
+        If wasVisible(3) = True Then
+            BtnLvlFastDwn.Visible = True
+        End If
 
         LblLevel.Visible = True
         BtnAllDrugs.Visible = True
