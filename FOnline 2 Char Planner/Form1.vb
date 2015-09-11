@@ -1097,7 +1097,7 @@ Public Class Form1
         DetDescrText(90) = "+ Healing Rate +10                           + You heal HP every 15 seconds.              - Base values for Radiation- and Poison-      Resistances are 0."
         DetDescrName(91) = "Bruiser"
         DescPicIndex(91) = "BruiserDesc"
-        DetDescrText(91) = "+ Strength +2                                + Meele Damage +8                            - Crit Chance Penalty -30%"
+        DetDescrText(91) = "+ Strength +2                                + Meele Damage +8                            - Crit Chance Penalty -30%, You have to       have at least 3ST!"
         DetDescrName(92) = "Small Frame"
         DescPicIndex(92) = "SFrameDesc"
         DetDescrText(92) = "+ 1 to Agility                               - You have less carry weight.                - Every critical hit can have an aditional    effect besides the damage coming from hit."

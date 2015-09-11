@@ -151,14 +151,42 @@
                     Form1.BtnDone.Enabled = False
                     Form1.LblDetDesc.Text = "Incorrect SPECIAL data"
                     Form1.LblDetDescrText.Text = "If you choose Evader, EN has to be" & vbCrLf & "8 or below."
+
+                    Form3.F3MsgBoxText.Text = "Incorrect SPECIAL data!" & vbCrLf & _
+                                      "If you choose Evader," & vbCrLf & _
+                                      "EN has to be 8 or below."
+                    Form3.Show()
+
                 ElseIf Form1.isBHead = True And Intelligence = 10 Then
                     Form1.BtnDone.Enabled = False
                     Form1.LblDetDesc.Text = "Incorrect SPECIAL data"
                     Form1.LblDetDescrText.Text = "If you choose Bonehead, IN has to be" & vbCrLf & "9 or below."
+
+                    Form3.F3MsgBoxText.Text = "Incorrect SPECIAL data!" & vbCrLf & _
+                                      "If you choose Bonehead," & vbCrLf & _
+                                      "IN has to be 9 or below."
+                    Form3.Show()
+
                 ElseIf Form1.isBHead = True And Intelligence = 0 Then
                     Form1.BtnDone.Enabled = False
                     Form1.LblDetDesc.Text = "Incorrect SPECIAL data"
                     Form1.LblDetDescrText.Text = "If you choose Bonehead, IN has to be" & vbCrLf & "at least 1."
+
+                    Form3.F3MsgBoxText.Text = "Incorrect SPECIAL data!" & vbCrLf & _
+                                      "If you choose Bonehead," & vbCrLf & _
+                                      "IN has to be at least 1."
+                    Form3.Show()
+
+
+                ElseIf Form1.isBruiser = True And Strenght < 3 Then
+                    Form1.BtnDone.Enabled = False
+                    Form1.LblDetDesc.Text = "Incorrect SPECIAL data"
+                    Form1.LblDetDescrText.Text = "If you choose Bruiser, ST has to be" & vbCrLf & "at least 3."
+
+                    Form3.F3MsgBoxText.Text = "Incorrect SPECIAL data!" & vbCrLf & _
+                                      "If you choose Bruiser," & vbCrLf & _
+                                      " ST has to be at least 3."
+                    Form3.Show()
 
                 Else
                     Form1.BtnDone.Enabled = True

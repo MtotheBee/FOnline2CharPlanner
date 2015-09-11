@@ -60,14 +60,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FOnline 2 Char Planner.exe" size="19041792">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FOnline 2 Char Planner.exe" size="19043328">
       <assemblyIdentity name="FOnline 2 Char Planner" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>pNF+hknnLbk9Egmnmh4uNSHfloo=</dsig:DigestValue>
+        <dsig:DigestValue>fP6JzGn5/huJ1DJWDGJiG2PEmBg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
