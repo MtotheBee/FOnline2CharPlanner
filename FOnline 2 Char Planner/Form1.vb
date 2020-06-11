@@ -1,4 +1,4 @@
-﻿Imports Microsoft.VisualBasic.PowerPacks
+﻿'Imports Microsoft.VisualBasic.PowerPacks
 Imports System.Runtime.InteropServices
 Imports System.IO
 Public Class Form1
@@ -188,10 +188,12 @@ Public Class Form1
     '* Get/SetStats when +/- Buttons are clicked *
     '* Plus additional checks                    *
     '*********************************************
+    Private Sub PlaySoundSPECIALButton()
+        My.Computer.Audio.Play(My.Resources.click, AudioPlayMode.Background)
+    End Sub
+
     Private Sub BtnStatsSTUp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnStatsSTUp.Click
-
-        My.Computer.Audio.Play(My.Resources.button_46, AudioPlayMode.Background)
-
+        PlaySoundSPECIALButton()
         PicDesc.Image = My.Resources.STDesc
         Stats.GetStats()
 
@@ -210,8 +212,7 @@ Public Class Form1
     End Sub
 
     Private Sub BtnStatsSTDown_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnStatsSTDown.Click
-        My.Computer.Audio.Play(My.Resources.button_46, AudioPlayMode.Background)
-
+        PlaySoundSPECIALButton()
         PicDesc.Image = My.Resources.STDesc
         Stats.GetStats()
 
@@ -231,9 +232,8 @@ Public Class Form1
     End Sub
 
     Private Sub BtnStatsPEUp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnStatsPEUp.Click
-        My.Computer.Audio.Play(My.Resources.button_46, AudioPlayMode.Background)
+        PlaySoundSPECIALButton()
         PicDesc.Image = My.Resources.PEDesc
-
         Stats.GetStats()
 
         If Not Stats.Perception >= 10 And Not Stats.CharPoints <= 0 Then
@@ -261,9 +261,8 @@ Public Class Form1
     End Sub
 
     Private Sub BtnStatsPEDown_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnStatsPEDown.Click
-        My.Computer.Audio.Play(My.Resources.button_46, AudioPlayMode.Background)
+        PlaySoundSPECIALButton()
         PicDesc.Image = My.Resources.PEDesc
-
         Stats.GetStats()
 
         If Not Stats.Perception <= 1 Then
@@ -278,21 +277,20 @@ Public Class Form1
         DocCoolSecInitial = 9000 / Skills.Doctor
         Dim DocCoolSpanIn As TimeSpan = TimeSpan.FromSeconds(DocCoolSecInitial)
         Label2.Text = DocCoolSecInitial
-        LblTODocVal.Text = DocCoolSpanIn.Minutes.ToString.PadLeft(2, "0"c) & ":" & _
+        LblTODocVal.Text = DocCoolSpanIn.Minutes.ToString.PadLeft(2, "0"c) & ":" &
                     DocCoolSpanIn.Seconds.ToString.PadLeft(2, "0"c)
 
         FACoolSecInitial = 9000 / Skills.FAid
         Dim FACoolSpanIn As TimeSpan = TimeSpan.FromSeconds(FACoolSecInitial)
-        LblTOFAVal.Text = FACoolSpanIn.Minutes.ToString.PadLeft(2, "0"c) & ":" & _
+        LblTOFAVal.Text = FACoolSpanIn.Minutes.ToString.PadLeft(2, "0"c) & ":" &
                     FACoolSpanIn.Seconds.ToString.PadLeft(2, "0"c)
 
         DetDescrChange(129, 129)
     End Sub
 
     Private Sub BtnStatsENUp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnStatsENUp.Click
-        My.Computer.Audio.Play(My.Resources.button_46, AudioPlayMode.Background)
+        PlaySoundSPECIALButton()
         PicDesc.Image = My.Resources.ENDesc
-
         Stats.GetStats()
 
         If Not Stats.Endurance >= 10 And Not Stats.CharPoints <= 0 Then
@@ -311,9 +309,8 @@ Public Class Form1
     End Sub
 
     Private Sub BtnStatsENDown_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnStatsENDown.Click
-        My.Computer.Audio.Play(My.Resources.button_46, AudioPlayMode.Background)
+        PlaySoundSPECIALButton()
         PicDesc.Image = My.Resources.ENDesc
-
         Stats.GetStats()
 
         If Not Stats.Endurance <= 1 Then
@@ -327,9 +324,8 @@ Public Class Form1
     End Sub
 
     Private Sub BtnStatsCHUp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnStatsCHUp.Click
-        My.Computer.Audio.Play(My.Resources.button_46, AudioPlayMode.Background)
+        PlaySoundSPECIALButton()
         PicDesc.Image = My.Resources.CHDesc
-
         Stats.GetStats()
 
         If Not Stats.Charisma >= 10 And Not Stats.CharPoints <= 0 Then
@@ -344,9 +340,8 @@ Public Class Form1
     End Sub
 
     Private Sub BtnStatsCHDown_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnStatsCHDown.Click
-        My.Computer.Audio.Play(My.Resources.button_46, AudioPlayMode.Background)
+        PlaySoundSPECIALButton()
         PicDesc.Image = My.Resources.CHDesc
-
         Stats.GetStats()
         If Not Stats.Charisma <= 1 Then
             Stats.Charisma -= 1
@@ -359,9 +354,8 @@ Public Class Form1
     End Sub
 
     Private Sub BtnStatsINUp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnStatsINUp.Click
-        My.Computer.Audio.Play(My.Resources.button_46, AudioPlayMode.Background)
+        PlaySoundSPECIALButton()
         PicDesc.Image = My.Resources.INDesc
-
         Stats.GetStats()
         If Not Stats.Intelligence >= 10 And Not Stats.CharPoints <= 0 Then
             Stats.Intelligence += 1
@@ -392,9 +386,8 @@ Public Class Form1
     End Sub
 
     Private Sub BtnStatsINDown_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnStatsINDown.Click
-        My.Computer.Audio.Play(My.Resources.button_46, AudioPlayMode.Background)
+        PlaySoundSPECIALButton()
         PicDesc.Image = My.Resources.INDesc
-
         Stats.GetStats()
         If Not Stats.Intelligence <= 1 Then
             Stats.Intelligence -= 1
@@ -424,9 +417,8 @@ Public Class Form1
     End Sub
 
     Private Sub BtnStatsAGUp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnStatsAGUp.Click
-        My.Computer.Audio.Play(My.Resources.button_46, AudioPlayMode.Background)
+        PlaySoundSPECIALButton()
         PicDesc.Image = My.Resources.AGDesc
-
         Stats.GetStats()
         If Not Stats.Agility >= 10 And Not Stats.CharPoints <= 0 Then
             Stats.Agility += 1
@@ -444,9 +436,8 @@ Public Class Form1
     End Sub
 
     Private Sub BtnStatsAGDown_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnStatsAGDown.Click
-        My.Computer.Audio.Play(My.Resources.button_46, AudioPlayMode.Background)
+        PlaySoundSPECIALButton()
         PicDesc.Image = My.Resources.AGDesc
-
         Stats.GetStats()
         If Not Stats.Agility <= 1 Then
             Stats.Agility -= 1
@@ -459,9 +450,8 @@ Public Class Form1
     End Sub
 
     Private Sub BtnStatsLKUp_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnStatsLKUp.Click
-        My.Computer.Audio.Play(My.Resources.button_46, AudioPlayMode.Background)
+        PlaySoundSPECIALButton()
         PicDesc.Image = My.Resources.LKDesc
-
         Stats.GetStats()
         If Not Stats.Luck >= 10 And Not Stats.CharPoints <= 0 Then
             Stats.Luck += 1
@@ -474,9 +464,8 @@ Public Class Form1
     End Sub
 
     Private Sub BtnStatsLKDown_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BtnStatsLKDown.Click
-        My.Computer.Audio.Play(My.Resources.button_46, AudioPlayMode.Background)
+        PlaySoundSPECIALButton()
         PicDesc.Image = My.Resources.LKDesc
-
         Stats.GetStats()
         If Not Stats.Luck <= 1 Then
             Stats.Luck -= 1
@@ -2029,13 +2018,13 @@ Public Class Form1
             DescPicIndex(75) = "ImplEnhanceDesc"
             DetDescrName(76) = "Marksmanship Implant"
             DetDescrText(76) = "You gain +4% to your Crit Roll, +4% to       your Critical Chance and +2 Sight(FOV)."
-            DescPicIndex(76) = "StandbySW" 'no pic yet
+            DescPicIndex(76) = "MarksmanImplDesc"
             DetDescrName(77) = "Medical Implant"
             DetDescrText(77) = "You gain +50% to Doctor- and 50% to        FA-Skill. You deal +5 Damage to living creatures. The HP you can heal(FA) is now 175HP."
-            DescPicIndex(77) = "StandbySW" 'no pic yet
+            DescPicIndex(77) = "MedicalImplDesc"
             DetDescrName(78) = "Scouting Implant"
             DetDescrText(78) = "You gain +30% to your sneak skill and        +30 to your Armor Class. Your skill can be    raised +20% over the cap. "
-            DescPicIndex(78) = "StandbySW" 'no pic yet
+            DescPicIndex(78) = "ScoutImplDesc"
             DetDescrName(79) = "Speed Implant"
             DescPicIndex(79) = "ImplSpeedDesc"
             DetDescrText(79) = "Your running animation is 10% faster.        You get +1 Action Point and +6 Sequence."
@@ -2071,19 +2060,19 @@ Public Class Form1
             DetDescrText(12) = "You gain +2 Agility."
             DescPicIndex(12) = "GAGDesc"
             DetDescrText(13) = "You gain +2 Charisma."
-            DescPicIndex(13) = "StandbySW" 'no pic yet
+            DescPicIndex(13) = "GainCHDesc"
             DetDescrText(14) = "You gain +2 Endurance."
             DescPicIndex(14) = "GENDesc"
             DetDescrText(15) = "You gain +2 Intelligence."
-            DescPicIndex(15) = "StandbySW" 'no pic yet
+            DescPicIndex(15) = "GainINDesc"
             DetDescrText(16) = "You gain +2 Luck."
             DescPicIndex(16) = "GLuckDesc"
             DetDescrText(17) = "You gain +2 Perception."
             DescPicIndex(17) = "GainPEDesc"
             DetDescrText(18) = "You gain +2 Strenght."
-            DescPicIndex(18) = "StandbySW" 'no pic yet
+            DescPicIndex(18) = "GainSTDesc"
             DetDescrText(19) = "You gain +30% Sneak in dark conditions."
-            DescPicIndex(19) = "StandbySW" 'no pic yet
+            DescPicIndex(19) = "GhostDesc"
             DetDescrText(20) = "You gain +40% Steal-Skill."
             DescPicIndex(20) = "HarmlessDesc"
             DetDescrText(21) = "+4-10 HP are healed when using First Aid."
@@ -2095,9 +2084,9 @@ Public Class Form1
             DetDescrText(24) = "You chance to set off a trap is lowered by   -90%."
             DescPicIndex(24) = "LStepDesc"
             DetDescrText(25) = "You gain +20% to your Doctor-Skill and deal  +5 damage to living creatures                (including other players)."
-            DescPicIndex(25) = "StandbySW" 'no pic yet
+            DescPicIndex(25) = "LivingADesc"
             DetDescrText(26) = "You can carry 2 more people around with you."
-            DescPicIndex(26) = "StandbySW" 'no pic yet
+            DescPicIndex(26) = "MagneticPDesc"
             DetDescrText(27) = "You gain +20% to Steal- and Lockpick-Skills."
             DescPicIndex(27) = "StandbySW" 'no pic yet
             DetDescrText(28) = "You gain +25% to First Aid- and Doctor-      Skills and your timeouts are decreased by 40%."
@@ -4255,6 +4244,10 @@ Public Class Form1
             RepairBVal = RepairBVal + addGainINVal
             ScienceBVal = ScienceBVal + addGainINVal
             SGunBVal = SGunBVal + addGainINVal
+
+            If (addGainINVal > 0) Then
+                addGainINVal = 0
+            End If
 
             'Read in BookAmountVal in LstView Books Sub Items
             LstVBooks.Items(0).SubItems(1).Text = FABookVal

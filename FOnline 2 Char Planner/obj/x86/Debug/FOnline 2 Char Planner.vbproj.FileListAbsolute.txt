@@ -37,3 +37,19 @@ C:\Users\M to the B\Documents\GitHub\FOnline2CharPlanner\FOnline 2 Char Planner\
 C:\Users\M to the B\Documents\GitHub\FOnline2CharPlanner\FOnline 2 Char Planner\bin\Debug\FOnline 2 Char Planner.application
 C:\Users\M to the B\Documents\GitHub\FOnline2CharPlanner\FOnline 2 Char Planner\obj\x86\Debug\FOnline 2 Char Planner.exe.manifest
 C:\Users\M to the B\Documents\GitHub\FOnline2CharPlanner\FOnline 2 Char Planner\obj\x86\Debug\FOnline 2 Char Planner.application
+D:\Spiele\FOnline2\Dev\FCPGit\FOnline2CharPlanner\FOnline 2 Char Planner\obj\x86\Debug\FOnline 2 Char Planner.exe
+D:\Spiele\FOnline2\Dev\FCPGit\FOnline2CharPlanner\FOnline 2 Char Planner\obj\x86\Debug\FOnline 2 Char Planner.xml
+D:\Spiele\FOnline2\Dev\FCPGit\FOnline2CharPlanner\FOnline 2 Char Planner\obj\x86\Debug\FOnline 2 Char Planner.pdb
+D:\Spiele\FOnline2\Dev\FCPGit\FOnline2CharPlanner\FOnline 2 Char Planner\obj\x86\Debug\FOnline 2 Char Planner.vbprojResolveAssemblyReference.cache
+D:\Spiele\FOnline2\Dev\FCPGit\FOnline2CharPlanner\FOnline 2 Char Planner\obj\x86\Debug\FOnline_2_Char_Planner.Form1.resources
+D:\Spiele\FOnline2\Dev\FCPGit\FOnline2CharPlanner\FOnline 2 Char Planner\obj\x86\Debug\FOnline_2_Char_Planner.Form2.resources
+D:\Spiele\FOnline2\Dev\FCPGit\FOnline2CharPlanner\FOnline 2 Char Planner\obj\x86\Debug\FOnline_2_Char_Planner.Form3.resources
+D:\Spiele\FOnline2\Dev\FCPGit\FOnline2CharPlanner\FOnline 2 Char Planner\obj\x86\Debug\FOnline_2_Char_Planner.Resources.resources
+D:\Spiele\FOnline2\Dev\FCPGit\FOnline2CharPlanner\FOnline 2 Char Planner\obj\x86\Debug\FOnline 2 Char Planner.vbproj.GenerateResource.Cache
+D:\Spiele\FOnline2\Dev\FCPGit\FOnline2CharPlanner\FOnline 2 Char Planner\bin\Debug\FOnline 2 Char Planner.exe.manifest
+D:\Spiele\FOnline2\Dev\FCPGit\FOnline2CharPlanner\FOnline 2 Char Planner\bin\Debug\FOnline 2 Char Planner.application
+D:\Spiele\FOnline2\Dev\FCPGit\FOnline2CharPlanner\FOnline 2 Char Planner\bin\Debug\FOnline 2 Char Planner.exe
+D:\Spiele\FOnline2\Dev\FCPGit\FOnline2CharPlanner\FOnline 2 Char Planner\bin\Debug\FOnline 2 Char Planner.pdb
+D:\Spiele\FOnline2\Dev\FCPGit\FOnline2CharPlanner\FOnline 2 Char Planner\bin\Debug\FOnline 2 Char Planner.xml
+D:\Spiele\FOnline2\Dev\FCPGit\FOnline2CharPlanner\FOnline 2 Char Planner\obj\x86\Debug\FOnline 2 Char Planner.exe.manifest
+D:\Spiele\FOnline2\Dev\FCPGit\FOnline2CharPlanner\FOnline 2 Char Planner\obj\x86\Debug\FOnline 2 Char Planner.application

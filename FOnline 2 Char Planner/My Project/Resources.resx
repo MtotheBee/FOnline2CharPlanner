@@ -808,4 +808,34 @@
   <data name="StealDescPicNew" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\StealDescPicNew.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="click" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\click.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="GainCHDesc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GainCHDesc.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GainINDesc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GainINDesc.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GainSTDesc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GainSTDesc.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GhostDesc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GhostDesc.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LivingADesc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LivingADesc.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MagneticPDesc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MagneticPDesc.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MarksmanImplDesc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MarksmanImplDesc.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="MedicalImplDesc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\MedicalImplDesc.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ScoutImplDesc" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ScoutImplDesc.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

@@ -43,11 +43,6 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
-      <assemblyIdentity name="Microsoft.VisualBasic.PowerPacks.Vs" version="10.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
-    </dependentAssembly>
-  </dependency>
-  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="BassMOD.Net.dll" size="39936">
       <assemblyIdentity name="BassMOD.Net" version="2.0.0.2" publicKeyToken="D4DB1103F7215E10" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -60,26 +55,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FOnline 2 Char Planner.exe" size="19043328">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="FOnline 2 Char Planner.exe" size="18396672">
       <assemblyIdentity name="FOnline 2 Char Planner" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>fP6JzGn5/huJ1DJWDGJiG2PEmBg=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="de\Microsoft.VisualBasic.PowerPacks.Vs.resources.dll" size="47000">
-      <assemblyIdentity name="Microsoft.VisualBasic.PowerPacks.Vs.resources" version="10.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="de" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>BtQ4wpOdmHB8wqjN43Kwrqf3D2U=</dsig:DigestValue>
+        <dsig:DigestValue>Ap7wbzV58ZV1l8+tVmm98GKP8hA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

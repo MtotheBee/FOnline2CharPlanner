@@ -81,14 +81,13 @@
     <GenerateManifests>true</GenerateManifests>
   </PropertyGroup>
   <PropertyGroup>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="BassMOD.Net, Version=2.0.0.2, Culture=neutral, PublicKeyToken=d4db1103f7215e10, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>bin\Debug\BassMOD.Net.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -412,6 +411,17 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FCPSymbol.ico" />
+    <None Include="Resources\MagneticPDesc.jpg" />
+    <None Include="Resources\LivingADesc.jpg" />
+    <None Include="Resources\GhostDesc.jpg" />
+    <None Include="Resources\GainSTDesc.jpg" />
+    <None Include="Resources\GainINDesc.jpg" />
+    <None Include="Resources\GainCHDesc.jpg" />
+    <None Include="Resources\MedicalImplDesc.jpg" />
+    <None Include="Resources\ScoutImplDesc.jpg" />
+    <None Include="Resources\MarksmanImplDesc.jpg" />
+    <None Include="Resources\MarksmanImplDesc.bmp" />
+    <None Include="Resources\click.wav" />
     <None Include="Resources\LPickDescPicNew.jpg" />
     <None Include="Resources\SneakDescPicNew.jpg" />
     <None Include="Resources\FAidDescPicNew.jpg" />
